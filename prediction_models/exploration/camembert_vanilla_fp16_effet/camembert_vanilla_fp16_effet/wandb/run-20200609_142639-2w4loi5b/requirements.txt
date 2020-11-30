@@ -71,7 +71,7 @@ configparser==5.0.0
 contextlib2==0.6.0.post1
 copulas==0.2.6.dev0
 cryptacular==1.5.5
-cryptography==2.8
+cryptography==3.2
 ctgan==0.2.1
 cycler==0.10.0
 cymem==2.0.3
