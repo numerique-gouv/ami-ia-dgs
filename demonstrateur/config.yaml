@@ -1,0 +1,13 @@
+version: 1
+
+Model:
+  path: "models/28-08-2020"
+Data:
+  mrv:
+    path: "/home/robin/Nextcloud/strar_clay/DGS/data/data_mrv/declaration_mrv_complet.csv"
+  demonstrateur:
+   path: '/home/robin/Documents/app/data_test'
+  prepro:
+    path: 'data'
+
+

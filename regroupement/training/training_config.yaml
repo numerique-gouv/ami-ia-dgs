@@ -1,0 +1,47 @@
+config_name : '25_11_2020_test'
+path_to_save : "/home/robin/Documents/DGS/Annexe/L3/"
+data :
+    filename : 'cleaned_data_5.pkl'
+    path : "/home/robin/Documents/DGS/Annexe/L3/"
+    mrv : '/home/robin/Documents/DGS/data/declaration_mrv_complet.csv'
+topic:
+    dictionary:
+        used_columns : ['text_lem']
+        no_above : 0.8
+        no_below : 3
+        keep_n : 100000
+    corpus :
+        
+    model :
+        name : 'multi-lda'
+        num_topic : 150
+        passes : 1
+
+cluster:
+    model:
+        name : "kmeans"
+        add_columns : ['TYPE_DECLARANT', 'REFERENCE_COMMERCIALE', 'CLASSIFICATION', 'FABRICANT','DCO_ID','TEF_ID','CDY_ID','TDY_ID']
+
+        kmeans :
+            n_cluster: 150
+
+        DBSCAN :
+            eps: 14
+            min_samples: 13.5
+
+        HDBSCAN :
+            min_cluster_size: 15
+            min_samples : 1
+            cluster_selection_epsilon : 0.5
+            cluster_selection_method : 'leaf'
+
+
+        gaussianMixture : 
+            n_components: 1500
+
+        bayesianGaussianMixture : 
+            n_components: 1500
+        agglomerative : 
+            n_clusters : 1500
+            linkage : 'average' #complete average
+            metric : 'jaccard' #'jaccard'

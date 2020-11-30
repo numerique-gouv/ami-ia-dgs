@@ -1,0 +1,144 @@
+(1) To construct label embedding
+
+python -u -m xbert.preprocess \
+	--do_label_embedding \
+	-i datasets/dgs \
+    -o save_models/dgs/proc_data \
+    -l pifa-tfidf \
+    -x datasets/dgs/X.trn.npz
+
+(2) To perform hierarchical 2-means,
+
+SEED_LIST=( 0 1 2 )
+for SEED in "${SEED_LIST[@]}"; do
+    LABEL_EMB_NAME=pifa-tfidf-s${SEED}
+    INDEXER_DIR=save_models/dgs/${LABEL_EMB_NAME}/indexer
+    python -u -m xbert.indexer \
+        -i save_models/dgs/proc_data/L.pifa-tfidf.npz \
+        -o ${INDEXER_DIR} --seed ${SEED}
+done
+
+SEED=0
+LABEL_EMB_NAME=pifa-tfidf-s${SEED}
+INDEXER_DIR=save_models/dgs/${LABEL_EMB_NAME}/indexer
+python -u -m xbert.preprocess \
+    --do_proc_label \
+    -i datasets/dgs \
+    -o save_models/dgs/proc_data \
+    -l ${LABEL_EMB_NAME} \
+    -c ${INDEXER_DIR}/code.npz
+
+# Model 
+
+MODEL_TYPE=camembert
+MODEL_NAME=camembert-base
+MAX_XSEQ_LEN=128
+DATA_DIR=datasets/dgs
+OUTPUT_DIR=save_models/dgs
+PROC_DATA_DIR=${OUTPUT_DIR}/proc_data
+python -u -m xbert.preprocess \
+    --do_proc_feat \
+    -i ${DATA_DIR} \
+    -o ${PROC_DATA_DIR} \
+    -m ${MODEL_TYPE} \
+    -n ${MODEL_NAME} \
+    --max_xseq_len ${MAX_XSEQ_LEN} \
+    |& tee ${PROC_DATA_DIR}/log.${MODEL_TYPE}.${MAX_XSEQ_LEN}.txt
+
+Matcher
+
+In stage 2, we will do the following
+
+OUTPUT_DIR=save_models/dgs
+MODEL_NAME=camembert-base
+INDEXER_NAME=pifa-tfidf-s0
+MODEL_DIR=${OUTPUT_DIR}/${INDEXER_NAME}/matcher/${MODEL_NAME}
+mkdir -p ${MODEL_DIR}
+
+MODEL_TYPE=camembert
+OUTPUT_DIR=save_models/dgs
+PROC_DATA_DIR=${OUTPUT_DIR}/proc_data
+MODEL_NAME=camembert-base
+INDEXER_NAME=pifa-tfidf-s0
+PER_DEVICE_TRN_BSZ=4
+GRAD_ACCU_STEPS=1
+MAX_STEPS=1000
+WARMUP_STEPS=1
+LEARNING_RATE=5e-5
+LOGGING_STEPS=100
+
+
+python -m torch.distributed.launch \
+    --nproc_per_node 1 xbert/transformer.py \
+    -m ${MODEL_TYPE} -n ${MODEL_NAME} --do_train \
+    -x_trn ${PROC_DATA_DIR}/X.trn.${MODEL_TYPE}.${MAX_XSEQ_LEN}.pkl \
+    -c_trn ${PROC_DATA_DIR}/C.trn.${INDEXER_NAME}.npz \
+    -o ${MODEL_DIR} --overwrite_output_dir \
+    --per_device_train_batch_size ${PER_DEVICE_TRN_BSZ} \
+    --gradient_accumulation_steps ${GRAD_ACCU_STEPS} \
+    --max_steps ${MAX_STEPS} \
+    --warmup_steps ${WARMUP_STEPS} \
+    --learning_rate ${LEARNING_RATE} \
+    --logging_steps ${LOGGING_STEPS} \
+    --num_train_epochs 3 \
+    |& tee ${MODEL_DIR}/log.txt
+
+# Predictions
+
+GPID={0,0}
+OUTPUT_DIR=save_models/dgs
+MODEL_NAME=camembert-base
+INDEXER_NAME=pifa-tfidf-s0
+MODEL_DIR=${OUTPUT_DIR}/${INDEXER_NAME}/matcher/${MODEL_NAME}
+PER_DEVICE_TRN_BSZ=8
+MODEL_TYPE=camembert
+PER_DEVICE_VAL_BSZ=8
+
+CUDA_VISIBLE_DEVICES=${GPID} python -u xbert/transformer.py \
+    -m ${MODEL_TYPE} -n ${MODEL_NAME} \
+    --do_eval -o ${MODEL_DIR} \
+    -x_trn ${PROC_DATA_DIR}/X.trn.${MODEL_TYPE}.${MAX_XSEQ_LEN}.pkl \
+    -c_trn ${PROC_DATA_DIR}/C.trn.${INDEXER_NAME}.npz \
+    -x_tst ${PROC_DATA_DIR}/X.tst.${MODEL_TYPE}.${MAX_XSEQ_LEN}.pkl \
+    -c_tst ${PROC_DATA_DIR}/C.tst.${INDEXER_NAME}.npz \
+    --per_device_eval_batch_size ${PER_DEVICE_VAL_BSZ}
+
+
+RANKER
+
+LABEL_NAME=pifa-tfidf-s0
+MODEL_NAME=camembert-base
+OUTPUT_DIR=save_models/dgs/${LABEL_NAME}
+INDEXER_DIR=${OUTPUT_DIR}/indexer
+MATCHER_DIR=${OUTPUT_DIR}/matcher/${MODEL_NAME}
+RANKER_DIR=${OUTPUT_DIR}/ranker/${MODEL_NAME}
+
+mkdir -p ${RANKER_DIR}
+
+
+DATA_DIR=datasets/dgs 
+
+python -m xbert.ranker train \
+    -x1 ${DATA_DIR}/X.trn.npz \
+    -x2 ${MATCHER_DIR}/trn_embeddings.npy \
+    -y ${DATA_DIR}/Y.trn.npz \
+    -z ${MATCHER_DIR}/C_trn_pred.npz \
+    -c ${INDEXER_DIR}/code.npz \
+    -o ${RANKER_DIR} -t 0.01 \
+    -f 0 --mode ranker
+
+
+PRED_NPZ_PATH=${RANKER_DIR}/tst.pred.npz
+python -m xbert.ranker predict \
+    -m ${RANKER_DIR} -o ${PRED_NPZ_PATH} \
+    -x1 ${DATA_DIR}/X.tst.npz \
+    -x2 ${MATCHER_DIR}/tst_embeddings.npy \
+    -y ${DATA_DIR}/Y.tst.npz \
+    -z ${MATCHER_DIR}/C_tst_pred.npz \
+    -f 0 -t noop
+
+1) bash run_preprocess_label.sh dgs2 pifa-tfidf
+2) bash run_preprocess_feat.sh dgs2 camembert 128
+3) bash run_transformer_train.sh 0 dgs2 camembert pifa-tfidf-s0
+4) bash run_transformer_predict.sh dgs2
+

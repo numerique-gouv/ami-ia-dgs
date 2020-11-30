@@ -1,0 +1,13 @@
+app:
+  log_level: !ENV ${APP_LOG_LEVEL}
+  activate_front: !ENV ${APP_ACTIVATE_FRONT}
+  clean_results_in_min: !ENV ${APP_CLEAN_RESULTS_IN_MIN}
+  max_nb_downloads: !ENV ${APP_MAX_NB_DOWNLOADS}
+  password_file: !ENV ${APP_PASSWORD_JSON}
+models:
+  path: !ENV ${MODELS_PATH}
+clusters:
+  path: !ENV ${CLUSTERS_PATH}
+data:
+  mrv:
+    path: !ENV ${DATA_PATH}

@@ -1,0 +1,7 @@
+analyse :
+    path : '/home/robin/Documents/DGS/Annexe/L3' #Dossier de Sauvegarde des analyses
+    name : '26_10_2020_text_lem' # nom de l'analyse choisi
+data :
+    prepared_mrv :
+        path : "/home/robin/Documents/DGS/Annexe/L3/cleaned_data.pkl" # chemin vers les data nettoyer 
+    

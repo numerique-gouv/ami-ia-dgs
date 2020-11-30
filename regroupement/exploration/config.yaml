@@ -1,0 +1,17 @@
+topic : 
+    saved_path : "/home/robin/Nextcloud/strar_clay/GitLab/Annexe/L3/"
+    model :
+        file_path : "rake_tri.model"
+        num_topic :
+    dictionary : 
+        file_path : "rake_tri.dict"
+    corpus :
+        file_path : "rake_tri.mm"
+clusteur :
+    model :
+        file_path : 
+    
+data :
+    id_to_dco :
+        file_path : "/home/robin/Nextcloud/strar_clay/GitLab/signalement-ia/demonstrateur/data/referentiel_dispositif.csv"
+        

@@ -1,0 +1,5 @@
+save_folder :
+    path : "/home/user1/DGS/Livrable_3/"
+data :
+    mrv : 
+        path : "/home/user1/DGS/data/data_mrv/declaration_mrv_complet.csv"

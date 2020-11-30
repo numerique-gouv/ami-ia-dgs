@@ -1,0 +1,15 @@
+app:
+  log_level: DEBUG
+  activate_front: True
+  clean_results_in_min: 300
+  max_nb_downloads: 3
+  password_file: password.json
+
+models:
+  path: "data/models"
+  test_file: "data/test/test.pdf"
+clusters:
+  path: "data/clusters"
+data:
+  mrv:
+    path: "data/mrv"

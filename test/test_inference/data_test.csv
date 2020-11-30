@@ -1,0 +1,698 @@
+,Unnamed: 0,NUMERO_DECLARATION,TYPE_DECLARATION,TYPE_DECLARANT,NB_PATIENT_CONCERNE,NB_DISPOSITIF_CONCERNE,DESCRIPTION_INCIDENT,ETAT_PATIENT,ACTION_PATIENT,DCO_ID,DCO,LIBELLE_COMMERCIAL,REFERENCE_COMMERCIALE,NUMERO_SERIE,NUMERO_LOT,FABRICANT,MANDATAIRE,DISTRIBUTEUR,TDY_ID,TYPE_DYSFONCTIONNEMENT,CDY_ID,CONSEQUENCE_DYSFONCTIONNEMENT,TEF_ID,TYPE_EFFET,GRAVITE,NUMERO,TYPE_VIGILANCE,CLASSIFICATION
+34696,34696,R1803766,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Patient : AMI, 70 ans, homme, 60kg
+
+Le patient arrive des urgences avec une sonde d' alimentation Ansell dont l'adaptateur est cassé.","Adaptateur maintenu par de l'adhésif.
+Risque de fuite de l'alimentation sur le patient. Inconfort +++","Adaptateur changé.
+Le dispositif n'a pas été conservé.",3050.0,XGASTROSTOMIE PERCUTANEE ENDOSCOPIQUE ( SONDE ),ADAPTATEUR EN Y CORLOCK TWOOMEY PR CH 20 ENFIT,50-6120,,79591,CORPAK MEDSYSTEMS,Avanos Medical Belgium BVBA,ANSELL,D1997,RUPTURE,,,,,MOYEN,R1803766,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+7220,7220,R1705137,CERFA,Etablissements et professionnels de santé,1.0,2.0,"Patiente : BER
+Age : 52 ans
+Implants gauche et droit
+300cc
+Esthétique
+Rupture gauche et droite
+Découverte fortuite lors d'un changement de prothèses pour volume plus important.
+Dépolymérisation de la membrane (défaut de fabrication +++)",..,..,2975.0,PMI : SILICONE TEXTUREE,PMI Silicone Texturée,LS 94 300,0820094443 Droite 0820094442 Gauche,,Groupe SEBBIN,,,D1649,DESAGGREGATION,,,,,SEVER,R1705137,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+67228,67228,R1915955,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Lors du rétablissement de la continuité après une résection antérieure du rectum, une
+agrafeuse circulaire a été utilisée. La pince a coupé et agrafé mais aucunes des agrafes n'a tenu. Pourtant celle-ci a été utilisée selon les bonnes pratiques à savoir : enclume clipsée, pince vissée jusqu'à la butée, poignée serrée en un coup sec, attente de plus de 10 secondes, molette tournée de 3/4 de tour, retrait de la
+pince sans force avec contrôle clioscopique. Lors du test à l'air, désunion complète de l'anastomose. Les agrafes ne se sont pas fermées.",Le chirurgien a dû réaliser une stomie pour protéger l'anastomose.,Le chirurgien a du faire une recoupe puis utiliser une nouvelle pince pour rétablir la continuité.,2542.0,AGRAFEUSE CHIRURGICALE,Agrafeuse ECHELON 60 ENDOPATH,CDH29A,,T40L46,"ETHICON ENDO-SURGERY, Inc",JOHNSON & JOHNSON MEDICAL SAS,ETHICON EMEA CQ,D1766,FUITE DE LA LIGNE D AGRAFAGE,,,E2223,DEHISCENCE,SEVER,R1915955,Matériovigilance,Dégradation grave de l'état de santé
+35927,35927,R1804327,CERFA,Citoyen,,2.0,"Pose essures en janvier 2015 depuis survenue de règles hémorragique de 14 jours par mois
+douleurs multiples musculaires et neurologique acouphènes important et céphalées et baisse
+audition +++appareils auditifs en juin 2015. 
+Fatigue importante et maladie de basedow en mai 2016 ablation de la thyroïde ... troubles
+visuels difficultés à marcher après scanner IRM prise de sang rien à signaler toujours très
+fatigué ... tests réalisés par une allergologue positif au nickel !","Conséquences à seulement 35 ans je vis dans le corps d une personne âgée, je dois me faire enlever les essures car allergie au nickel ce qui intoxique mon corps et qui cause tous ces effets indésirables ... je vais subir l'ablation de lutérus
+et des trompes après une thyroïde que de traumatisme et de fatigue et de colère .... je
+faisais confiance en ma gynéco et à cette méthode si révolutionnaire .... je suis épuisée et
+depuis 2015 depuis cette implantation ma.vie n'est que ralentie maman de 3 enfants j ai des
+difficultés à m en occuper sans compter les arrêts de travail .... alors prenez notre désespoir en.considération j ai fait confiance en notre belle médecine française et en retour elle me gâche la vie",,4001.0,TOUTES LES DCO,Essure,ESS305,,C38218,BAYER PHARMA AG,,BAYER HEALTHCARE SAS,,,C1098,HYSTERECTOMIE - SALPINGECTOMIE,E1445,DOULEUR NON GYNECO,SEVER,R1804327,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+52359,52359,R1821826,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Pose de la chambre le 14/09/2018.
+Fuite de la chambre implantable nécessitant une hospitalisation le 22/11/2018.
+Nouvelle implantation le 22/11/2018.",Hospitalisation.,Explantation de la chambre et implantation nouvelle référence ( autre marque),2987.0,CHAMBRE A CATHETER IMPLANTABLE,CELSITE SAFETY SNT605F 6.5F SI,4437756,36929849,,B. BRAUN MEDICAL,,,D1759,FUITE,C1097,RETRAIT DU DM,E1405,RETRAIT CHIRURGICAL,SEVER,R1821826,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+71988,71988,R1920832,CERFA,Etablissements et professionnels de santé,1.0,1.0,La pompe n'a pas délivrée l'alimentation programmée et n'a émis aucune alarme.,Patient avec un protocole stricte ce qui a entraîné sa mise en régime alimentaire.,...,2716.0,POMPE A NUTRITION ENTERALE,Pompe portable / INFINITY /,INFINITY,,85002317,,,NUTRICIA NUTRITION CLINIQUE SAS,D2058,SUR / SOUS DEBIT SANS ALARME,C1052,THERAPIE NON DELIVREE,E1255,TRAITEMENT INADAPTE,MOYEN,R1920832,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+3428,3428,R1702386,CERFA,Citoyen,,,"Quelques mois après la pose des implants Essure, j'ai rencontré de nombreux problèmes de santé. Hémorragie mensuelle avec ventre gonflé et douloureux. Douleurs articulaires + musculaires. Les yeux secs avec fatigue oculaire, hypertension et rythme cardiaque élevé au repos. Fatigue constante, essoufflement, sommeil perturbé. Dépression, j'ai rencontré plusieurs spécialistes, qui ont essayé de m'aider mais en vain. Depuis 7 ans, je vois mon état de santé se dégrader et j'ai peur des conséquences que cela pouvait entrainer.
+
+Douleur ventre + hémorragie sur 6 à 15 jours tous les mois. Ventre gonflé avec sensation d'eau dans le ventre. Rapport sexuel douloureux. Hyperthyroïde, hyper tension. Fatigue constante. Sécheresse oculaire avec fatigue de la vue, maux de tête quotidiennement, sinusite à répétition avec agueusie. Dépression. Spondylarthrite reconnu en 2012. Douleur constante dans toutes les articulations et les muscles, déchaussement des dents avec attaque acide. Adénomyose utérine et globuleuse. Saut d'humeur","Douleur ventre + hémorragie sur 6 à 15 jours tous les mois. Ventre gonflé avec sensation d'eau dans le ventre. Rapport sexuel douloureux. Hyperthyroïde, hyper tension. Fatigue constante. Sécheresse oculaire avec fatigue de la vue, maux de tête quotidiennement, sinusite à répétition avec agueusie. Dépression. Spondylarthrite reconnu en 2012. Douleur constante dans toutes les articulations et les muscles, déchaussement des dents avec attaque acide. Adénomyose utérine et globuleuse. Saut d'humeur","Recherche le 09/02/2017, allergie aux métaux 
+Le 07 avril 2017; hystérectomie + salpingectomie par laparostomie",2577.0,IMPLANT POUR STERILISATION TUBAIRE,Essure - ESS305,ESS305,,654826,Bayer HealthCare LLC,Bayer Pharma AG,BAYER HEALTHCARE SAS,,,,,E1445,DOULEUR NON GYNECO,SEVER,R1702386,Matériovigilance,Dégradation grave de l'état de santé
+38718,38718,R1807260,CERFA,Etablissements et professionnels de santé,,,"Mise en place de la rampe sur une ligne de voie centrale. 
+Mise en place d'une tubulure de PSE (de marque CAIR LGL) sur le robinet blanc.
+Problème de retour sur le système antl retour: entrée d'air sur la ligne de perfusion",.,échantillon disponible à la Pharmacie.,3025.0,RAMPE DE ROBINET POUR LIGNE DE PERFUSION,RAMPE DE PERFUSION,REF,,'17L14·TJB,CAIR LGL,,,D1850,NON ETANCHEITE ( AIR ) ,,,,,SEVER,R1807260,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+20584,20584,R1714563,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Après montage contrôle et tests habituels validés, lors de la première utilisation l'opérateur a constaté que les ciseaux  laparoscopique ne coupaient pas.
+Les notifications au niveau du module étaient successivement à chaque pression sur ""suivant"": - Relâcher la pression sur la lame (qui n'était plus exercée)
+-Nettoyer l'instrument (action déjà faite) 
+-Sortir l'instrument du patient (ce qui était déjà le cas)
+- Serrer le montage
+Le changement des ciseaux a été bénéfique à la reprise d'un fonctionnement normal du dispositif.
+Retard constaté dans la prise en charge du patient.",Retard constaté dans la prise en charge du patient.,Dispositif mis de côté pour expertise. Fournisseur prévenu.,2354.0,BISTOURI A ULTRASON ( PINCE DE THERMOFUSION ) ,Ciseaux laparoscopiques HARMONIC,HARH36,,P92R4U,,,JOHNSON & JOHNSON MEDICAL SAS,D1852,NON FONCTIONNEMENT / ARRET,C1097,RETRAIT DU DM,E1239,RETARD AU TRAITEMENT,MOYEN,R1714563,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+49061,49061,R1818286,CERFA,Etablissements et professionnels de santé,,,"A 6 h, fuite signalée par le patient. Constatée au niveau du
+prolongateur de la PCA, pas de bulles d'air. Le patient n'a
+pas toute la dose d'antalgique. Le prolongateur a été
+changé.",..,"Notre référence interne : SLS-MTV-18-126
+Aucune mesure conservatoire n'a été prise, le dispositif en question
+n'a pas été conservé,",3021.0,PROLONGATEUR,"Prolongateur PE/PVC diamètre 1,5 mm 1 L=150 cm",P63215M,,,CAIR LGL,,,D1759,FUITE,,,,,SEVER,R1818286,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+25667,25667,R1717779,CERFA,Etablissements et professionnels de santé,,,"Désadaptation du robinet sous l'effet de la pression.
+Fuite produit contraste porte dentrée possible.",Le DM a été gardé.,Remplacement de la tubulure.,3016.0,PERFUSEUR,PERFUSEUR 3 VOIES,PERY3210F,,AE170728444,DIDACTIC,,,D1656,"DESOLIDARISATION, DECONNEXION",,,E1239,RETARD AU TRAITEMENT,MOYEN,R1717779,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+76152,76152,R2002620,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Lors d'une séance de dialyse type HDF , la ligne veineuse s'est désadaptée de l'aiguilleveinuese laissant s'échapper une grande quantité de sang malgré la réaction rapide du personnel. le patient est retrouvé inconscient.","Le patient n'a plus de pouls et est inconscient.
+massage cardiaque et restitution du patient (600ml) ont permis au patient de reprendre conscience avant l'arrivée du SMUR. transfert en USC et transfusion.","Actions entreprises pour le patient vis-à-vis du DM:
+DM éliminé. restitution avec autre ligne veineuse
+
+Actions entreprises dans létablissement:
+signalement interne. signalement au fournisseur. signalement externe. 
+CREX prévu le 21 février.",3335.0,LIGNE A SANG D' HEMODIALYSE,Ligne veineuse,...,,,Nikkiso Co Ltd,,HEMOTECH,D1767,FUITE DE SANG EN COURS DE TRAITEMENT,,,E1984,PERTE DE CONNAISSANCE,SEVER,R2002620,Matériovigilance,Dégradation grave de l'état de santé
+16920,16920,R1712179,CERFA,Etablissements et professionnels de santé,,,"Rupture de membrane du circuit de dialyse. sang en contact avec le dialysat -Alarme fuite de sang opérationnelle - confirmée  par la bandelette.
+
+Hospitalisation du patient
+ malaise, vomissement,
+
+le 31/03/2017 le patient  va bien","Hospitalisation du patient malaise, vomissement
+
+le 31/03/2017 le patient  va bien","fournisseur prévenue générateur désinfecté suivant procédure circuit gardé ""patient non restitué, médecin appelé, scope bilan fait"".",3328.0,HEMODIALYSEUR,Membrane dialyseur,REF,,1785/003,BELLCO FRANCE SAS,,,D2006,RUPTURE DE MEMBRANE,C1032,FUITE,,,MOYEN,R1712179,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+6757,6757,R1704736,CERFA,Citoyen,1.0,,"Après la pose des ESSURE, apparition de métrorragie règles abondantes 
+prise du poids Insomnies.  anémie douleurs. 
+Douleurs dos cervicales fourmillements mains au réveil fatigue +++
+
+hypertension (finalement traitée en 2013)
+Sècheresse yeux 
+Adenomyose 
+anémie
+névralgie pudendale (EMG)
+règles hémorragiques.
+Endométriose
+paresthésie","Après la pose des ESSURE,
+hypertension (final traitée en 2013 Sècheresse Adenurmyose 
+névralgie pudendale (EMG)
+anémie. 
+règles hémorragiques.
+Endométriose
+paresthésie",Hystérectomie conservatrice avec salpingectomie bilatérale le 14/02/2017.,2577.0,IMPLANT POUR STERILISATION TUBAIRE,Essure - ESS305,..,,,Bayer HealthCare LLC,Bayer Pharma AG,BAYER HEALTHCARE SAS,,,C1098,HYSTERECTOMIE - SALPINGECTOMIE,E1454,AUTRE,SEVER,R1704736,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+75274,75274,R2001670,CERFA,Etablissements et professionnels de santé,,,"Patient de 63 ans, hospitalisé pour fermeture percutanée d'une fuite paraprothétique mitrale mécanique de haut grade, symptomatique. A J1 de l'intervention, patient en arrêt cardio respiratoire, nécessitant la mise en place d'un appareil de massage cardiaque LUCAS2. Celui-ci ne fonctionne pas. Perte 15 secondes pour sa mise en place et 15 secondes pour l'enlever, période où le patient n'a donc pas eu de massage cardiaque externe efficace. Massage cardiaque manuel le temps de récupérer un autre appareil de massage cardiaque.
+Départ du patient au bloc opératoire pour suite de la prise en charge Nouvel ACR. Le patient décèdera par la suite.","Décès du patient sans lien avec l'arrêt du dispositif daprès lavis médical.
+Si le patient nétait pas décédé, risque de séquelles neurologiques en raison linterruption de massage cardiaque lors du changement de dispositif.","Le dispositif a été mis en quarantaine pour expertise.
+Dernière maintenance : 29/10/2019 et batteries remplacées le 06/12/2018.",2692.0,APPAREIL AUTOMATISE DE MASSAGE CARDIAQUE,LUCAS 2 CHEST COMPRESSION SYSTEM,99576-000025,30137220,,Jolife AB,,,,,,,E1139,DECES,CRITI,R2001670,Matériovigilance,Incident grave ayant entraîné la mort
+55442,55442,R1902617,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Dossier : MV 19-0140
+Descriptif incident : Après intubation de la voie lacrymale par le canalicule supérieur, lors du retrait du guide de la
+sonde, la tête s'est désolidarisé du corps. La tubulure est restée dans le
+canal lacrymo-nasal droit, ou a migré vers la fosse nasale après nouveau sondage.
+Utilisation d'un 2eme dispositif pour terminer l'intervention avec risque de dommage patient
+Patient : ROD Sexe : F Poids : NSP Kg Age : 2 ans",Aucune conséquence pour le patient,..,3943.0,SONDE ORL,MASTERKA,S1.1608,,1852847,France Chirurgie Instrumentation,,,D1997,RUPTURE,C1277,FRAGMENTS DE DM RESTANT,E1239,RETARD AU TRAITEMENT,MOYEN,R1902617,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+67043,67043,R1915769,CERFA,Etablissements et professionnels de santé,1.0,1.0,"ablation d'un diu incomplet , branche gauche cassé restée dans la cavité utérine",douleurs et saignement importants,expulsion spontanée dans les 72h,3262.0,DISPOSITIF INTRA - UTERIN ( STERILET ),NOVAPLUS T 380 Ag Normal (inclus dans Sethygyn),Ref,,044226101,EUROGINE,,,D1791,IMPOSSIBILITE / DIFFICULTE DE RETRAIT,,,E1148,DOULEUR,MOYEN,R1915769,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+31077,31077,R1800912,CERFA,Etablissements et professionnels de santé,,,"Lors de la réalisation d'un cliché de panoramique dentaire sur patient positionné, les rayons X ne se sont pas déclenchés.
+Après avoir lâché la manette de déclenchement RX, la manipulatrice a entendu un puissant grincement au niveau de la machine.
+Le bras a bougé et a heurté le patient. Cela a été sans conséquence pour ce dernier.
+
+Équipement neuf mis en fonctionnement le 12/12/17.",Pas de conséquences cliniques,..,2310.0,STATIF PANORAMIQUE DENTAIRE,Plameca promax 3d,Rf,,KPP17030103,Planmeca Oy,,PRIMAX,D2338,NON LISTE,,,E1213,PAS D'EFFET NEFASTE DECLARE,MINEU,R1800912,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+59853,59853,R1907531,CERFA,Etablissements et professionnels de santé,,,"En effet, il "" été constaté en cours d'intervention, sur deux dispositifs bien distincts, un défaut d'agrafage ne permettant pas de réaliser l'anastomose. Malgré une mise en place conforme et sans difficulté particulière des recharges, les poignées n'ont pas fonctionné. Suite à cette problématique le médecin a dû changer de technique afin de prendre en charge le patient. Les utilisateurs nous ont également signalé un allongement du temps d'intervention d'environ 20 minutes.","Aucune
+Les utilisateurs nous ont également signalé un allongement du temps d'intervention d'environ 20 minutes","Suite à cette problématique le médecin a dû changer de technique afin de prendre en charge le patient.
+
+Note d'information aux services",2542.0,AGRAFEUSE CHIRURGICALE,POIGNEE ENDOGIA ULTRA UNIVERSAL STD L16CM,EGIAUSTND,,P8M1391Y,MEDTRONIC France,,,D1854,NON FONCTIONNEMENT / FONCTIONNEMENT INCORRECT,C1137,ALLONGEMENT DU TEMPS OPERATOIRE,,,MOYEN,R1907531,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+41955,41955,R1810769,CERFA,Etablissements et professionnels de santé,,,Le bistouri a pris feu au début de l'intervention.,pas de conséquence clinique déclarée,isolation du dispositif. l'analyse des causes suggère la présence de plastique a l'intérieur du bistouri comme cause principale. un contrôle par échantillonnage des lots existants est  effectuée. aucun manche de bistouri non conforme détecté ce qui suggère un incident de production isolé. le fournisseur a procédé au changement du moule d'injection.,2346.0,BISTOURI ELECTRIQUE ( ELECTRODE/MANCHE ) ,Manche de bistouri électrique,SE100,,183099,"ZHEJIANG SHUYOU SURGICAL INSTRUMENT CO.,LTD",,Comepa Industrie,D2060,"SURCHAUFFE, FEU, EXPLOSION",,,E1213,PAS D'EFFET NEFASTE DECLARE,MINEU,R1810769,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+59779,59779,R1907437,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Patient ROM, nouveau-né, sexe masculin, 5kg
+
+Les infirmières ont voulu poser une sonde vésicale à demeure chez un patient qui avait déjà été sondé précédemment.
+L'emballage de la sonde était correct et les infirmières n'ont pas remarqué de problèmes lors du contrôle visuel de la sonde.
+Elles ont donc enlevé le mandrin, afin de pouvoir connecter la sonde à la poche de recueil avant de poser la sonde (pratique habituelle du service permettant de poser la sonde en système clos, et donc de limiter les risques infectieux chez des patients à risque).
+Elles ont également contrôlé le ballonnet (gonflement puis dégonflement): le ballonnet ne présentait pas de problème.
+Elles ont alors posé la sonde au patient. Mais au moment de fixer celle-ci, les infirmières se sont aperçues que la sonde fuyait (goutte à goutte d'urine dans la couche), à un endroit de la sonde placé à l'extérieur du patient, environ au milieu du dispositif.
+Elles ont alors retiré la sonde défectueuse, et ont reposé une autre sonde, de la même référence mais d'un autre lot.","La mise en place de la 2e sonde a été extrêmement douloureuse pour le patient, la mise en place puis le retrait de la 1ère ayant créé une inflammation. Cela a créé une difficulté supplémentaire pour les infirmières pour reposer la seconde sonde et a également augmenté le risque infectieux.
+D'autre part, le patient a eu de la fièvre la nuit suivante (nuit du 1er au 02/04/2019), mais il n'a pas été possible de déterminer si cette fièvre était due à un problème infectieux entraîné par l'incident avec la sonde urinaire ou à une autre cause (patient fragile avec voie veineuse centrale en place).","La sonde défectueuse a été retirée et une sonde de la même référence mais d'un lot différent a été posée au patient.
+Une surveillance du risque infectieux a également été mise en place.
+La sonde incriminée a été conservée et est disponible pour expertise à la pharmacie du Groupement Hospitalier Est.
+En revanche, elle est souillée par l'urine du patient.
+Le mandrin, non utilisé, n'a pas été conservé.",3093.0,SONDE VESICALE DE FOLEY,BRILLANT 100% SIL  FOLEY 1.5ML PED,170003-000060,,17HE32,TELEFLEX MEDICAL SND BHD,,TELEFLEX Medical Europe LTD,D1759,FUITE,,,E1148,DOULEUR,MOYEN,R1907437,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+17937,17937,R1712984,CERFA,Citoyen,,,"Mme V.FAU
+La date d'implantation : 17/10/2012
+L'année suivant la pose des implants crises des vertiges règulières fatigue, douleurs diverses chroniques inexpliquées. Nombreux examens entrepris les médecins  ne trouvent pas la cause des problèmes je sens la décadence de mon état de santé depuis de  2012, et cela semble aller de pire en pire.
+
+Conséquences cliniques :
+Vertiges avec rééducation Kiné obligatoire 
+Erruptions cutanées bras jambes poitrine 
+Baisse de la vision et fatigue visuelle accrue 
+Fatigue, lombalgies, perte mémoire 
+Rétention d'eau et prise de poids 
+Tachycardie nocturne 
+Douleurs pelviennes et règles hémorragiques 
+Troubles digestifs (reflex, brûlures, bile) 
+Nausées, ventre gonfle en permanence 
+Hémorroïdes
+Douleurs abdominales.
+
+Mesures :
+Échographies diverses  ( ovaires reins) 
+Analyses de sang urine, recherche allergènes ( allergique au titane Nickel  Prise de pilule contraceptive sous Essure pour vérifier fonctionnement ovarien 3 RV avec 3 gynécos différents.","Vertiges avec rééducation Kiné obligatoire entreprise cutanées bras jambes poitrine baisse de la vision et fatigue visuelle accrue fatigue, lombalgies, perte mémoire rétention d'eau et prise de poids tachycardie nocturne douleurs pelviennes et règles hémorragiques troubles digestifs ( reflex, brûlures, bile) nausées, ventre gonfle en permanence hémorroïdes. Douleurs abdominales.","Échographies diverses  ( ovaires reins) 
+
+Analyses de sang urine, recherche allergènes ( allergique au titane Nickel  Prise de pilule contraceptive sous Essure pour vérifier fonctionnement ovarien 3 RV avec 3 gynécos différents.",2577.0,IMPLANT POUR STERILISATION TUBAIRE,Essure,ESS305,,946766,BAYER PHARMA AG,,BAYER HEALTHCARE SAS,,,C1098,HYSTERECTOMIE - SALPINGECTOMIE,E1446,SF OPHTALMO,SEVER,R1712984,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+52334,52334,R1821809,CERFA,Etablissements et professionnels de santé,,,"Patient de 79 ans, hospitalisé pour AVC hémorragique
+thalamique droit.
+Le patient est retrouvé au sol sur le siège après avoir voulu se lever seul, alors quil ne possédait pas ce degré dautonomie.
+Le lit était au plus bas (lit AvantGuard 1400 société HILL ROM), les barrières mises en place et la sonnette à disposition.","Pas de traumatisme apparent.
+Risque de blessure lors de la chute.
+Indication mal posée : patient confus.",Le n° de série du matelas impliqué dans lévènement na pas pu être retrouvé.,2374.0,MATELAS THERAPEUTIQUE,AUTOLOGIC 200,AUTOLOGIC 200,non retrouvé,Non connu,ARJO HUNTLEIGH SAS,,,D2338,NON LISTE,,,E1128,CHUTE,MOYEN,R1821809,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+64904,64904,R1913042,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Le bras du lève-malade était positionné au-dessus de la potence du lit. Un agent a voulu remonter le lit alors que le lève-malade s'abaissait. Sous la pression de la potence en montée et de l'action de l'abaissement du lève-malade, le bras est sorti de son point d'ancrage.",RAS,"Sessions de formation à l'utilisation du matériel.
+Vérification du matériel par l'entreprise.",2437.0,LEVE - PERSONNE MOBILE,MOLIFT PARTNER PRAXIS,REF,02280001-62,,ETAC SUPPLY GJOVIK,,PRAXIS MEDICAL TECHNOLOGIES,D1583,DEFAUT DE LA STRUCTURE,,,E1213,PAS D'EFFET NEFASTE DECLARE,MINEU,R1913042,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+59616,59616,R1907278,CERFA,Etablissements et professionnels de santé,,,"lors du déballage de la sonde, l'embout distal s'est cassé .
+essai avec une nouvelle sonde, même problème",aucune pour le patient puisque la sonde non posée,sonde récupérée et conservée à la pharmacie,3093.0,SONDE VESICALE DE FOLEY,Sonde FOLYSIL,AA6122,,S763450,Laboratoires COLOPLAST,,,D1997,RUPTURE,,,,,SEVER,R1907278,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+49206,49206,R1818451,CERFA,Etablissements et professionnels de santé,,,Le stent s'est desserti.,..,..,2779.0,STENT CORONAIRE,Ultimaster,DE-RD3518KSM,,180606,TERUMO EUROPE N.V.,,TERUMO FRANCE,D1883,PERTE / DESSERTISSAGE,,,,,MOYEN,R1818451,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+4900,4900,R1703634,CERFA,Citoyen,,,"Moins d'un après la pose des implants Essure, j'ai 
+rencontré de nombreux problèmes de santé : règles hémorragiques, hypothyroïdie en hausse fatigue écrasante, douleurs pelvienne et articulaires qui me réveilles la nuit etc..
+Les médecins n'ont pas réussis à me soulage puisqu'ils ne trouvait pas de cause pour tout mes maux.
+Pour moi il est évident que les implants sont responsable des maux qui sont apparut ainsi que de la dégradations de mon état de santé qui en a résulté au cours des années.
+
+Règles hémorragiques pendant 8à 10 jours accompagnées de douleurs intenses, hypothyroïdie en hausse (avant essure  lévothyrox 25mg à présent levothyrox 125 mg), hypertension, palpitations, douleurs articulaire et pelvienne, douleurs dorsales, fatigue écrasante, démangeaisons sur tout le corps, dépression, essoufflements, difficultés a marcher de longue distance, ventre gonflé comme une femme enceinte.","Règles hémorragiques pendant 8à 10 jours accompagnées de douleurs intenses, hypothyroïdie en hausse (avant essure  lévothyrox 25mg à présent levothyrox 125 mg), hypertension, palpitations, douleurs articulaire et pelvienne, douleurs dorsales, fatigue écrasante, démangeaisons sur tout le corps, dépression, essoufflements, difficultés a marcher de longue distance, ventre gonflé comme une femme enceinte.",Rdv pris pour test allergique aux métaux hystérectomie et salpingectomie prévue le 22 février 2017.,2577.0,IMPLANT POUR STERILISATION TUBAIRE,ESSURE,NC,,NC,BAYER PHARMA AG,,BAYER HEALTHCARE SAS,,,C1097,RETRAIT DU DM,E1444,DOULEUR PELVIENNE OU  ABDOMINALE,SEVER,R1703634,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+60592,60592,R1908288,CERFA,Etablissements et professionnels de santé,,,"En remplacement dune chaîne XN5000-2000 associé à un DM), le laboratoire a fait lacquisition dune nouvelle chaîne XN9100 équipée dun lecteur de lame DI-60 (en M.A.D) : La date de début dutilisation est le 04/12/2018 Depuis le moment de linstallation ,il a été signaler à lingénieur dapplication SYSMEX, , à PROMEDICAL, représentant local sur lîle de la RÉUNION de la société SYSMEX, au techncien de SAV, la qualité médiocre des éléments figurés du sang apparaissant sur lécran de validation : impossibilité de voir laspect réel du cytoplasme et du noyau des cellules normales et/ou suspectes (condensé, fin,  ??). Lécran de validation utilisé est bien celui préconisé par SYSMEX. Un comparatif sur les m^mes lames colorées sur le DI-60 a été fait avec lancienne installation type DM dont le
+laboratoire était équipé jusquau 04/12/2018 ; il est évident que les cellules étaient beaucoup plus différentiables sur lanciennne version du laboratoire (DM).Des fichiers image DN versus DI60 sur les mêmes lames ont été envoyés fin Décembre à la fin de période de démarrage via lingénieur dapplication à SYSMEX. Pas de retour concluant à ce jour sur cet aspect Des modifications ont été testées sur : 
+-Le temps de coloration des lames par le colorateur : pas damélioration ou lame devenant illisible au micrscope optique.
+- Le changement des LED dont est équipé lapapreil : sans amélioration.
+
+Sans succès
+Cela a fait lobjet de la fiche de non conformité 7751 dans notre système de management de la qualité Une description plus complète sur papier libre de  page(s) est jointe à cette fiche.",RISQUE MAJEUR ET (AVERE SUR AU MOINS UN DOSSIER DE L.A.M). DE MAUVAISE LECTURE DES LAMES ET AINSI DE NE PAS VOIR DES CELLULES ANORMALES TYPES BLASTES AU MOMENT DE LA VALIDATION DES LAMES PAR LE TECHNCIEN OU LE BIOLOGISTE.,"RELECTURE FREQUENTE DES LAMES AU MICROSCOPE OPTIQUE.
+
+En dehors des aessais techniques non concluants : « LES BIOLOGISTES ET TECHNCIENS DOIVENT SHABITUER AU NOUVEL ASPECT DES CELLULES SUR LECRAN»",3378.0,ANALYSEURS HEMATO-CYTO (HORS PREP LAMES): COMPTEUR-CYTOMETRE,DI-60,CC286297,,SN 61331,SYSMEX France,,,,,C1044,RESULTAT ERRONE,,,SEVER,R1908288,Réactovigilance,Autre type d'incident donnant lieu à un signalement
+3818,3818,R1702598,CERFA,Etablissements et professionnels de santé,,,"Prothèse totale de hanche gauche douloureuse mise en place en 2008 pour traitement d'une coxarthrose post-traumatique. La patiente a eu un intervalle libre sans douleur dans les premiers mois puis les phénomènes douloureux sont apparus de type inflammatoire.
+La patiente est obligée d'utiliser une canne anglaise pour se déplacer sur les longues distances.
+Le bilan radiographie montre une prothèse totale de hanche gauche en place.
+Il s'agit d'une tige ABG2 modulaire connue pour pouvoir donner des syndromes douloureux de la hanche.
+Le bilan biologique montre une hypercobaltémie.
+Compte tenu du retentissement fonctionnel et de l'inefficacité du traitement médical, on pose l'indication de reprise de prothèse totale de hanche gauche.",..,"Changement de la PTH G
+La prothèse ayant été posée en dehors de notre centre, il n'est pas possible de fournir les numéros de lot.",2652.0,PROTHESE TOTALE DE HANCHE ( ORTHOPEDIE ) ,Unknown_ABGII Stem,Unk_SHC,,,STRYKER ORTHOPAEDICS MAHWAH,,STRYKER FRANCE SAS,,,C1023,CHIRURGIE DE REVISION : CAUSE INCONNUE,E1148,DOULEUR,SEVER,R1702598,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+33744,33744,R1802755,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Patient : FLE, 66 ans, homme, 62kg
+
+Au bloc opératoire, transfusion de 2 concentrés globulaires (CG) pour hémorragie per-opératoire avec un transfuseur VH-22-EGA de Becton Dickinson ; le transfuseur avec le CG était branché en Y sur le robinet. Déconnexion de la tubulure sous les champs au bloc entre les 2 robinets de l'extrémité proximale. Connection pourtant bien vérifiée lors de la mise en place suite à d'autres incidents de déconnexion du même type.","Perte d'1 CG et demi sur la déconnexion jusqu'à la constatation d'une flaque de sang sous la table opératoire.
+Retard de traitement d'une hémorragie aigue per-opératoire.
+Gaspillage d'un 1,5 CG.
+Evènement récurrent.","Changement de la tubulure.
+Le dispositif est disponible à la pharmacie du Groupement Hospitalier Est.",3016.0,PERFUSEUR,PERFUSEUR 3V EDELVAISS 3ROB 240CM + 2VALVE,EDELVAISS-10.3VD,,251710K,DORAN INTERNATIONAL,,,D1656,"DESOLIDARISATION, DECONNEXION",C1137,ALLONGEMENT DU TEMPS OPERATOIRE,E1586,HEMORRAGIE,SEVER,R1802755,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+59016,59016,R1906654,CERFA,Etablissements et professionnels de santé,,,"GRANDE QUANTITÉ D'AIR CONSTATÉE DANS LA TUBULURE, VALVE ANTIRETOUR DES ROBINETS PARAIT NON EFFICACE",AUCUN RETRAIT DU DISPOSITIF RAPIDEMENT,RETRAIT DE TOUS LES DISPOSITIFS CONCERNES PAR CES 2 LOTS,3025.0,RAMPE DE ROBINET POUR LIGNE DE PERFUSION,Rampe de 5 robinets avec valves anti retour,RNC5315A,,"18K01-TNV, 18K26-TJB",CAIR LGL,,CAIR LGL,D1850,NON ETANCHEITE ( AIR ) ,,,,,MOYEN,R1906654,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+2035,2035,R1701266,CERFA,Etablissements et professionnels de santé,,,"-Pose d'implants ESSURE le 22/10/2013
+-Douleurs pelviennes chroniques depuis
+-Découverte d'une allergie au nickel récemment
+
+
+
+Douleur pelviennes chronique",Douleur pelviennes chronique,"-Nécessité d'une ré-opération: salpingectomie coello pour retrait de matériel
+- 1 essure sur les 2 retrouvés en anapath dans les trompes. (Essure droit).",2577.0,IMPLANT POUR STERILISATION TUBAIRE,ESSURE,ESS305,,B21580,BAYER PHARMA AG,,BAYER HEALTHCARE SAS,,,C1098,HYSTERECTOMIE - SALPINGECTOMIE,E1444,DOULEUR PELVIENNE OU  ABDOMINALE,SEVER,R1701266,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+55337,55337,R1902514,CERFA,Etablissements et professionnels de santé,,,"Nom:
+Volume: 280
+Silicone
+Texturée
+Ronde
+Reconstruction
+Primo-implantation: NC
+Signes à la Mammographie
+Rupture",..,"Après analyse, on observe qu'un morceau d'équateur d'environ 1,5 cm de diamètre est séparé du reste de l'enveloppe. La rupture a peut-être été réalisée lors de l'explantation par l'utilisation d'instruments chirurgicaux.",2975.0,PMI : SILICONE TEXTUREE,PMI SILICONE TEXTUREE,LS 96280,1317896261,13014,Groupe SEBBIN,,,D1636,DEGONF. / RUP. / DECOL. PATCH,,,,,,R1902514,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+34110,34110,R1803127,CERFA,Etablissements et professionnels de santé,,,Plusieurs agrafeuses défectueuses.,Peau abîmée.,..,2543.0,AGRAFEUSE CUTANEE,AGRAF CUT UU ST APPOSE,8886803512,,J7B2395LX,MEDTRONIC France,,,D1854,NON FONCTIONNEMENT / FONCTIONNEMENT INCORRECT,,,E1195,LESION CUTANEE,MOYEN,R1803127,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+21743,21743,R1715305,CERFA,Citoyen,1.0,2.0,"Mme S. JAC - 45 ans - 71 kg
+Période de survenue : Novembre 2014
+2 mois après la pose des implants ESSURE, j'ai commencé à ressentir des douleurs diverses : lombalgie, gonalgie, persistance tendinite hanche droite, sécheresse nasale, sinusite, douleur cheville, genoux et épaules.
+Les douleurs se sont accentuées avec le temps entraînant une incapacité de travail. Malgré la consultation de plusieurs spécialistes, il n'a pas été possible de soulager mes diverses douleurs. C'est pour cela que j'impute au dispositif ESSURE lapparition de ses divers symptômes.
+
+Lombalgies chroniques, algies diverses (épaules, genoux, chevilles ...) sinusites, tendinites hanches et coude droit à répétition.
+Douleurs abdominales.
+Douleurs menstruelles augmentées.
+Douleurs seins aggravées.
+Migraines +++.",26 avril 2017 Hystérectomie totale conservatrice.,...,2577.0,IMPLANT POUR STERILISATION TUBAIRE,Essure,ESS305,,C26960,Bayer Pharma AG,,BAYER HEALTHCARE SAS,,,C1097,RETRAIT DU DM,E1444,DOULEUR PELVIENNE OU  ABDOMINALE,SEVER,R1715305,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+4024,4024,R1702780,CERFA,Etablissements et professionnels de santé,,,"Mme M-M L, 48 ans ayant bénéficié, le 12/10/2007 de l'implantation de dispositifs ESSURES, à visée contraceptive tubaire.
+
+Terrain clinique : tabagisme actif, RGO avec atcd d'ulcère pylorique, hernie rachis cervical opéré.
+
+Depuis longtemps, la patiente de plaint de douleurs musculaires diffuses récurrentes de qq douleurs abdominales (itératives) et surtout de kératites oculaires à répétition dont l'étiologie reste incertaine...
+Elle sait que le dispositif ESSURE bénéficie d'une surveillance renforcée (ANSM) et demande si l'on doit rattacher les symptômes présentés à ce dispositif ?
+ 
+La patiente a été hystérectomisée par la suite (2012), son questionnement est également le retrait (mais est ce possible ?) de ces dispositifs.
+Je suis à la recherche d'un médecin toxicologue en Limousin pour une consultation en vue d'une recherche de métaux lourds dans mon corps.
+
+Je suis porteuse d'implants ESSURE depuis 2009 et ai de sérieux doutes sur les effets secondaires de cette méthode contraceptive. Vous avez certainement entendu parler des actions menées contre les laboratoires BAYER par l'association de femmes RESIST en France et aux USA.
+
+ 
+
+Non allergique aux nickel, titane et chrome (tests cutanés récents négatifs), je voudrais aller jusqu'au bout de ma démarche et savoir si je suis intoxiquée ou pas par un ou plusieurs de ces métaux lourds.
+
+Si j'arrive à prouver que je suis malade à cause de ces implants, alors je pourrai me les faire enlever (hystérectomie étant ménopausée). Si non, je continuerai à vivre avec mes douleurs musculaires, articulaires et tendineuses (de plus en plus résistantes aux médicaments et de plus en plus fréquentes depuis l'implantation, comme par hasard....).
+S'il vous plait, merci de m'aider dans ma démarche. En Allemagne, le Laboratoire MICRO TRACE effectue le test de provocation des métaux lourds mais le protocole doit être mené par un médecin toxicologue (chélation - complémentation vitaminique et minérale....). Il existe sans doute d'autres méthodes pour s'assurer ou non de cette intoxication sans aller en Allemagne","Si j'arrive à prouver que je suis malade à cause de ces implants, alors je pourrai me les faire enlever (hystérectomie étant ménopausée). Si non, je continuerai à vivre avec mes douleurs musculaires, articulaires et tendineuses (de plus en plus résistantes aux médicaments et de plus en plus fréquentes depuis l'implantation, comme par hasard....).",,2577.0,IMPLANT POUR STERILISATION TUBAIRE,ESSURE,NC,,NC,BAYER PHARMA AG,,BAYER HEALTHCARE SAS,,,C1097,RETRAIT DU DM,E1446,SF OPHTALMO,SEVER,R1702780,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+57190,57190,R1904600,CERFA,Etablissements et professionnels de santé,,,les consommables ont un système de fermeture qui est censé assurer la stérilité du cathéter . Hors ceux ci arrivent ouverts ou très fragilisés avec le contour protecteur en plastique qui est absent sur plusieurs consommables. Les produits ne sont plus sertis et donc inutilisables. ils semblent avoir perdu la garantie de stérilité. produits non utilisables,pas d'utilisation,retrait des consommables abimés,2990.0,INTRODUCTEUR DE CATHETER,Introducteur de cathéter cardiovasculaires désilet,1129.07,,150517FD,VYGON,,,D1569,DEFAUT CONDITIONNEMENT / ETIQUETAGE,C1042,PROBLEME DE STERILITE,E1213,PAS D'EFFET NEFASTE DECLARE,MINEU,R1904600,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+8690,8690,R1706209,CERFA,Etablissements et professionnels de santé,1.0,2.0,"Contexte: plasmaphérèse pour rejet humoral à 5 ans d'une greffe cardiaque.
+Le 03/04/2017: première plasmaphérèse, lors du passage du premier PFC en tout début de la procédure: érythème tronc, douleurs lombaires bilatérales et douleurs thoraciques intenses puis hypotension. Arrêt total de la procédure, renvoi du PFC à l'EFS, puis reprise de la plasmaphérèse avec nouveaux PFC et débit sang faible.
+Le 04/04/2017: deuxième plasmaphérèse, lors du début de la procédure et la première albumine, érythème tronc et facial, douleurs lombaires bilatérales et douleurs thoraciques intenses. Arrêt total de la procédure devant cette très mauvaise tolérance
+Au total, se pose la question de l'implication du set (TPE) dans ces 2 incidents puisqu'il s'agit du dénominateur commun.
+
+1ère plasmaphérèse: érythème tronc, douleurs lombaires bilatérales et douleurs thoraciques intenses puis hypotension
+2ème plasmaphérèse: érythème tronc et facial, douleurs lombaires bilatérales et douleurs thoraciques intenses
+Arrêt de la procédure - le patient va mieux et a été traité avec une autre technique de plasmaphérèse","1ère plasmaphérèse: érythème tronc, douleurs lombaires bilatérales et douleurs thoraciques intenses puis hypotension
+2ème plasmaphérèse: érythème tronc et facial, douleurs lombaires bilatérales et douleurs thoraciques intenses
+Arrêt de la procédure - le patient va mieux et a été traité avec une autre technique de plasmaphérèse","Laboratoire informé
+Mais lors d'une série d'incidents de même type en janvier 2017, avec un autre numéro de lot commun aux différents procédures le laboratoire avait refusé le retour et tout retrait de lot, ainsi que toute implication de leur circuit.",3296.0,DMU D' APHERESE ECHANGE PLASMATIQUE,Prismaflex TPE2000 set,107144,,16K1704,GAMBRO INDUSTRIES,,,,,,,E1475,ERYTHEME,MOYEN,R1706209,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+11134,11134,R1707979,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Incident survenue à domicile au cours de la 2ème cure d'un protocole Folfox (J1 le 21/03/2017)
+
+L'infirmière à domicile a constaté que le diffuseur ne diffusait pas, rien ne s'écoulait. Elle a ""vidé"" le diffuseur (pas d'informations supplémentaires).
+
+Le patient n'a pas reçu son traitement.
+
+Interruption de traitement chez un patient atteint d'un cancer du pancréas.",Interruption de traitement chez un patient atteint d'un cancer du pancréas.,"Notre référence: SLS-MTV-17-050
+
+Le dispositif a été conservé et est disponible pour investigation
+
+Cet incident a été déclaré à l'ANSM le 10/05/2017",3011.0,DIFFUSEUR PORTABLE NON REUTILISABLE,FOLFUSOR SV 2ML/H 96ML,2C4702K,,16N044,BAXTER SAS,,,D1537,DEBIT ABSENT,,,,,MOYEN,R1707979,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+12232,12232,R1708220,CERFA,Citoyen,1.0,,"ATCD : 2 grossesses accouchement voie basse
+En mars 2012, après Essure changement de mes régles (plus abondantes, cycles raccourcis) et installation progressive de douleurs diverses depuis sans diagnostics posés. Conséquence sur vie affective, sociale et professionnelle négatives.
+Avril 2013 : fatigue +++
+2014 : douleurs pelviennes
+2015 : vertiges inexpliqués, douleurs articulaires genou gauche
+2016 : engourdissements dans les mains le matin - 
+sep : reprise entraînement course à pied: douleur bas ventre et diarrhées
+oct : 45 jours sans règles et réapparition règles hémorragiques pendant 8 jours
+déc : saignements irréguliers depuis 26/12/2016 -> 13/01/2017 : déclenchement des règles
+
+Conséquences cliniques constatées : 
+Fatigue Chronique Troubles d' Élocution 
+Engourdissement mains matin 
+douleurs pelviennes 
+douleurs ventre, ventre gonflé 
+Vertiges. acouphènes
+Maux de tête, sensation d'avoir la tête dans un étau, sinusites
+Douleurs articulaires, douleurs dans les hanches, genoux, dos, articulations qui craquent
+dépression,
+ballonnement, gaz, 
+transpiration +++
+difficulté de concentration, difficultés pour penser plusieurs choses en même temps, perte de mémoire
+rougeurs visage
+Chute libido
+stress, anxiété, déprimée
+saignements entre les règles.
+
+Questionnaire : 
+retrait le 31/05/2017","Fatigue Chronique Troubles d' Élocution Engourdissement mains matin 
+douleurs pelviennes 
+douleurs ventre 
+Vertiges.","Test allergie en cours 
+Test sanguins en cours.",2577.0,IMPLANT POUR STERILISATION TUBAIRE,ESSURE,,,,BAYER HEALTHCARE LLC,,,,,C1097,RETRAIT DU DM,E1448,SF NEURO,SEVER,R1708220,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+36930,36930,R1805296,CERFA,Etablissements et professionnels de santé,,,"J2 à J5
+
+Implant posé le 20/12/2017
+
+Survenue d'un syndrome inflammatoire (type TASS) en post-opératoire d'une chirurgie de la cataracte.",Survenue d'un syndrome inflammatoire (type TASS) en post-opératoire d'une chirurgie de la cataracte.,"- Audit Hygiène dans la salle opératoire concernée: pas de contamination dans les prélèvements bactériologiques
+- Bionettoyage en grand de la salle d'op et du local stockage à l'ANIOS OXYFLOOR
+- Réalisation de prélèvements sur les boites d'instruments (Phako et Cataracte)
+- Modification de l'implantation des équipements mobiliers et de l'organisation en salle d'opération
+- Rappel aux équipes Médicales et Paramédicales sur les règles d'Hygiène et les accès à la salle d'op.
+- Suspension de l'utilisation des implants Cutting Edge(=facteurs. retrouvés ds 7cas.",2919.0,LENTILLE INTRA - OCULAIRE,IMPLANT SYNTHESIS HYDROPHILE,SIP+23.00DD,,17242008018,CUTTING EDGE,,,,,,,E1188,INFLAMMATION,SEVER,R1805296,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+48587,48587,R1817798,CERFA,Etablissements et professionnels de santé,,,"Le nolifiant déclare un défaut sur le produit SONDE MONO
+COlL VIS RETRACT DURATA
+Réf Durata 7122 65 Lot AHH026013
+
+Sonde de DAI implantée en 2010. Surdétection signalée par le
+système de télésuivi. Pas de thérapie inappropriée et mise en 
+place d'une nouvelle sonde.
+
+Problème au niveau de la production ?",Nouvelle opération avec mise en place d'une nouvelle sonde.,Mise en place d'une nouvelle sonde.,2850.0,SONDE DE DEFIBRILLATION,DURATA STS OPTIM ACTIVE FIXATION IS1,7122/65,AHH026013,3086585,ST JUDE MEDICAL INC,Abbott Medical,Abbott Medical France SAS,D1575,DEFAUT DE DETECTION,,,,,SEVER,R1817798,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+56863,56863,R1904194,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Patiente HAB, sexe féminin, 9 ans, 27 kg
+Descellement du laceau lors du retrait de celui-ci /arthroscopie / introduction du dispositif dans l'articulation afin d'effectuer une suture méniscale.",Pas de conséquence.,"Evenement indésirable déjà signalé plusieurs fois ultérieurement
+Dispositif conservé et disponible à la pharmacie du groupement hospitalier Est à ladresse suivante :
+HCL - Groupement Hospitalier Est
+Pharmacie  Quai de livraison - Pauline BARBEAU
+28 avenue du Doyen Lepine
+69500 BRON
+Avant tout passage contacter linterne du site au 04 72 11 80 03",2524.0,TROUSSE CHIRURGICALE ( INSTRUMENTS ),SET MENISCUS MENDER II,7209485,,50754256,SMITH & NEPHEW Inc,,,D1997,RUPTURE,,,E1213,PAS D'EFFET NEFASTE DECLARE,MOYEN,R1904194,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+27501,27501,R1719307,CERFA,Etablissements et professionnels de santé,,,"Lors de l'intervention, l'embout siliconé se trouvant à lextrémité du dispositif se détache de la canule et tombe dans l'il du patient.
+Cet événement s'est produit 4 fois en l'espace d'un mois sur des lots différents (F146620, F144568, F149208. le dernier lot n'ayant pas été relevé par l'équipe médicale) mais la même référence (337.88).","Risque infectieux et traumatique. Le dispositif n'a pas pu être retiré de l'il. (Corps étranger intra-oculaire).
+L'événement étant répétitif il est arrivé que l'embout ait été retiré de l'il à l'aide d'une pince lorsqu'il était visible.
+Stress de l'équipe médicale et patient.","Dispositif conservé à la pharmacie du CH de Valence.
+En attente d'un retour fournisseur.
+Cette référence a été mise en quarantaine par le service.",2898.0,CANULE OPHTALMOLOGIQUE,BACKFLUSH,337.88,,F149208,Laboratoires ALCON,,,D1656,"DESOLIDARISATION, DECONNEXION",,,E1484, ( PARTIE DE) DM NON RETIRE / NON EXPLANTE,SEVER,R1719307,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+52058,52058,R1821380,CERFA,Etablissements et professionnels de santé,1.0,2.0,"Patiente : RAV
+Age : 53 ans
+Implant droit et gauche
+Esthétique
+Rupture
+Plis",..,..,2974.0,PMI : SILICONE LISSE,MAC GHAN SRF 290,SRF 290,,1668342 droite 1659690 gauche,ALLERGAN LIMITED,,Allergan France,D1636,DEGONF. / RUP. / DECOL. PATCH,,,E1163,EXPLANTATION CONTROLATERALE PMI ROMPUE / PERSP,SEVER,R1821380,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+62920,62920,R1910812,CERFA,Etablissements et professionnels de santé,,,"Patiente de 48 ans, ayant eu une pose de dispositifs Essure en
+2011. Depuis, méno-métrorragies chroniques.
+Les traitements médicaux par LUTERAN® initialement puis le
+dispositif intra-utérin MIRENA® ont été sans efficacité.
+ID patiente : FER Na, 27/11/1969","Hystérectomie totale avec salpingectomie bilatérale et
+conservation ovarienne.","Les dispositifs ne sont pas disponibles pour
+expertise.
+Résolution des symptômes suite à lintervention.",3961.0,CHOIX INSTRUCTEUR AUBRIERE,Kit de contraception permanente Essure,ESS305,,Non connu,BAYER HEALTHCARE SAS,,,,,,,,,,R1910812,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+11023,11023,R1707866,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Agrafeuse non fonctionnelle, les agrafes ne sortent pas, poignée bloquée.
+Changement d'agrafeuse.
+
+Aucune.",Aucune.,Changement agrafeuse,2543.0,AGRAFEUSE CUTANEE,VISISTAT 35W,WK528235,,73K1600535,TELEFLEX Médical,,,D1484,BLOCAGE,,,E1213,PAS D'EFFET NEFASTE DECLARE,MINEU,R1707866,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+10709,10709,R1707561,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Diffuseur rempli et branché à 6 heures, fuite intervenue vers 9 heures du matin.
+Le patiente a appelé son infirmière car fuite autour du site de remplissage.
+Info patient : Initiale H N
+Sexe : F
+Age : 38 ans
+Thérapeutique : Fortum
+Notre référence Interne : IM 2053
+
+Sans conséquence clinique",Sans,Retour dm au fournisseur pour expertise,3011.0,DIFFUSEUR PORTABLE NON REUTILISABLE,EASYPUMP II LT270,4540008,,16G14GE221,,,B. BRAUN MEDICAL,D1759,FUITE,,,E1255,TRAITEMENT INADAPTE,MOYEN,R1707561,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+51420,51420,R1820842,CERFA,Etablissements et professionnels de santé,,,"Pose de la sonde de stimulation ventriculaire le 30/11/2018. Douleur rétrosternale apparue le 03/12/2018. Prise en charge par le SAMU, contrôle du pacemaker le 04/12/2018 : sonde ventriculaire non fonctionnelle (pas de capture à énergie maximale en uni ou bipolaire) + scanner du 04/12/2018: lame d'épanchement péricardique et sonde ventriculaire traversant l'APEX du ventricule droit dans le péricarde. Devant ce tableau de sonde transfixiante, indication à un repositionnement de sonde, retirée et pose d'une deuxième sonde le 05/12/2018.","Passage en Fibrillation auriculaire le 06/12/2018, décès de la patiente le 08/12/2018 suite à un arrêt cardio respiratoire",..,2851.0,SONDE DE STIMULATION CARDIAQUE,VEGA,VEGA R58 (TLD042C),58DRG14076,,MICROPORT,,SORIN - MICROPORT,,,,,E1249,TAMPONNADE / PERFORATION / EPANCHEMENT PERICARDIQUE,CRITI,R1820842,Matériovigilance,Incident grave ayant entraîné la mort
+22164,22164,R1715472,CERFA,Etablissements et professionnels de santé,,,"Alerte donnée par la patiente, sang dans la main, ligne désadaptée, champ plein de sang",.,.,3310.0,CATHETER D' HEMODIALYSE - CHRONIQUE,CANAUD,MCCA1040K-A,,,Medcomp,,NIPRO FRANCE,D1525,CONNEXION / LUER DEFECTUEUX,,,,,SEVER,R1715472,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+4247,4247,R1702983,CERFA,Etablissements et professionnels de santé,,,"Après quelques minutes d'utilisation, le matériel ne coupe plus.",...,,2354.0,BISTOURI A ULTRASON ( PINCE DE THERMOFUSION ) ,Voyant 5mm,EB040,,,APPLIED Medical France,,,D1852,NON FONCTIONNEMENT / ARRET,,,,,MOYEN,R1702983,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+72271,72271,R1921225,CERFA,Etablissements et professionnels de santé,4.0,16.0,"Déclaration groupée - Décollement de pod avant les 72 heures sans conséquences sur la
+glycémie.",Sans conséquences patients.,Changement de dm. info fournisseur.,2696.0,POMPE A INSULINE EXTERNE,Mylife OmniPod® Insulin Management System,19191,,L44569 / L44549 / L44666 / L44261,Insulet Corporation,Healthlink Europe BV,INSULET CORPORATION,D2896,DECOLLEMENT DU POD,,,E1213,PAS D'EFFET NEFASTE DECLARE,MINEU,R1921225,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+48864,48864,R1818095,CERFA,Etablissements et professionnels de santé,,,"A 16h, pose de la ligne (poche de pariétale + tubulure + filtre).
+
+Présence de 2 IDE au branchement, 1 a rentré la débit de 14 ml/h, la 2nde a vérifié le débit avant de sortir de la chambre.
+
+A 18h, une 3ème IDE a relevé les constantes de l'enfant et vérifié les débits des traitements en cours, 14ml/h constaté, volume à perfuser programmé à 200 ml.
+
+A 21h, l'IDE de nuit relève ses constantes et fait sa vérification de poste, 14ml/h de débit mais poche pratiquement finie.
+
+Donc à 22h changement de poche + tubulure.
+
+Filtre débit à 14 ml/h
+
+Pompe non changée.
+
+A 7h, le 18/10, après échanges IDE, constat de l'incident, pompe enlevée car passage de 500 ml en 6h au lieu de 200 ml en 14h.","Dégradation de l'état de l'enfant  atteint d'une pathologie. cardiaque grave.
+
+Hyperthermie
+Tachycardie
+Détresse respiratoire 
+Hyperglycémie puis hypoglycémie.",Changement de la Pompe bilan hépatique en cours.,2668.0,POMPE A PERFUSION,VOLUMAT MC AGILIA,,,,FRESENIUS VIAL,,,D2054,SUR DEBIT SANS ALARME,,,E1182,HYPOGLYCEMIE,SEVER,R1818095,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+53193,53193,R1900521,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Patient FER, 67 ans, 93kg.
+
+Défaut capteur de température au moment d'un tir d'ablation. Changement des câbles mais défaut toujours présent.",Aucune,"Sonde gardée, transmise à la pharmacie.
+
+Le dispositif est disponible à la pharmacie du Groupement Hospitalier Est pour analyse.",2841.0,CATHETER D' ABLATION PAR RADIOFREQUENCE ( RYTHMOLOGIE ),Cathéter de navigation bidirectionnelle THERMOCOOL® SMARTTOUCH® SF,D134804,,30070364L,BIOSENSE WEBSTER Inc,BIOSENSE WEBSTER (Division of Johnson & Johnson Medical NV/SA),JOHNSON & JOHNSON MEDICAL SAS,D1854,NON FONCTIONNEMENT / FONCTIONNEMENT INCORRECT,,,E1213,PAS D'EFFET NEFASTE DECLARE,MINEU,R1900521,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+60217,60217,R1907878,CERFA,Etablissements et professionnels de santé,1.0,1.0,"A H1 de dialyse : fuite de sang, claquage de rein .
+(alarme fuite de sang, pas de fuite détectée macroscopiquement dans les raccords dialysats)",Conséquence: perte de circuit (Spoliation sanguine),DM détruit (hépatite C),3328.0,HEMODIALYSEUR,ELISIO 21H,ELISIO 21H,,18L28K1,NIPRO CORPORATION,,,D1759,FUITE,C1037,MISE EN ALARME,E1220,PERTE DE SANG,MOYEN,R1907878,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+75952,75952,R2002405,CERFA,Etablissements et professionnels de santé,,,Nud suture sur pose de cathéter veineux et artériels plusieurs et lâchent régulièrement.,Nuds resserrés Régulièrement lors des réfections de pansement.,,2547.0,FIL DE SUTURE CHIRURGICALE,ETHIBOND  Polyester,EH7674,,PHF233,JOHNSON & JOHNSON MEDICAL SAS,,,,,,,,,,R2002405,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+1508,1508,R1700830,CERFA,Citoyen,1.0,,"Ma lettre aux médecin 18/12/2016 
+Radio bassin 
+Echo - pelvienne + Abdominale. Prise de sang Gamma GT
+Compte rendu consultation aux urgences le 17/12/2016
+Copie de la carte Essure
+Compte rendu  hospitalisation de la pose du 05/12/2016
+Lettre du chirurgien de 19/12/2016 du 02/02/2016 +03/01/2017
+Suspicion allergie( aux métaux Nickel attente résultat ) 
+Douleurs internes jambes gauche avec fourmillement .
+Mal partout, hanche gauche, douleurs par décharge dans le bas du ventre avant les règles, mal aux reins douleurs musculaires dans tout le corps, sueurs, sensation de malaise depuis peu .Psoriaris en évolution douleurs seins (ovulation) dents. 
+Gamme GT à 303","Suspicion allergie( aux métaux Nickel attente résultat ) non remboursé 103.75 
+Douleurs internes jambes gauche avec fourmillement .
+Mal partout, hanche gauche, douleurs par décharge dans le bas du ventre avant les règles, mal aux reins douleurs musculaires dans tout le corps, sueurs, sensation de malaise depuis peu .???? en évolution douleurs seins  ovulation dents. 
+Gamme GT à 303 ts.","??? Hystérectomie ou 
+????? Salpingectomie
+Démarches en cours par le retrait à l'hopital Béclere Pr Deffieux",2577.0,IMPLANT POUR STERILISATION TUBAIRE,Essure - ESS305,ESSURE,,82269509,Bayer HealthCare LLC,Bayer Pharma AG,BAYER HEALTHCARE SAS,,,C1098,HYSTERECTOMIE - SALPINGECTOMIE,E1445,DOULEUR NON GYNECO,SEVER,R1700830,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+33805,33805,R1802790,CERFA,Etablissements et professionnels de santé,,,"Lors de la pose de la lame PFNA, celle-ci n'a pas voulu se resserer rendant impossible la compression de la fracture.
+Essai avec 1 lame de longueur inférieur => OK - Donc notre porte lame était bien fonctionnel, et c'est bien cette lame qui ne l'était pas.
+
+
+Compression fracture impossible avec cette lame => action de la lame PFNA non obtenue sur la fracture",Compression fracture impossible avec cette lame => action de la lame PFNA non obtenue sur la fracture,"Ablation de cette lame et pose d'1 lame de longueur inférieure (5 mm en moins)
+
+PS, matériel disponible à la pharmacie.",2621.0,CLOU CENTRO - MEDULLAIRE ( ORTHOPEDIE ),LAME PFNA,04.027.037S,,L696784,DePuy France,,,D1853,NON FONCTIONNEMENT / DYSFONCTIONNEMENT,,,,,MOYEN,R1802790,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+39881,39881,R1808732,CERFA,Etablissements et professionnels de santé,,,"Pose des implants le 16/06/15
+Depuis plusieurs mois la patiente se plaint de douleurs abdominales
+Réactions inflammatoires au niveau des trompes où sont implantés les Essures
+==> Allergie  
+       Intolérance} au Nickel","Douleur
+Fatigue
+Programmation d'une intervention chirurgicale lourde pour le retrait des implants le 18/05/18.","Retrait des implants 
+Résection des trompes",2577.0,IMPLANT POUR STERILISATION TUBAIRE,Essure,ESS305,,C61990,Bayer Pharma AG,,BAYER HEALTHCARE SAS,,,C1097,RETRAIT DU DM,E1188,INFLAMMATION,SEVER,R1808732,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+39930,39930,R1808782,CERFA,Etablissements et professionnels de santé,,,"L'infuseur ne diffuse pas, il reste entre 150 et 200ml de
+produit dans l'infuseur rapporté par la patiente.","La patiente n'a pas reçu la totalité de son traiement de
+chimiothérapie.","Signalé au médecin, fiche d'incidence faite.",3011.0,DIFFUSEUR PORTABLE NON REUTILISABLE,INFUSEUR 1.4ML/H VOLUME 275ML/AA2003,AA2003,,A170824,ACE MEDICAL FRANCE SAS,,,D1537,DEBIT ABSENT,,,,,SEVER,R1808782,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+23842,23842,R1716452,CERFA,Citoyen,,,"Fatigue chronique, malaises, vertiges, troubles de la vue, tendinite épaule, douleurs
+musculaires, sensations de brûlures dans les pieds et les mains, oedème au pied, gêne dans la gorge, bruxisme, yeux qui brûlent et qui pleurent, pertes de mémoire, troubles de la
+concentration et de l'élocution, dépression.","nombreuses consultations chez le généraliste, analyses de sang, scanner, kinésithérapie,
+consultation chez un rhumatologue, infiltration à l'épaule droite, consultation chez un
+posturologue, port de semelles orthopédiques, consultations chez un ophtalmologue, port de lunettes (sans amélioration des troubles de la vue), 10 séances de rééducation chez un
+orthoptiste (sans amélioration), consultations chez un dentiste, port d'une gouttière. Etat
+actuel : tous les symptômes listés persistent sans explication médicale malgré les recherches et mesures prises. Difficultés de plus en plus grandes pour affronter la vie professionnelle et personnelle au quotidien.",,2577.0,IMPLANT POUR STERILISATION TUBAIRE,Essure,NC,,NC,Bayer Pharma AG,,BAYER HEALTHCARE SAS,,,,,E1446,SF OPHTALMO,SEVER,R1716452,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+42311,42311,R1811165,CERFA,Etablissements et professionnels de santé,,,"Rapport initial sur EI grave uniponcture double pompe FRESENIUS  CORDIAX aura Arch (EI n° 1963 du 22/06/2018)
+
+Survenue, sur l'unité AURA Arch, le 18/06/2018, pour une patiente dialyse depuis peu de temps , d'un malaise avec perte de connaissance et désaturation O² importante (saturation imprenable à un certain moment), lors de sa première séance en uniponcture double pompe sur générateur Fresenius 5008 Cordiax ( au bout de 15mn de dialyse). Son état a nécessité la prise en charge par le SAMU et son transfert vers le centre hospitalier.
+Il est à noter que l'état général de la patiente était affaibli à son arrivée pour sa séance de dialyse ( avait eu troubles digestifs la veille et présentait une TA basse).
+Cette problématique, avec malaise et désaturation en O² pouvant survenir en début de séance pour certains patients dialysant en uniponcture double pompe sur générateur Fresenius 5008 Cordiax, est connue et en cours d'investigation (a fait l'objet d'une déclaration ANSM de la part l'AURA).
+Pour l'instant, le laboratoire Fresenius ,après avoir éliminé toutes les causes imputables aux consommables et à l'utilisation de la fonction uniponcture double pompe par les IDE  AURA, n'a pas pu fournir d'explication à la survenue de ces malaises importants [...]","Malaise avec perte de connaissance et désaturation O² importante (saturation imprenable à un certain moment), lors de sa première séance en uniponcture double pompe sur générateur Fresenius 5008 Cordiax ( au bout de 15mn de dialyse). Son état a nécessité la prise en charge par le SAMU et son transfert vers le centre hospitalier.","Signalement au laboratoire Fresenius de la survenue de cet EI grave.
+Relance du laboratoire Fresenius sur l'importance d'une gestion prioritaire et efficient de ces EI. 
+Enquête préalabre Matériovigilance AURA [...] entretien avec l'IDE ayant pris en charge la dialyse de la patiente [...] Vigilance accrue pour les IDE vis-à-vis des séances de dialyse en uniponcture double pompe sur générateur 5008 Cordiax [...]",3343.0,MONITEUR D' HEMODIALYSE,GENERATEUR DE DIALYSE Fresenius 5008 Cordiax,Fresenius 5008 Cordiax,,,FRESENIUS MEDICAL CARE FRANCE,,FRESENIUS MEDICAL CARE FRANCE,D2338,NON LISTE,,,E1384,DESATURATION EN OXYGENE,SEVER,R1811165,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+26972,26972,R1719053,CERFA,Citoyen,1.0,,"Période de survenue : Depuis plusieurs années
+Fatigué anormale, perte de mémoires, allergies, problème de concentration, règles
+hemoragiques, nodule thyroidien, prise de poids.",Une partie du dispositif à migré dans mon utérus.,,2577.0,IMPLANT POUR STERILISATION TUBAIRE,Essure,NC,,NC,Bayer Pharma AG,,BAYER HEALTHCARE SAS,D1823,MIGRATION,,,E1323,SYMPTOMES MULTIPLES,SEVER,R1719053,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+4265,4265,R1703004,CERFA,Etablissements et professionnels de santé,,3.0,"Suite à une maintenance préventive de notre parc de pompe PCA et PCEA, erreur de configuration des pompes PCEA par Hospira.
+
+En effet 3 pompes PCEA de notre parc ont été remises en service par Hospira avec le mode intermittent actif.
+Un de nos patients porteur d'un cathéter péridural a reçu de façon systématique des bolus d'antalgique non nécessaires (le mode intermittent ne permet pas les bolus à la demande)
+Défaut d'information et de vigilance de la part d'Hospira.
+
+Pas d'incident sur le patient hormis une administration systématique de bolus d'antalgique non désirés.",Pas d'incident sur le patient hormis une administration systématique de bolus d'antalgique non désirés.,Le service Biomédical a pris contact 12 heures après l'incident avec Hospira afin que ces derniers vérifient la configuration de l'ensemble du parc des pompes Sapphire de notre établissement.,2668.0,POMPE A PERFUSION,Sapphire Infusion Pump,,,,Q CORE MEDICAL Ltd,MEDNET GMBH,,D1489,BOLUS INVOLONTAIRE,,,E1255,TRAITEMENT INADAPTE,MOYEN,R1703004,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+61546,61546,R1909435,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Patient : LOU, Age : 1an, Sexe:Homme, Poids: 8kg
+
+Fuite au niveau de la grande recirculation partant de l'oxygénateur. Ces tubulures qui devaient être raccordées, permettent une purge de l'oxygénateur. Après constat de la fuite lors de la purge, l'infirmier a mis des bouchons aux extrémités pour éviter les écoulements. Le set a tout de même été utilisé sur le patient en connaissance du risque.
+Problème récurrent.",Problème de débullage de l'oxygénateur mettant en cause le bon fonctionnement du dispositif. Perte de CGR utilisé pour le débullage.,"Dispositif conservé à la PUI du groupement hospitalier est.
+Ablation de la grande reciruclation. Mise en place d'un bouchon.",2766.0,CIRCUIT ou PACK pour CEC,SET CEC NN COMPLET 1/4X1/4,2CX-FR249,,1812209,TERUMO CORPORATION,,TERUMO FRANCE,D1968,PROBLEME PURGE / DEBULLAGE,,,,,MOYEN,R1909435,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+3981,3981,R1702723,CERFA,Etablissements et professionnels de santé,,,"Problème de pelabilité  des sondes de foley: l'emballage se déchire lors de l'ouverture, provoquant des fautes d'asepsies.
+Problème fréquent.
+Aucune mais risque de faute d'aseptie",Aucune mais risque de faute d'aseptie,changement de sonde,3093.0,SONDE VESICALE DE FOLEY,SONDE DE FOLEY 100% SILICONE CH16,023016 CE,,791267,COOK France,,,D1569,DEFAUT CONDITIONNEMENT / ETIQUETAGE,,,E1213,PAS D'EFFET NEFASTE DECLARE,MINEU,R1702723,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+36571,36571,R1804905,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Un petit insecte a été retrouvé piègé dans la souture du sac utilisé pour mettre les endoscopes après désinfection. (cf. photo), et le sachet a été gardé.
+SAC PLASMABAG POUR STOCKAGE ENDOSCOPE
+(REF : PBAG ; fabriqué le 21/09/2017 à 17h08min12sec)","Aucune, non-utilisation du sac",DM conservé à la pharmacie,3178.0,ENCEINTE DE STOCKAGE ENDOSCOPES THERMOSENSIBLES (ENDOSCOPIE),SAC PLASMABAG POUR STOCKAGE ENDOSCOPE,PBAG,,,ALBYN MEDICAL - SASU,,,D2338,NON LISTE,,,,,MINEU,R1804905,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+12683,12683,R1708558,CERFA,Citoyen,1.0,,"Quelques temps après la pose des implants ESSURE, j'ai rencontré de nombreux problèmes de santé; notamment des douleurs articulaires et musculaires avec une fatigue chronique. Au fil du temps qui passe mon état se dégrade et les douleurs deviennent de plus en plus insupportables et la liste des effets sallonge. Les médecins m'ont fait une batterie de tests et j'ai vu beaucoup de spécialistes, mais aucun n'a réussi à me soulager étant donnée qu'ils ne connaissaient pas la cause.Pour moi c'est une évidence: tous les maux sont apparut après la pose de Essure!
+
+Douleurs articulaires et musculaires
+Syndrome Inflammatoire
+Fatigue chronique 
+Perte de libido et douleurs pendant et après les rapports
+Perte de mémoire 
+Palpitations et essoufflement
+Présence d'anticorps anti-RNP
+Aggravation et symptômes en période de règle 
+Douleurs au niveau des ovaires.","Douleurs articulaires et musculaires
+Syndrome Inflammatoire
+Fatigue chronique 
+Perte de libido et douleurs pendant et après les rapports
+Perte de mémoire 
+Palpitations et essoufflement
+Présence d'anticorps anti-RNP
+Aggravation et symptômes en période règle Douleurs au niveau des ovaires.","Démarches déjà effectuées:
+Pris de sang Echos 
+Radio
+Scanner
+PETSCAN
+Biopsie musculaire
+Cardiologue
+Démarche en cours pour le retrait.",2577.0,IMPLANT POUR STERILISATION TUBAIRE,Essure - ESS305,ESS305,,927082,Bayer Pharma AG,,BAYER HEALTHCARE SAS,,,,,E1444,DOULEUR PELVIENNE OU  ABDOMINALE,SEVER,R1708558,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+43364,43364,R1812133,CERFA,Citoyen,,2.0,"effets indésirables (nausées, maux de têtes, douleurs abdominales et ablation 1 essure suite perforation corne gauche",suite au passage d'un 3ème bloc opératoire pour ablation de l'essure gauche qui est à ce jour un échec vu que l'essure gauche est toujours dans l'utérus (erreur médicale) les symptômes persistent et un signalement a été fait contre le gynécologue qui a opéré 3 fois et qui a notifié avoir retiré l'essure gauche mais qui est toujours dans utérus de découverte fortuite à ce jour suite à de nombreuses douleurs pelviennes,...,2577.0,IMPLANT POUR STERILISATION TUBAIRE,Essure,ESS305,,D30810,BAYER CORPORATION,,BAYER HEALTHCARE SAS,,,C1097,RETRAIT DU DM,E1445,DOULEUR NON GYNECO,SEVER,R1812133,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+21246,21246,R1715064,CERFA,Etablissements et professionnels de santé,,,"Injecteur Medicare
+Le piston ne pousse pas l'implant (blocage Piston).
+
+Changement d'injecteur et d'implant",,"Changement d'injecteur et d'implant
+DM conservé en bloc",2928.0,LENTILLE INTRA - OCULAIRE ( INJECTEUR ) ,INJECTEUR,PWR + 19.5D,,FG121AA09,Medicare-HTM,,,D1854,NON FONCTIONNEMENT / FONCTIONNEMENT INCORRECT,,,E1213,PAS D'EFFET NEFASTE DECLARE,MOYEN,R1715064,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+60758,60758,R1908471,CERFA,Etablissements et professionnels de santé,,,"Colle impossible à prélever car est à l'état ""solide"" dans le flacon.",..,Utilisation d'une autre colle.,2546.0,COLLE CHIRURGICALE,"Colle chirurgicale ""IFABOND"" 1,5 CC+ 1 seringue de précision",IB+,,18IBO97C,PETERS Surgical,,,D1684,DISPOSITIF DEFECTUEUX,,,E1213,PAS D'EFFET NEFASTE DECLARE,MINEU,R1908471,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+65857,65857,R1914174,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Au moment de la mise en place du système (filtre) dans l'introducteur, les ""pattes"" du système ont dégainé l'introducteur (situé dans le patient) juste en aval de l'embase.","Pertes sanguines majorées
+Changement matériel","Changement de matériel
+Conservation du matériel pour expertise",2806.0,FILTRE A VEINE CAVE,"Filtre Veine Cave Optionnel ALN, voie jugulaire",FJ120096,1600089610,090216,ALN Implants Chirurgicaux,,,D1814,LARGAGE INTEMPESTIF,,,E1220,PERTE DE SANG,MOYEN,R1914174,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+53525,53525,R1900882,CERFA,Etablissements et professionnels de santé,1.0,2.0,"C'est trois semaines après la mise en place qu'elle a commencé à décrire des symptômes atypiques d'aggravation progressive. 
+Ses symptômes associent paresthésie de l'épaule gauche avec tendinite, des cycles plus courts avec des épisodes ménorragiques, troubles digestifs (ballonnement et constipation), céphalées inhabituelles, fatigue, lombalgies, effondrement de la libido.
+Des tests allergiques cutanés ont été effectués au mois de janvier 2017 qui sont revenus négatifs pour le Chrome, le Cobalt et le Nickel.""",Salpingectomie bilatérale avec cornuectomie pour résection de dispositifs ESSURE.,"Actions entreprises pour le patient vis-à-vis du DM:
+Explantation des deux dispositifs ESSURE
+
+Actions entreprises dans létablissement:
+Déclaration de materiovigilance",4001.0,TOUTES LES DCO,ESSURE,....,ESS305,C68117,BAYER HEALTHCARE SAS,,,,,,,,,,R1900882,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+5297,5297,R1703971,CERFA,Etablissements et professionnels de santé,2.0,,"Après une semaine de pose, le ballon s'est révélé fendu
+Après 1 semaine de pose, chagt de sondes (2 patients)","Après 1 semaine de pose, chagt de sondes (2 patients)",.,3050.0,XGASTROSTOMIE PERCUTANEE ENDOSCOPIQUE ( SONDE ),SONDES DE GASTROSTOMIE,594817,,P1659599 ET P1659576,NUTRICIA NUTRITION CLINIQUE SAS,,,D1481,BALLONNET ENDOMMAGE,,,,,MOYEN,R1703971,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+39689,39689,R1808513,CERFA,Etablissements et professionnels de santé,,,"En retirant le guide, le chirurgien s'est aperçu qu'un morceau était resté dans l'artère du  patient Il n'a pas pu être retiré.",La lésion étati non franchissable Décision de poursuivre l'intervention par abord chirurgical.,,2756.0,GUIDE - CATHETERISME/EXAM/DIAGNOSTIC,V-14 Control Wire® Guidewire with ICE Hydrophilic Coating,H74939216718210,,21030852,Boston Scientific Corporation,Boston Scientific Limited,Boston Scientific Corporation,D1997,RUPTURE,C1277,FRAGMENTS DE DM RESTANT,E1484, ( PARTIE DE) DM NON RETIRE / NON EXPLANTE,MOYEN,R1808513,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+68283,68283,R1917192,CERFA,Citoyen,,,"Je suis porteuse d'implants essure depuis
+septembre 2015.
+Entre août 2017 et novembre 2018, j'ai eu des
+otites à répétition, avec consultation ORL tous
+les 3 mois environ.
+Depuis plusieurs mois, je souffre de douleurs
+musculaires, articulaires, au niveau des
+tendons. J'ai des entorses qui se soignent mal
+et je suis en permanence fatiguée.","J'ai prévu de faire enlever les 2 implants
+ESSURE",..,4001.0,TOUTES LES DCO,Implants Essure,Ref,ESS305,D30806,BAYER HEALTHCARE SAS,,,,,,,,,,R1917192,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+31993,31993,R1801199,CERFA,Etablissements et professionnels de santé,,,"Signalement de barrières de lits dangereuses en raison d'un défaut du système de verrouillage de celles-ci.
+Une barrière de lit sur lequel s'appuyait un résidant a lâché d'un côté. La personne âgée a basculé du lit et est resté la tête en bas un moment. Les veilleuses de nuit l'ont découvert dans cette position et l'ont repositionné.",Hématomes épaule. Le médecin coordinateur a été prévenu. Une surveillance de l'état de santé a été entreprise. Pas de conséquence délétère.,"L'ouvrier d'entretien a constaté un défaut de sécurité dans le système de blocage de la barrière. Il a renforcé le dispositif. Le vendeur de lit a été alerté par mail et téléphone mais on attend son rappel.
+D'autres incidents de ce genre ont déjà été remarqués dans le passé, sans conséquence pour la santé des résidents (barrière qui tombe sur les pieds d'une soignante, par exemple).",2372.0,LIT MEDICAL ( BARRIERE ),EURO 5202,,,,HOME MEDICAL SERVICE - VILGO,,,D2084,VERROUILLAGE DEFECTUEUX,,,E1119,BLESSURE LEGERE,MINEU,R1801199,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+854,854,R1700433,CERFA,Citoyen,,,"Je suis porteuse des dispositifs ""ESSURE"" depuis mars 2008
+Très rapidement après la pause s'est installée une très grande fatigue, une petit gonflement au niveau de l'ovaire droit, douleur au niveau de cet ovaire lancinante mais pas violente, qui irradie vers le pubis et les adducteurs
+Des douleurs musculaires et articulaires avec quasi cessation du sport
+Des maux de tête, tachycardie, tremblements, transpiration excessive, diarrhées violentes en post prandiale, vertiges, sensation débriété, des règles parfois très hémorragiques, des rhinites allergiques déjà connues mais de plus en plus violentes, perte d'audition, acouphènes, difficultés de concentration, sensation de perte de mémoire.
+Avec le temps la fatigue de plus en plus importante m'oblige a organiser ma vie autour de mon sommeil
+
+Hyperthyroïdie (maladie de basdow) diagnostiquée en 2014 Traitement de 18 mois levothyrox, propylex
+Fatigue+++  non expliquée
+Perte d'audition non appareillée (pour l'instant)","Hyperthyroïdie (maladie de basdow) diagnostiquée en 2014 Traitement de 18 mois levothyrox, propylex
+Fatigue+++  non expliquée
+Perte d'audition non appareillée (pour l'instant)","Démarches en cours pour le retrait 
+Prévu le 27 janvier 2017, par hystérectomie totale sous clioscopie avec conservation des ovaires",2577.0,IMPLANT POUR STERILISATION TUBAIRE,ESSURE,ESS205,,624272,Bayer HealthCare LLC,Bayer Pharma AG,BAYER HEALTHCARE SAS,,,C1097,RETRAIT DU DM,E1452,SC ORL,SEVER,R1700433,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+31905,31905,R1801155,CERFA,Etablissements et professionnels de santé,,,"Lorsque le patient a été piqué, les IDE  se sont rendus compte que la tubulure était fendue.
+Le DM n'est pas disponible.",..,..,3009.0,AIGUILLE DE PERFUSION,AIGUILLE EPICANIENNE,367326,,7160914,Becton Dickinson France,,,D1712,ECOULEMENT,,,,,MINEU,R1801155,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+8873,8873,R1706338,CERFA,Citoyen,1.0,3.0,"douleurs abdominales invalidantes et de la fosse iliaque, HTA, pyélonéphrites à répétitions,
+maux de tête, abdomen tendu et gonflé en permanence, démangeaisons des avants bras
+et des tibias, gonflements des mains et des pieds, paresthésies du visage, modification de la pilosité, perte de cheveux, grande fatigue, douleurs dans la nuque et les jambes, douleurs lombaires, syndrome dépressif, baisse taux de cortisol, anxiété
+
+j'ai du subir une salpingectomie bilatérale et une hysterectomie + ablation du col",j'ai du subir une salpingectomie bilatérale et une hysterectomie + ablation du col,"j'ai passé beaucoup d'examens nombreux et
+variés.
+Avant la pose des implants j'étais en bonne
+santé. Celle-ci s'est dégradée depuis la pose
+des essure...",2577.0,IMPLANT POUR STERILISATION TUBAIRE,Essure - ESS305,ESS305,810882,810882,Bayer Pharma AG,,BAYER HEALTHCARE SAS,D1823,MIGRATION,,,E1469,SF URINAIRE,SEVER,R1706338,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+70661,70661,R1919355,CERFA,Etablissements et professionnels de santé,,,"PATIENT INTUBE VENTILE AU BLOC OPÉRATOIRE, PENDANT lintervention DE CHIRURGIE ORTHOPÉDIQUE DE LA HANCHE, LE PATIENT A CHUTE OU GLISSE DE LA TABLE.",PAS DE CONSÉQUENCES POUR L'INSTANT POUR LE PATIENT,"ARRÊT DE L'INTERVENTION, FERMETURE DE LA PLAIE CHIRURGICALE,REPORT DE L'INTERVENTION. 
+CONTRÔLE DE LA TABLE (RAS) PASSAGE DU TECHNICIEN PRÉVU LE 15 OCTOBRE, POUR COMPLÉMENT D'INVESTIGATION.",2410.0,TABLE D' OPERATION,YUNO OTN MOBILE,Ref,,00082,MAQUET,,,D1859,NON RENSEIGNE,,,E1128,CHUTE,MOYEN,R1919355,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+9077,9077,R1706395,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Patient CRA sexe masculin 83 ans 63 kg
+
+UTILISATION D'UNE FIBRE LASER POUR UNE RESECTION DE PROSTATE . 
+FIBRE QUI A CASSE AVANT SA FIN DE VIE PENDANT LA PROCÉDURE
+
+Aucune conséquence pour le patient mais risque grave
+Cet événement s'est produit plusieurs fois avec fibres de même référence
+
+Changement de fibre
+Le dispositif a été renvoyé au laboratoire","Aucune conséquence pour le patient mais risque grave
+Cet événement s'est produit plusieurs fois avec fibres de même référence","Changement de fibre
+Le dispositif a été renvoyé au laboratoire",2425.0,LASER DE THERAPIE ( FIBRE ),Fibre optique GreenLight Moxy pour Laser XPS,0010-2400,,24648A,"American Medical Systems, Inc",American Medical Systems BV,,D1997,RUPTURE,,,E1213,PAS D'EFFET NEFASTE DECLARE,MINEU,R1706395,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+29625,29625,R1721122,CERFA,Etablissements et professionnels de santé,,,"Résident agée coincée sur chaise de douche sans possibilité de s'en extraire.
+intervention inefficace de 3 soignants pour la sortir de la chaise. la résidente sort de la chaise après que celles-ci ait été couchée au sol (avec la résidente)","Résidente et personnel choqués.
+
+Pas de conséquence sur l'instant.","Mise sous séquestre de l'ensemble du matériel concerné.
+information au distributeur.",2300.0,SIEGE DE TOILETTE / DOUCHE,,530400200S,,530400200,DRIVE DEVILBISS HEALTHCARE FRANCE,,,D2338,NON LISTE,,,E1169,PIEGEAGE,MOYEN,R1721122,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+58841,58841,R1906476,CERFA,Etablissements et professionnels de santé,,,"Pose de KT Canaud le 31/01/2019 chez un patient.
+Lors de la pose constatation de mauvais retour sanguin mais pas d'anomalies radiologiques (suspicion de thrombus).
+Utilisation du KT pour séances de dialyse 4 fois par semaine, mais les infirmières ont constaté des dysfonctionnements :
+problèmes lors de la purge (reflux) et nécessité d'être bien dans l'axe pour un fonctionnement correct.
+Le 21/03/19, le médecin décide de changer le KT suite aux dysfonctionnements. Le médecin constate alors au retrait que le KT est déchiré sur une des branches artérielles (rouge).
+Une défaillance dès le début est suspectée, un problème lors de la pose est peu probable (médecin expérimenté).",Nouvelle pose de cathéter.,Changement du KT. Conservation du matériel pour expertise.,3310.0,CATHETER D' HEMODIALYSE - CHRONIQUE,Cathéter d'hémodialyse Canaud (1L-10F),MCCA1040S-A,,MFK110,Medcomp,,HEMOTECH,D1693,DYSFONCTIONNEMENT,,,E1213,PAS D'EFFET NEFASTE DECLARE,MOYEN,R1906476,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+69637,69637,R1918345,CERFA,Etablissements et professionnels de santé,,,ablation DIU au cuivre manque une branche,.,.,4001.0,TOUTES LES DCO,Novaplus T380,T380,,0114,EUROMEDIAL,,,,,,,,,,R1918345,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+16671,16671,R1711936,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Rupture de la voie médiane du cathéter, lors de la latéralisation du patient sur la droite. Base du cathéter clampé immédiatement, puis changement sur guide de la voie dans les 20 minutes.",...,...,2984.0,CATHETER VEINEUX CENTRAL,Multicath,6209.251,,140217EU,VYGON,,,D1997,RUPTURE,,,,,MOYEN,R1711936,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+11648,11648,R1708169,CERFA,Etablissements et professionnels de santé,1.0,,"Mme F.H. - 43 ans
+Description du Dr A. Tapsoba
+- vertiges
+- nausées
+- baisse de l'audition
+- douleurs abdominales diffuses
+- métrorragie, ménométrorragie
+- dyspaneurie
+- lombalgies aiguës + impotence fonctionnelle des membres inférieurs
+
+Descriptif de la patiente: 
+ACTD : malformation de la colonne vertébrale (spondylolesthésis grade 2/3), légère hypertension lié à un surpoids, Allergie cutanée au nickel (signalée en cours d'intervention)
+Difficulté de pose sur un implant - après la pose maux de tête et vertiges - douleurs au ventre
+Puis de jour en jour, de mois en mois, problèmes nouveaux ou intensifiés 
+DOS : printemps 2014 : douleurs lombaires et musculaires et aux jambes (fourmillements), maux de tête, fatigue  -> opération du dos en septembre 2014 (plus de sciatique ni de sensation de dos qui coince). Apparition de douleurs lombaires au niveau des sacro-iliaques. Nouvelle opération en déc 2015 : retrait des vis implantées.
+Gynécologiques : douleurs au niveau des ovaires lors ddes rapports - 2 semaines avant les règles, pertes marrons puis règles pendant 10 jours, hémorragiques. Douleurs - perte de libido. Très mal au sein - pertes de sang inexpliquées - très mal au ventre et à la tête
+CRANIEN et CARDIO : crises de vertiges, perte d'auditions avec prédominance à gauche (IRM normal), crises d'hypertension et d'hypotension, extrasystoles
+GENERAL : grande fatigue, épisodes de bouffées de chaleur, crises de froid. Marche avec fauteuil roulant ou déambulateur - dépression - déclarée en incapacité de travail
+Liste des symptômes décrits par la patiente : 
+- maux de tête,
+- fourmillements
+- fatigue intense
+- perte d'équilibre
+- difficultés à la concentration
+- perte de mémoire
+- difficultés voir incapacité à la marche, se tenir debout
+- dépression
+- douleurs lombaires
+- maux de ventre (intensifiés lors de rapports)
+- règles hémorragiques
+- pertes de sang inexpliquées
+- pertes brunâtres
+- perte de caillots pendant les règles
+- douleurs musculaires
+
+Tests d'allergie au 18/01/2017
+Ablation des implants prévue au 1er février 2017 (salpingectomie)","- vertiges
+- nausées
+- baisse de l'audition, prédominance gauche
+- douleurs abdominales
+- métrorragie
+- maux de tête
+- fourmillements
+- fatigue intense
+- perte d'équilibre
+- difficultés à la concentration
+- perte de mémoire
+- difficultés voir incapacité à la marche, se tenir debout
+- dépression
+- douleurs lombaires
+- maux de ventre (intensifiés lors de rapports)
+- règles hémorragiques
+- pertes de sang inexpliquées
+- pertes brunâtres
+- perte de caillots pendant les règles
+- douleurs musculaires","Tests d'allergie au 18/01/2017
+Ablation des implants prévue au 1er février 2017 (salpingectomie)",2577.0,IMPLANT POUR STERILISATION TUBAIRE,Essure - ESS305,ESS305,,,Bayer Pharma AG,,BAYER HEALTHCARE SAS,,,C1097,RETRAIT DU DM,E1463,DOULEUR PER OP,SEVER,R1708169,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+28404,28404,R1719997,CERFA,Etablissements et professionnels de santé,,,Découverte lors d une échographie de rupture de la prothèse mammaire droite.,Les prothèse n'ont visiblement pas été posée dans notre établissement,"Prothèse non conservable
+Changement des deux prothèse
+
+Nos références = A12/17",2968.0,PMI : SERUM PHYSIOLOGIQUE,PROTHESE MAMMAIRE IMPLANTABLE,INPHY-S,,,POLY IMPLANT PROTHESES,,,D1636,DEGONF. / RUP. / DECOL. PATCH,,,E1210,NON RENSEIGNE,SEVER,R1719997,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+47184,47184,R1816410,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Chirurgie, cholecystectomie par coelioscopie,lors de la
+pose de clips sur le canal cystique ,le systeme de la pince a
+écrasé le clip déchirant une partie du canal cystique et lors
+de l'essai de pose d'un nouveau clip juste après le systeme
+n'a pas fermé complètement le clip donc pas de fermeture
+etanche avec le clip",durée d'intervention chirurgicale plus longue,"changement de dispositif médical
+dispositif en cause mis de coté et declaration faite à I'ANSM",2549.0,PINCE A CLIP,ENDO CLIP Il AUTO SUTURE,176657,,J8C1428CX,COVIDIEN France SAS,,,D1951,PROBLEME FORMATION CLIP / AGRAFE,C1137,ALLONGEMENT DU TEMPS OPERATOIRE,,,MOYEN,R1816410,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+65343,65343,R1913575,CERFA,Etablissements et professionnels de santé,1.0,1.0,Fracture de l'Implant en céramique d'une PTH DROITE,"Impotence fonctionnelle MID suite à un mouvement de rotation
+Reprise chirurgicale en semi urgence
+Changement de l'implant cotyloidïen",Implant n'est plus commercialisé,2656.0,PROTHESE TOTALE DE HANCHE - INSERT CERAMI. ALUM. ORTHOPEDIE,SeleXys inlay Bionit2 32/FF,55.46.3206,,unknown,MATHYS AG,,MATHYS Orthopédie,D2005,RUPTURE DE L'INSERT,C1097,RETRAIT DU DM,E1149,"DOULEURS, GÊNE FONCTIONNELLE",SEVER,R1913575,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+47578,47578,R1816721,CERFA,Etablissements et professionnels de santé,1.0,2.0,"Implantation 2005
+Explantation 21/09/2018
+Lisse
+Ronde
+Esthétique
+Rupture simple
+Signes à l'échographie",.,.,2974.0,PMI : SILICONE LISSE,PROTHESES MAMMAIRES PIP,REF,Gauche : 167 Droite : 142,Gauche : 30104 Droite: 24204,POLY IMPLANT PROTHESES,,,D1636,DEGONF. / RUP. / DECOL. PATCH,,,E1405,RETRAIT CHIRURGICAL,MOYEN,R1816721,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+58496,58496,R1906177,CERFA,Citoyen,,,"Période de survenue:
+1-2 mois après intervention
+
+Vertige, sévère trouble de vision, palpitation, paresthèsis, mauvais circulation, hypertension, test postif pour métaux lourdes, perte de mémoire, sautes d'humeur, la nausée, ventre gonflé, règles hémorragiques, depression/anxiété, migraine, grande fatigue tout le temps.Perte de libido, perte de cheveux. Kystes dans les 2 ovaries. UN LES DEUX
+ESSURES A (DROIT) DEPLACER DANS LA TROMPE Cela m'a laissé dans une douleur intense constante.",...,....,4001.0,TOUTES LES DCO,ESSURE,ESS305,,B15006,BAYER HEALTHCARE SAS,,,,,,,,,,R1906177,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+60043,60043,R1907723,CERFA,Etablissements et professionnels de santé,,,"Compresses 20x20 conditionnées par 11 au lieu de 10 dans le
+paquet.","Aucune conséquence, comptes et décomptes opératoires
+effectués.
+Risque de confusion lors des comptes et doubli dune
+compresse dans le champ opératoire.","Le dispositif a été conservé pour expertise.
+Cet évènement est répétitif.
+3 signalements ont été réalisés par 3 services différents
+de notre établissement sur cette référence (dont deux
+avec le même numéro de lot) mentionnant des erreurs de
+compte de compresses (AA 2019/0322, AA 2019/0331
+et AA 2019/0339).
+Le fabricant a été interrogé sur les méthodes de
+comptage : comptage manuel pour toutes les références.",3274.0,COMPRESSE,Compresses bloc RX gaze 20 x 20 cm,300113,,PC811003,RAFFIN MEDICAL,,,D1726,ERREUR DE COMPTAGE DE COMPRESSES RX,,,,,SEVER,R1907723,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+13870,13870,R1709591,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Le ciseau courbe monopolaire du robot intuitive coupe mal alors qu'il reste 2 vies
+
+Aucune conséquence clinique.",aucune,DM conservé à la pharmacie pour expertise,2333.0,CHIRURGIE ASSISTEE PAR ORDINATEUR,Monopolar Curved Scissors,470179,,S10160219-006,"Intuitive Surgical, Inc./Intuitive Surgical Operations Inc.,",Intuitive Surgical Sarl,INTUITIVE SURGICAL SAS,D2416,NOMBRE D'UTILISATION PREVU NON ATTEINT,,,E1213,PAS D'EFFET NEFASTE DECLARE,MINEU,R1709591,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+42877,42877,R1811681,CERFA,Etablissements et professionnels de santé,1.0,2.0,"Patiente de 66 ans hospitalisée à domicile dans le cadre d'une prise en charge palliative d'un carcinome canalaire infiltrant, avec chimiothérapie symptomatique.
+Lorsque l'infirmière a introduit l'aiguille de hubert dans la chambre implantable, celle-ci se tord.Lors d'un deuxième essai avec une autre aiguille du même lot, celle-ci tord également.
+De plus, la sécurité ne s'est pas déclenchée lors du retrait de la de la première aiguille.","Douleurs pour la patiente.
+Risque de se piquer pour l'infirmière.","Une des aiguilles de hubert a été conservée.
+Plusieurs signalements avaient été réalisés en fin d'année 2017 avec une autre référence ( 5249.920). Le fournisseur avait été modifié car il n'était plus conforme au cahier des charges.",2982.0,AIGUILLE DE HUBER,Aiguille atraumatique de sécurité,5249.720,,080318FH,VYGON,,,D1993,RETRACTION / NON - RETRACTION MANCHON AIGUILLE,,,E1148,DOULEUR,MOYEN,R1811681,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+35226,35226,R1804327,CERFA,Citoyen,,2.0,"Pose essures en janvier 2015 depuis survenue de règles hémorragique de 14 jours par mois
+douleurs multiples musculaires et neurologique acouphènes important et céphalées et baisse
+audition +++appareils auditifs en juin 2015. 
+Fatigue importante et maladie de basedow en mai 2016 ablation de la thyroïde ... troubles
+visuels difficultés à marcher après scanner IRM prise de sang rien à signaler toujours très
+fatigué ... tests réalisés par une allergologue positif au nickel !","Conséquences à seulement 35 ans je vis dans le corps d une personne âgée, je dois me faire enlever les essures car allergie au nickel ce qui intoxique mon corps et qui cause tous ces effets indésirables ... je vais subir l'ablation de lutérus
+et des trompes après une thyroïde que de traumatisme et de fatigue et de colère .... je
+faisais confiance en ma gynéco et à cette méthode si révolutionnaire .... je suis épuisée et
+depuis 2015 depuis cette implantation ma.vie n'est que ralentie maman de 3 enfants j ai des
+difficultés à m en occuper sans compter les arrêts de travail .... alors prenez notre désespoir en.considération j ai fait confiance en notre belle médecine française et en retour elle me gâche la vie",,2577.0,IMPLANT POUR STERILISATION TUBAIRE,Essure,ESS305,,C38218,BAYER PHARMA AG,,BAYER HEALTHCARE SAS,,,C1098,HYSTERECTOMIE - SALPINGECTOMIE,E1445,DOULEUR NON GYNECO,SEVER,R1804327,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+28144,28144,R1719837,CERFA,Etablissements et professionnels de santé,,2.0,"NGU, 50 ANS
+Implants gauche et droit
+Silicone
+Texturée
+Ronde
+Esthétique
+Date dimplantation : 04/03/2002
+Sagit-il dune primo-implantation: oui
+Date de lexplantation: 07/09/2017
+Typologie de lincident et délai de survenue: Rupture Droite
+Type de complication clinique, le cas écheant: Diffusion ganglionnaire, Coque Stade III (Gauche / Droite), Douleur, Inflammation du sein (Gauche / Droite)
+Lincident peut-il être relié à un évènement traumatique ? Non
+Si non, a-t-elle été conservée ? oui",..,..,2975.0,PMI : SILICONE TEXTUREE,PROTHESE MAMMAIRE PIP,REF,"G:096,  D:120","G: 21801, D: 25501",POLY IMPLANT PROTHESES,,,D1636,DEGONF. / RUP. / DECOL. PATCH,,,E1163,EXPLANTATION CONTROLATERALE PMI ROMPUE / PERSP,SEVER,R1719837,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+3336,3336,R1702327,CERFA,Etablissements et professionnels de santé,1.0,2.0,"Patiente : BAN
+Age : 35 ans
+Implant gauche volume 290 cc
+Implant droit volume 270 cc
+Esthétique
+Accident de la voie publique avec consultation médico légale
+Rupture de l'implant gauche suite à l'accident.
+Signes à l'échographie
+Signes à l'IRM",..,..,2975.0,PMI : SILICONE TEXTUREE,Mac Ghan,STFM,,1339834,Allergan France,,,D1636,DEGONF. / RUP. / DECOL. PATCH,,,E1163,EXPLANTATION CONTROLATERALE PMI ROMPUE / PERSP,SEVER,R1702327,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+47918,47918,R1817066,CERFA,Etablissements et professionnels de santé,,,"Lorsque l'IDE a voulu préparer la colle pour l'application
+elle s'est rendue compte que la colle était figée",Changement de technique et annulation du second patient,..,2546.0,COLLE CHIRURGICALE,IFABOND colle chirurgicale,IB+,,17B535C,PETERS Surgical,,,D1684,DISPOSITIF DEFECTUEUX,,,,,MOYEN,R1817066,Matériovigilance,Autre type d'incident donnant lieu à un signalement
+61270,61270,R1909090,CERFA,Etablissements et professionnels de santé,1.0,1.0,"Lors d'une séance de plasmaphérèse chez un patient de 55 ans, 5 minutes après le branchement de la plasmaphérèse, lalarme du moniteur dhémofiltration Prismaflex se déclenche à cause dune pression transmembranaire excessive.
+Le patient a été restitué en urgence puis rebranché sur un nouveau générateur avec un nouveau kit de plasmaphérèse.","Allongement de la séance car nécessité de changer le circuit.
+Cet incident est répétitif avec ce patient et est survenu sur plusieurs kits avec des numéros de lot différents, et sur plusieurs moniteurs dhémofiltration différents (AA 2019/0361).","Le kit de plasmaphérèse a été conservé pour expertise.
+Le moniteur dhémofiltration doit être prochainement vérifié par un technicien du service biomédical ainsi que par un technicien de la société Baxter. La cause de ces incidents na pas encore été déterminée.",3296.0,DMU D' APHERESE ECHANGE PLASMATIQUE,TPE 2000 PRISMAFLEX,TPE-2000-PRISMAFLEX,,18L1004,BAXTER SAS,,,D2338,NON LISTE,C1037,MISE EN ALARME,E1213,PAS D'EFFET NEFASTE DECLARE,MOYEN,R1909090,Matériovigilance,Autre type d'incident donnant lieu à un signalement

@@ -1,0 +1,44 @@
+config_name : 'agglomerative_'
+path_to_save : "/home/user1/DGS/Livrable_3/"
+data :
+    filename : 'cleaned_data.pkl'
+    path : "/home/user1/DGS/Livrable_3/"
+    mrv : "/home/user1/DGS/data/data_mrv/declaration_mrv_complet.csv"
+topic:
+    dictionary:
+        used_columns : ['rake_kw','trigram','med_term']
+        no_above : 0.8
+        no_below : 3
+        keep_n : 100000
+    corpus :
+        
+    model :
+        name : 'lda'
+        num_topic : 100
+        passes : 15
+
+cluster:
+    model:
+        name : "agglomerative"
+        add_columns : ['TYPE_DECLARANT', 'FABRICANT','REFERENCE_COMMERCIALE','CLASSIFICATION']
+
+        kmeans :
+            n_cluster: 150
+
+        DBSCAN :
+            eps: 14
+            min_samples: 13.5
+
+        HDBSCAN :
+            min_cluster_size: 10
+
+        gaussianMixture : 
+            n_components: 150
+
+        bayesianGaussianMixture : 
+            n_components: 150
+        
+        agglomerative : 
+            n_clusters : 150
+            linkage : 'ward' #complete average
+            metric : 'euclidean'

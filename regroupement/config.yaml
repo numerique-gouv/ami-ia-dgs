@@ -1,0 +1,7 @@
+save_folder :
+    path : "/home/robin/Documents/DGS/Annexe/L3/" # Dossier de Suavegarde générale
+data :
+    mrv : 
+        path : "/home/robin/Documents/DGS/data/declaration_mrv_complet.csv" # chemin vers MRveille
+    id_to_dco :
+        path : "/home/robin/Documents/DGS/data/referentiel_dispositif.csv" # chemin des réferentielle des DCO
