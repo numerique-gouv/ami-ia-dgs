@@ -30,7 +30,7 @@ Ce répertoire git est organisé en 3 dossiers différents :
 
 ## Utilisation
 
-Chaque dossier contient un readme pour expliciter le fonctionnement de chaque livrable.
+Chaque dossier contient un readme pour expliciter le fonctionnement de chaque livrable, ainsi qu'un fichier requirements pour les packages à installer.
 
 Dans les grandes lignes :
 

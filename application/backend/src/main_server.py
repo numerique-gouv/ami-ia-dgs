@@ -348,8 +348,12 @@ def init_models():
     results.append({'model_name': 'dysfonctionnement', 'predictions': predict_dysfonctionnements(Dysfonctionnement_model, classification_encoder, df_data)})
     results.append({'model_name': 'consequence', 'predictions': predict_consequences(consequence_model, classification_encoder, df_data)})
     results.append({'model_name': 'effet', 'predictions': predict_effets(Effet_model, classification_encoder, df_data)})
-    res_df = predict_gravites(gravite_1234_model, gravite_01_model, df_data)
+    [res_df1, res_df2] = predict_gravites(gravite_1234_model, gravite_01_model, df_data)
+    results.append({'model_name': 'gravité_ordinale',
+                    'predictions': res_df1})
+    results.append({'model_name': 'gravité_binaire', 'predictions': res_df2})
     topics, cluster = clusterize_doc(df_data, results)
+    modified_results = transversal_prediction_postprocess(df_data, results)
     logger.info('... initialized')
 
 
@@ -524,6 +528,13 @@ def serve_predict_all():
             topics, cluster = clusterize_doc(f_data, f_results)
             res0[os.path.basename(f)].append({'model_name': 'topics', 'predictions': topics})
             res0[os.path.basename(f)].append({'model_name': 'cluster', 'predictions': cluster})
+
+        # apply transversal post-process
+        for f in data:
+            f_data = data[f]
+            f_results = res0[os.path.basename(f)]
+            modified_results = transversal_prediction_postprocess(f_data, f_results)
+            res0[os.path.basename(f)] = modified_results
 
         key = add_last_results(data, res0)
         res0['last_results_key'] = key

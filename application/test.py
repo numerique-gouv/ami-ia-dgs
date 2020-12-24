@@ -1,38 +1,30 @@
 import requests
 from requests.auth import HTTPBasicAuth
 from pprint import pprint
+import os
+import json
 
 adresse_api = 'http://localhost:5000/dgs-api'
 
 
-def test_preditions():
-    test_file = '../test/test_plumber/data/2dm_MATERIOVIGILANCE_20200414150210003.pdf'
-    with open(test_file, 'rb') as f:
-        r = requests.post(adresse_api + '/predict/dco', files={'file': f})
-        pprint(r.json())
+def test_predictions():
+    keys = []
+    for f in os.listdir('bugs'):
+        print(f)
+        with open(os.path.join('bugs', f), 'r') as f:
+            r = requests.post(adresse_api + '/predict/all_models', files={'file': f},
+                              auth=HTTPBasicAuth('dgs_admin', 'Q0a*1dYjD5LO'))
+            keys.append(r.json()['last_results_key'])
+            pprint(r.json())
 
-    with open(test_file, 'rb') as f:
-        r = requests.post(adresse_api + '/predict/dysfonctionnement', files={'file': f})
-        pprint(r.json())
+    r = requests.post(adresse_api + '/predict/last_results/csv', data=json.dumps({'last_results_keys': keys}),
+                      auth=HTTPBasicAuth('dgs_admin', 'Q0a*1dYjD5LO'))
+    with open('output.csv', 'w') as out:
+        out.write(r.text)
 
-    with open(test_file, 'rb') as f:
-        r = requests.post(adresse_api + '/predict/consequence', files={'file': f})
-        pprint(r.json())
 
-    with open(test_file, 'rb') as f:
-        r = requests.post(adresse_api + '/predict/effet', files={'file': f})
-        pprint(r.json())
 
-    with open(test_file, 'rb') as f:
-        r = requests.post(adresse_api + '/predict/gravite', files={'file': f})
-        pprint(r.json())
-
-    with open(test_file, 'rb') as f:
-        r = requests.post(adresse_api + '/predict/all_models', files={'file': f})
-        pprint(r.json())
-
-# requests.post(adresse_api + '/users', json={'username': 'toto', 'password': 'tata'})
-
-res = requests.get(adresse_api + '/documents/{}'.format('R1700004'),
-                   auth=HTTPBasicAuth('toto', 'titi'))
-pprint(res.json())
+test_predictions()
+# res = requests.get(adresse_api + '/documents/{}'.format('R1916936%20-%20VENTOUSE%20(%20UROLOGIE-GYNECOLOGIE%20)'),
+#                    auth=HTTPBasicAuth('dgs_admin', 'Q0a*1dYjD5LO'))
+# pprint(res.json())

@@ -47,6 +47,27 @@ with open(os.path.join(os.path.dirname(__file__), 'training_config.yaml'), 'r') 
 #SAVE_PATH = os.path.join(conf_path, try_name)
 
 
+def add_col(df,col,X,save=False):
+        """Permet d'ajouter des colonnes en plus de la représentation topic
+
+        Args:
+            df (pd.DataFrame): dataframe de la base de donnée MRveille
+            col (list): liste des colonnes à ajouter
+            X (array): représentation thèmatique
+
+        Returns:
+            X_new (array): représentation thèmatique complétée des colonnes présentes dans col
+        """
+        df_used = pd.DataFrame()
+        from  sklearn.preprocessing import LabelEncoder
+        for c in col : 
+            le = LabelEncoder()
+            df_used[c] = le.fit_transform(df[c].map(str).fillna(' ').values)
+            if save :
+                joblib.dump(le, os.path.join(clustermodel.save_dir,'le_'+str(c)+'.sav'))
+            X_new = np.concatenate((X,df_used.values),axis=1)
+        return X_new
+
 class ClusterModel:
 
     def __init__(self,try_name,config_dict,save_dir):
@@ -227,6 +248,23 @@ class ClusterModel:
                     'daves_score': str(self.davies_bouldin_score)}
             with open(os.path.join(self.save_dir, 'results.json'), 'w') as f:
                 json.dump(res, f)
+
+    def build_cluster_features(self,topicmodel,data,save=False):
+        n = topicmodel.model.num_topics
+        cols = self.config_dict['model']['add_columns']
+        #vecteur du topic model
+        X = topicmodel.doc_topic_mat.iloc[:, :n-1].values
+        #Ajout des collones
+        if len(cols):
+            X_new = add_col(data, cols, X,save=False)
+        
+        result = pd.DataFrame(data=X)
+        result['label'] = self.model.labels_
+        self.model.features = result
+        if save :
+            features_path = os.path.join(self.save_dir, self.try_name+'_features.json')
+            result.to_json(features_path)
+            self._logger.info(f"Features d'entrainement enregistrées dans {features_path}")
 
     def build_cluster_centers(self):
         """calcul les centres des clusters par une moyennes des points dans le cluster
@@ -423,7 +461,7 @@ class ClusterModel:
         if save :
             resultat.to_csv(os.path.join(self.save_dir, 'mrveille_with_cluster.csv'))
 
-    def update(self, new_data,delta):
+    def update(self, new_data,delta=0.001):
         i=0
         for featureset in new_data:
             #Calcul des distances au centroids

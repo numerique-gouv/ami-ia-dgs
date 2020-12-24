@@ -13,6 +13,7 @@ import pandas as pd
 import joblib
 import numpy as np
 import os
+from gensim.utils import deaccent
 
 from backend_utils.config_parser import get_local_file, parse_full_config
 
@@ -25,6 +26,7 @@ DATA_PATH = config['data']['mrv']['path']
 # dictionaire des id pour le DCO
 
 id_to_dco = pd.read_csv(os.path.abspath(os.path.join(DATA_PATH, "referentiel_dispositif.csv")), delimiter=';', encoding='ISO-8859-1')
+dco_to_id = {deaccent(v.lower().replace(' ', '')): k for (k, v) in id_to_dco.values.tolist()}
 
 # Modèle d'encodage pour le DCO
 le = joblib.load(os.path.abspath(os.path.join(MODEL_PATH, 'DCO_encoder.sav')))
@@ -38,6 +40,13 @@ df_effets = pd.read_csv(os.path.abspath(os.path.join(DATA_PATH, "referentiel_dis
 df_dys = pd.read_csv(os.path.abspath(os.path.join(DATA_PATH, "referentiel_dispositif_dysfonctionnement.csv")),
                      delimiter=';', encoding='ISO-8859-1')
 df_csq = pd.read_csv(os.path.abspath(os.path.join(DATA_PATH, "referentiel_consequence.csv")))
+
+
+def get_dco_id_from_label(label):
+    try:
+        return dco_to_id[deaccent(label.lower().replace(' ', ''))]
+    except KeyError:
+        return None
 
 
 def get_name(x: int) -> (str):
@@ -248,3 +257,24 @@ def contextualize_prediction_gravity(pred: np.array, enc: dict) -> (pd.DataFrame
     df_r = df_r.drop(0, axis=1)
     df_r = df_r.sort_values('proba', ascending=False)
     return df_r
+
+
+def find_deces(text):
+    """Renvoie 0 ou 1 en fonction de la présence de vocabulaire lié à la mort dans le texte
+
+    Args:
+        text (str): texte assocé au signalement
+
+    Returns:
+        deces (int): 0 il n'y a pas de deces, 1 il y a deces
+    """
+    if not isinstance(text, str):
+        return 0
+    vocab = deaccent(text.lower()).split(' ')
+    deces_list = ['mort','morts','meurt','mourir','mortel','deces','deceder','decede','decedee','decedes','decedait',"decedais",'dcd']
+    for word in vocab:
+        for elt in deces_list:
+            if elt in word:
+                return 1
+    
+    return 0

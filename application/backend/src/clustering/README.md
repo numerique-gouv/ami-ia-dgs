@@ -18,7 +18,7 @@ Il y a donc une certaine gymnastique dans le code pour permettre le mapping corr
 ----------
 
 - **clustering_models.py** : Classe singleton pour charger les modèles
-- **prediction.py** : fonction de clusterisation des fichiers inconnus
+- **prediction.py** : fonction de clusterisation des fichiers inconnus (projection LDA + clusterisation)
 - **analysis.py** : fonctions de visualisation des topics et clusters
 
 

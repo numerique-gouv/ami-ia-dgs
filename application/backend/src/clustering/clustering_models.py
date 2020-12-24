@@ -35,7 +35,6 @@ class ClusteringModels:
             # self.MRV_DATA = pd.read_csv(os.path.join(self.DATA_PATH, 'declaration_mrv_complet.csv'))
             with open(os.path.join(CLUSTER_PATH, "cluster", 'mrv_with_clustering.json')) as f:
                 self.MRV_DATA = pd.DataFrame.from_dict(json.load(f))
-            self.MRV_DATA['DOC_NAME'] = self.MRV_DATA['NUMERO_DECLARATION'] + ' - ' + self.MRV_DATA['DCO']
 
             with open(os.path.join(CLUSTER_PATH, 'training_config.yaml')) as f:
                 self.clustering_config = yaml.load(f)
@@ -44,6 +43,12 @@ class ClusteringModels:
             self.id_to_dco = pd.read_csv(os.path.abspath(os.path.join(self.DATA_PATH, "referentiel_dispositif.csv")),
                                          delimiter=';', encoding='ISO-8859-1').to_dict()
             self.id_to_dco = {self.id_to_dco['DCO_ID'][i]: self.id_to_dco['LIBELLE'][i] for i in range(len(self.id_to_dco['DCO_ID']))}
+
+            def add_docname(mat):
+                mat['DCO'] = mat['DCO_ID'].apply(lambda x: self.id_to_dco.get(x, 'NON_LISTE')).fillna('INCONNU')
+                mat['DOC_NAME'] = mat['NUMERO_DECLARATION'] + ' - ' + mat['DCO'].replace('/', '-')
+                return mat
+            self.MRV_DATA = add_docname(self.MRV_DATA)
 
             ###################
             # load models
@@ -81,8 +86,8 @@ class ClusteringModels:
                     np.save(os.path.join(CLUSTER_PATH, 'topics_mat.npy'), self.topicmodel.mdiff)
                 self.topicmodel.doc_topic_mat['cluster'] = self.clustermodel.model.labels_
                 self.topicmodel.doc_topic_mat['nb_mot'] = self.topicmodel.doc_topic_mat['text_lem'].map(len)
-                self.topicmodel.doc_topic_mat['DCO'] = self.topicmodel.doc_topic_mat['DCO_ID'].apply(lambda x : self.id_to_dco.get(x, 'NON_LISTE'))
-                self.topicmodel.doc_topic_mat['DOC_NAME'] = self.topicmodel.doc_topic_mat['NUMERO_DECLARATION'] + ' - ' + self.topicmodel.doc_topic_mat['DCO']
+                
+                self.topicmodel.doc_topic_mat = add_docname(self.topicmodel.doc_topic_mat)
                 if os.path.exists(os.path.join(CLUSTER_PATH, 'topics_documents.json')):
                     self.logger.info('...loading topics doc lists')
                     with open(os.path.join(CLUSTER_PATH, 'topics_documents.json')) as f:

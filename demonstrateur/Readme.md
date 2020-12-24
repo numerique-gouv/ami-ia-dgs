@@ -22,7 +22,7 @@ Cette interface est un démonstrateur, elle n'a pas pour but de rentrer en produ
 
 - python 3.6 ou supérieur
 - pip à jour (pip install --upgrade pip)
-- Avoir le package ptyhon prediction_models dans le même répertoire.
+- Avoir le package python prediction_models dans le même répertoire.
 
 Pour le bon fonctionnement de l'application, il est recommandé d'avoir au moins 8Go de RAM et un CPU avec 2.5Ghz.
 
@@ -55,7 +55,7 @@ Dans un navigateur, à l'adresse suivante, http://localhost:8501/ l'interface gr
 
 Afin de réaliser des batchs de tests sur plusieurs fichiers pdf ou XML, le script **result_excel.py** permet d'inférer plusieurs documents en une seul fois et de stocker les résultats au format excel. Il faut indiquer le chemin vers le dossier contenant les dossiers xml ou pdf dans la variable: /Data/démonstrateur.
 
-4.1 instruction
+4.1 Instructions
 ~~~~~~~~~~~~~~~
 
 Après avoir installer les requierements.txt, vous pouvez indiquer dans le fichier **result_excel.py** le chemin d'accès d'un dossier contenant des fichiers PDF et/ou XML encodé ou non en base64 :

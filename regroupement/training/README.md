@@ -4,15 +4,15 @@ Module d'entraînement pour le topic modelling et le clustering
  - topic modèle
  - cluster modèle
 
- Nous détaillons ici comment effectuer l'entrainement de ces modèles.
+ Nous détaillons ici comment effectuer l'entraînement de ces modèles.
 
 Description
 -----------
 Ce dossier se compose des fichiers suivant qui dépendent tous du fichier de configuration training_config.yaml :
 - train : permet de réaliser un entrainement complet et de générer les fichiers utiles pour la visualisation et le L4
-- train_topic.py: ilpermet d'entrainer seulement un topic model 
+- train_topic.py: ilpermet d'entraîner seulement un topic model 
 - optimize_topic.py : permet d'optimiser le topic modèle sur le nombre de thèmes et sur le choix des colonnes (basé sur optuna)
-- train_cluster: entraine un modèle de clustering à partir d'une représentation thématique existante
+- train_cluster: entraîne un modèle de clustering à partir d'une représentation thématique existante
 - optimize_cluster: permet d'optimiser le nombre de clusters d'un modèle de clustering (basé sur optuna)
 
 Lors d'un entrainement, le dosser indiquer dans le training_config['config_name'] est crée et se structure comme suit:
@@ -31,7 +31,7 @@ Lors d'un entrainement, le dosser indiquer dans le training_config['config_name'
     - name.expElogbeta.npy: les poids associé au modèle de thème
     - name.model.state, name.model.state.sstats.npy: fichier associé au modèle LDA
     - name_result.json : le score  de cohérence du modèle
-    - name_training.log: le fichier de log associé à l'entrainement
+    - name_training.log: le fichier de log associé à l'entraînement
     - name.json: donnée lié à la visualisation en 2D des thèmes
     - name.html: fichier html de la visualisation
     - name.pkl: matrice thème document
@@ -48,8 +48,8 @@ Afin de réentrainer les modèles, la procédure à suivre est :
 Limites
 ------
 Les scripts présents possèdent quelques limites :
-- les modèle de thèmes supporté sont seulement ceux dans gensim
-- si vous choisissez un modèle de thème hirarchique alors, la visualisation 2D ne sera pas disponible
+- les modèles de thèmes supportés sont seulement ceux existants dans gensim
+- si vous choisissez un modèle de thème hiérarchique alors, la visualisation 2D ne sera pas disponible
 - les modèles de cluster disponibles sont seulement ceux présents dans la librairie scikit-learn
 
 

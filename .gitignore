@@ -70,6 +70,3 @@ data
 clustering_results
 demonstrateur/models
 documentation/build
-
-**/__pycache__
-**/.ipynb_chckpoints

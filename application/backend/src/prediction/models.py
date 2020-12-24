@@ -74,6 +74,17 @@ def predict_DCO(dco_model, df_data):
     :param df_data: dataframe à classifier
     :return: dataframe
     """
+    # essayer de voir si on connait le libelle commercial dans le referentiel si le déclarant est un professionnel
+    if isinstance(df_data['TYPE_DECLARANT'].loc[0], str) and 'professionnel' in df_data['TYPE_DECLARANT'].loc[0].lower():
+        # TODO : generaliser pour N docs : ici ça ne fonctionne que pour 1 doc, le 0
+        dco_id = prediction_context.get_dco_id_from_label(df_data['LIBELLE_COMMERCIAL'].loc[0])
+        if dco_id is None:
+            dco_id = prediction_context.get_dco_id_from_label(df_data['DM'].loc[0])
+        if dco_id is not None:
+            return pd.DataFrame({'class': [dco_id, -1],
+                                 'class_name': [prediction_context.get_name(dco_id), ' '],
+                                 'proba': [1, 0]})
+
     try:
         X = df_data[['DESCRIPTION_INCIDENT', 'FABRICANT',
                      'REFERENCE_COMMERCIALE', 'LIBELLE_COMMERCIAL']].fillna('')
@@ -164,12 +175,23 @@ def predict_gravites(gravite_1234_model, gravite_01_model, df_data):
     :param df_data: dataframe à classifier
     :return: dataframe
     """
+    # Test de la présence d'un mot ayant trait à la mort dans le texte
+    df_data['text'] = df_data['DESCRIPTION_INCIDENT'] + ' ' + df_data['ETAT_PATIENT']
+    deces = df_data['text'].map(lambda x : prediction_context.find_deces(x))
+    if deces.loc[0] == 1:
+        # TODO : generaliser pour N docs : ici ça ne fonctionne que pour 1 doc, le 0
+        d1 = pd.DataFrame({'class_name': 'CRITI', 'proba': 1}, index=[0])
+        d2 = pd.DataFrame({'class_name': 'CRITI', 'proba': 1}, index=[0])
+        return [d1, d2]
+
+    # Sinon (cas normal) on classifie
     X = df_data[['CLASSIFICATION', 'DESCRIPTION_INCIDENT', 'ETAT_PATIENT',
                  'ACTION_PATIENT', 'FABRICANT']].fillna('')
     X = X.applymap(str)
     Proba = gravite_1234_model.predict(X)
-    d1 = prediction_context.contextualize_prediction_gravity(Proba, prediction_context.dec_di_multi)
 
+    d1 = prediction_context.contextualize_prediction_gravity(Proba, prediction_context.dec_di_multi)
+    
     Proba = gravite_01_model.predict(X)
     d2 = prediction_context.contextualize_prediction_gravity(Proba, prediction_context.dec_di_bin)
     return [d1, d2]
@@ -178,3 +200,45 @@ def predict_gravites(gravite_1234_model, gravite_01_model, df_data):
 def get_models_performances(models_path):
     perfs_df = pd.read_csv(os.path.join(models_path, 'performances.csv'))
     return perfs_df.to_dict()
+
+
+def transversal_prediction_postprocess(f_data, f_results):
+    """
+    Fonctions permettant d'implémenter les post-process "transverses", c'est à dire basés sur des conditions concernant
+    plusieurs modèles
+
+    :param f_data: dataframe de donnée du document à post-processer (utilisée pour les prédictions)
+    :param f_results: liste de résultats des modèles:
+                        [{model_name: ..., predictions: dataframe contextualisée (voir fonctions de prédictions)}]
+    :return: f_results modifiée
+    """
+    try:
+        # si dco = 'virologie : ...' et conséquences = 'faux negatif', on booste les gravité à critique
+        dco_index = [m['model_name'] for m in f_results].index('DCO')
+        dco_preds = f_results[dco_index]['predictions']
+        if 'virologie' == dco_preds['class_name'].iloc[0].lower()[:9]:
+            try:
+                cons_index = [m['model_name'] for m in f_results].index('consequence')
+                cons_preds = f_results[cons_index]['predictions']
+                if 'faux negatif' == cons_preds['class_name'].iloc[0].lower():
+                    try:
+                        grav_index = [m['model_name'] for m in f_results].index('gravité_ordinale')
+                        f_results[grav_index]['predictions'] = pd.DataFrame({'class_name': 'CRITI', 'proba': 1},
+                                                                            index=[0])
+                    except ValueError:
+                        pass
+
+                    try:
+                        gravbin_index = [m['model_name'] for m in f_results].index('gravité_binaire')
+                        f_results[gravbin_index]['predictions'] = pd.DataFrame({'class_name': 'CRITI', 'proba': 1},
+                                                                               index=[0])
+                    except ValueError:
+                        pass
+
+            except ValueError:
+                pass
+
+    except ValueError:
+        pass
+
+    return f_results

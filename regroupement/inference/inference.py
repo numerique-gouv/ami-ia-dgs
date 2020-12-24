@@ -4,9 +4,11 @@ Fichier permettant l'inference du numeros de cluster d'un nouveau document
 """
 
 import numpy as np
+import pandas as pd 
 
 import sys
 import os
+import yaml
 
 path_to_regroupement = os.path.dirname(os.path.dirname(__file__)) #os.path.dirname(os.path.dirname('.'))
 sys.path.insert(1, os.path.join(path_to_regroupement, 'training'))
@@ -154,8 +156,9 @@ if __name__ == "__main__" :
     clustermodel.load(name)
 
     #exemple de document
-    data_doc = data.iloc[:1]
+    data_doc =  pd.read_excel('/home/robin/Documents/DGS/data/serge_csv/mrv_format.xlsx')
 
-    cluster = inference_cluster_doc(config, clustermodel, topicmodel, data_doc)
-    
+    topic,cluster = inference_cluster_doc(config, clustermodel, topicmodel, data_doc)
+    topic.to_json('/home/robin/Documents/DGS/data/serge_csv/topic_inference.json')
+    cluster.to_json('/home/robin/Documents/DGS/data/serge_csv/cluster_inference.json')
     print(cluster)

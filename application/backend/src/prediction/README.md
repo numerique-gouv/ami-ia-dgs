@@ -28,6 +28,6 @@ Package contenant les fonctionnalités associées à la classification.
 ---------------------
 
 - vider le dossier *src/data/models*
-- copier les nouveaux modèles dedans
+- copier les nouveaux modèles dedans  (modèles généré via le dossier prediction_models, voir prediction_models/README.md)
 - redémarrer le service
 

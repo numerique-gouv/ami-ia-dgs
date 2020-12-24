@@ -9,6 +9,8 @@ Utiliser *./build_docker_image.sh* génère l'image **starclay/dgs_backend:lates
 
 Pour cela, on copie temporairement des dossier d'autres parties du repo pour les intégrer au contexte docker.
 
+Le docker utilise les librairies listées dans requirements.txt
+
 
 2. Run
 ------
