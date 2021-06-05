@@ -95,7 +95,7 @@ dill==0.3.1.1
 distlib==0.3.0
 distributed==2.15.0
 distro==1.1.0
-django==2.2.6
+django==2.2.21
 docker-pycreds==0.4.0
 docopt-ng==0.7.2
 docutils==0.15.2
