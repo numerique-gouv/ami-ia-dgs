@@ -450,7 +450,7 @@ tzlocal==1.5.1
 ujson==1.35
 umap-learn==0.3.10
 unicodecsv==0.14.1
-urllib3==1.25.9
+urllib3==1.26.5
 validators==0.15.0
 velruse==1.1.1
 venusian==3.0.0
