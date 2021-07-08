@@ -1,9 +1,9 @@
-config_name : '25_11_2020_test'
-path_to_save : "/home/robin/Documents/DGS/Annexe/L3/"
+config_name : '14_01_2021'
+path_to_save : "/home/cyril/PycharmProjects/Starclay/dgs-signalement-ia/clustering_results"
 data :
     filename : 'cleaned_data_5.pkl'
-    path : "/home/robin/Documents/DGS/Annexe/L3/"
-    mrv : '/home/robin/Documents/DGS/data/declaration_mrv_complet.csv'
+    path : "/home/cyril/PycharmProjects/Starclay/dgs-signalement-ia/clustering_results"
+    mrv : '/home/cyril/PycharmProjects/Starclay/dgs-signalement-ia/data/declaration_mrv_complet.csv'
 topic:
     dictionary:
         used_columns : ['text_lem']
@@ -19,11 +19,16 @@ topic:
 
 cluster:
     model:
-        name : "kmeans"
-        add_columns : ['TYPE_DECLARANT', 'REFERENCE_COMMERCIALE', 'CLASSIFICATION', 'FABRICANT','DCO_ID','TEF_ID','CDY_ID','TDY_ID']
+        name : "kprototypes"
+        add_columns : ['CLASSIFICATION', 'FABRICANT','DCO_ID','TEF_ID','CDY_ID','TDY_ID']
+        column_cat_multfactor: 30
+
+        kprototypes:
+            n_cluster: 1000
+            gamma: 1
 
         kmeans :
-            n_cluster: 150
+            n_cluster: 1500
 
         DBSCAN :
             eps: 14

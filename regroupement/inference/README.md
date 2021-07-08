@@ -8,7 +8,7 @@ Ce module est un module très simple qui repose sur un seul fichier inference.py
 Il permet de réaliser les étapes suivantes:
 - chargement du fichier
 - chargement des modèles de thèmes et de clusters (préciser dans le script)
-- preparation du fichier et des données textuelles (prepare_data.py)
+- préparation du fichier et des données textuelles (prepare_data.py)
 - construction de la représentation thématique du document
 - ajout des colonnes contenant les données catégorielles du document
 - inférence du cluster d'appartenance

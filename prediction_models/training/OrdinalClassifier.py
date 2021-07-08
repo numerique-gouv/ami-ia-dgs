@@ -20,8 +20,6 @@ class OrdinalClassifier:
     def __init__(self, clf):
         self.clf = clf
         self.clfs = {}
-        
-        self.logger = logging.getLogger(self.__class__.__name__)
 
     def fit(self, X, y):
         self.unique_class = np.sort(np.unique(y))

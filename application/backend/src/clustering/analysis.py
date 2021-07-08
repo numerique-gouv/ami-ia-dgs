@@ -466,6 +466,40 @@ def get_cluster_topics(cluster_ind, n_topics=None):
         raise ValueError(f'{cluster_ind} is not a valid cluster id')
 
 
+# @lru_cache()
+# def get_cluster_dcos(cluster_ind, nb_dcos=None):
+#     """
+#     Renvoie les DCOs les plus présentes dans les documents du cluster, triés décroissant
+#
+#     :param cluster_ind: int
+#     :param nb_dcos: nb de meilleurs résultats à garder
+#     :return: [{
+#                 'ind': doc_ind,
+#                 'title': dco,
+#                 'score': dco_weight
+#             }]
+#     """
+#     try:
+#         cluster = ClusteringModels().clusters.get_group(cluster_ind)
+#         c = cluster.groupby('DCO_ID').count()['Topic0']
+#         df = c.sort_values(ascending=False)
+#         if nb_dcos:
+#             df = df.iloc[:nb_dcos]
+#         most_frequent_dco = df.index
+#         weights = df.values / df.values.sum()
+#         # w= [elt[0] for elt in weight]
+#         dcos = []
+#         for dco_ind, dco_weight in zip(most_frequent_dco, weights):
+#             dco = ClusteringModels().id_to_dco.get(int(dco_ind), 'NON_LISTE')
+#             dcos.append({
+#                 'ind': dco_ind,
+#                 'title': dco,
+#                 'score': dco_weight
+#             })
+#         return dcos
+#     except IndexError:
+#         raise ValueError(f'{cluster_ind} is not a valid cluster id')
+
 @lru_cache()
 def get_cluster_dcos(cluster_ind, nb_dcos=None):
     """
@@ -480,16 +514,13 @@ def get_cluster_dcos(cluster_ind, nb_dcos=None):
             }]
     """
     try:
-        cluster = ClusteringModels().clusters.get_group(cluster_ind)
-        c = cluster.groupby('DCO_ID').count()['Topic0']
-        df = c.sort_values(ascending=False)
-        if nb_dcos:
-            df = df.iloc[:nb_dcos]
-        most_frequent_dco = df.index
-        weights = df.values / df.values.sum()
-        # w= [elt[0] for elt in weight]
+        dco_by_group_ind, dco_by_group_mat = ClusteringModels().dco_by_cluster
+        dco_scores = sorted([(dco_by_group_ind[i], v) for i, v in enumerate(dco_by_group_mat[cluster_ind, :].tolist()) if v != 0],
+                            key=lambda x: x[1], reverse=True)
+        if nb_dcos and nb_dcos > len(dco_scores):
+            dco_scores = dco_scores[:nb_dcos]
         dcos = []
-        for dco_ind, dco_weight in zip(most_frequent_dco, weights):
+        for dco_ind, dco_weight in dco_scores:
             dco = ClusteringModels().id_to_dco.get(int(dco_ind), 'NON_LISTE')
             dcos.append({
                 'ind': dco_ind,
@@ -529,7 +560,7 @@ def get_cluster_documents(cluster_ind):
     :return: [(doc name, similarité)]
     """
     try:
-        cluster = ClusteringModels().MRV_DATA.groupby('cluster').get_group(cluster_ind)
+        cluster = ClusteringModels().MRV_DATA.groupby('cluster').get_group(str(cluster_ind))
         sorted_docs = cluster.sort_values(by='cluster_weight', ascending=False)[['DOC_NAME', "cluster_weight"]].values.tolist()
         #
         # center = ClusteringModels().clustermodel.model.cluster_centers_[cluster_ind][:ClusteringModels().nb_topics]
@@ -570,6 +601,47 @@ def get_cluster_complete(cluster_ind):
     cluster['dcos'] = get_cluster_dcos(cluster_ind)
     cluster['wordcloud'] = get_cluster_wordcloud(cluster_ind)
     return cluster
+
+
+def get_dco_clusters(dco_name, nb_clusters=None):
+    """
+    Renvoie les clusters dans lesquels la DCO est présente
+
+    :param dco_name: str
+    :param nb_clusters: nb de meilleurs résultats à garder
+    :return: [{
+                'ind': doc_ind,
+                'title': dco,
+                'score': dco_weight
+            }]
+    """
+    try:
+        dco_by_group_ind, dco_by_group_mat = ClusteringModels().dco_by_cluster
+
+        dco_id = [k for k, d in ClusteringModels().id_to_dco.items() if d == dco_name]
+        if not len(dco_id):
+            raise ValueError(f'{dco_name} is not a valid dco name')
+
+        dco_id = dco_id[0]
+        try:
+            dco_mat_ind = dco_by_group_ind.index(dco_id)
+            cluster_scores = sorted([(i, v) for i, v in enumerate(dco_by_group_mat[:, dco_mat_ind].tolist()) if v != 0],
+                                    key=lambda x: x[1], reverse=True)
+        except ValueError:
+            cluster_scores = []
+
+        if nb_clusters and nb_clusters > len(cluster_scores):
+            cluster_scores = cluster_scores[:nb_clusters]
+
+        clusters = []
+        for cluster_ind, cluster_weight in cluster_scores:
+            clusters.append({
+                'ind': cluster_ind,
+                'score': cluster_weight
+            })
+        return clusters
+    except IndexError:
+        raise ValueError(f'{dco_name} is not a valid dco name')
 
 
 if __name__ == "__main__":

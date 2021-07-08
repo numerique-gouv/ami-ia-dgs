@@ -275,6 +275,33 @@ def prepare_data(mrv, med_term=False,medical_terms=None, save_dir=None, use_mult
 
     return df
 
+def clean_fabricant(text):
+    STOP_WORDS = ["france","sarl",'sas','ltd','inc','sro','sa', 'ab']
+    #lower
+    text = text.lower()
+    # Stop words
+    tokens = text.split(" ") 
+    tokens = [token for token in tokens if deaccent(token.lower()) not in STOP_WORDS]
+    # ponctuation
+    tokens = [token for token in tokens if not all(c in set(string.punctuation) for c in token.lower())]
+
+    # Acccent
+    tokens = [deaccent(token.lower()) for token in tokens]
+    # Caratère spéciaux
+    tokens = [re.split('[^A-Za-z]+', str(token)) for token in tokens]
+    # flatten the list
+    tokens = list(flatten(tokens))
+    #
+    tokens = [re.sub('[^A-Za-z]+', '', str(token)) for token in tokens]
+
+    # Mots de 2 caratères
+    tokens = [token for token in tokens if len(token.lower()) > 2]
+
+    return " ".join(tokens)
+
+
+
+
 
 if __name__ == "__main__":
     import time

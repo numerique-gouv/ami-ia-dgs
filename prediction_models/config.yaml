@@ -3,42 +3,42 @@ version: 1
 extraction:
   data:
     colonnes:
-      file_path: '/home/robin/Nextcloud/strar_clay/GitLab/signalement-ia/demonstrateur/data/Colonnes.json'
+      file_path: /home/robin/Nextcloud/strar_clay/GitLab/signalement-ia/demonstrateur/data/Colonnes.json
     mapping:
-      file_path: '/home/robin/Nextcloud/strar_clay/GitLab/signalement-ia/demonstrateur/data/mapping.json'
+      file_path: /home/robin/Nextcloud/strar_clay/GitLab/signalement-ia/demonstrateur/data/mapping.json
 training:
-  save_path: "/home/robin/Nextcloud/strar_clay/DGS/" #'/home/user1/DGS/'
+  save_path: /home/cyril/Work/Starclay/push_etalab/signalement-ia/data/models #'/home/user1/DGS/'
   models:
     model_dco:
-      model_filename: 'DCO_model.sav'
+      model_filename: DCO_model.sav
       train_model: False
     model_typologie:
       tef: 
-        model_filename: 'TEF_ID_model.h5'
-        archi_filename: TEF_ID_model.json'
-        pipeline_filename : 'TEF_ID_pipeline.sav'
+        model_filename: TEF_ID_model.h5
+        archi_filename: TEF_ID_model.json
+        pipeline_filename : TEF_ID_pipeline.sav
       tdy: 
-        model_filename: 'TDY_ID_model.h5'
-        archi_filename: TDY_ID_model.json'
-        pipeline_filename : 'TDY_ID_pipeline.sav'
+        model_filename: TDY_ID_model.h5
+        archi_filename: TDY_ID_model.json
+        pipeline_filename : TDY_ID_pipeline.sav
       cdy: 
-        model_filename: 'CDY_ID_model.h5'
-        archi_filename: CDY_ID_model.json'
-        pipeline_filename : 'CDY_ID_pipeline.sav'
+        model_filename: CDY_ID_model.h5
+        archi_filename: CDY_ID_model.json
+        pipeline_filename : CDY_ID_pipeline.sav
     model_gravite:
       binaire:
-        model_filename: 'GRAVITE_Binaire_model.sav'
+        model_filename: GRAVITE_Binaire_model.sav
       non_binaire:
-        model_filename: 'GRAVITE_model.sav'
+        model_filename: GRAVITE_model.sav
   preparation:
     encodeur: 
       classification: 
-        model_filename: 'classification_Encoder.sav'
+        model_filename: classification_Encoder.sav
       dco :
-        model_filename : 'DCO_encoder.sav'
+        model_filename : DCO_encoder.sav
   data : 
     mrv:
-      file_path: "/home/robin/Nextcloud/strar_clay/DGS/data/data_mrv/declaration_mrv_complet.csv"  #"/home/user1/DGS/data/data_mrv/declaration_mrv_complet.csv" #
+      file_path: "/home/cyril/Work/Starclay/push_etalab/signalement-ia/data/declaration_mrv_complet.csv"  #"/home/user1/DGS/data/data_mrv/declaration_mrv_complet.csv" #
 inference:
   loading_path:
     model_path:  "/home/robin/Nextcloud/strar_clay/DGS/models_28_08_2020"

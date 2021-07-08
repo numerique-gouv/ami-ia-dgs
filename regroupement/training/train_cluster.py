@@ -10,19 +10,25 @@ import sys
 import yaml
 import logging
 import json
+from collections import defaultdict
 
 import numpy as np
 import numpy.matlib as matlib
 import pandas as pd
 import matplotlib.pyplot as plt
+import random
 
 import joblib
 from sklearn import metrics
+import scipy
+from kmodes.kprototypes import KPrototypes, _split_num_cat
+from kmodes.util import encode_features, get_max_value_key
+from kmodes.util.dissim import matching_dissim, euclidean_dissim
 
 
 from sklearn.cluster import FeatureAgglomeration, DBSCAN, OPTICS, KMeans, AgglomerativeClustering
 from sklearn.metrics import pairwise_distances
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn import preprocessing
 from sklearn import mixture
 from sklearn.mixture import BayesianGaussianMixture
@@ -31,8 +37,7 @@ from sklearn.mixture import BayesianGaussianMixture
 path_to_regroupement = os.path.abspath(
     os.path.dirname(os.path.dirname(__file__)))
 sys.path.insert(1, os.path.join(path_to_regroupement))
-from utils import loading_function
-
+from utils import loading_function, add_col_training_cat, add_col_inference_cat_one_hot, add_col_inference_cat
 from train_topic import TopicModel
 import joblib
 
@@ -47,26 +52,7 @@ with open(os.path.join(os.path.dirname(__file__), 'training_config.yaml'), 'r') 
 #SAVE_PATH = os.path.join(conf_path, try_name)
 
 
-def add_col(df,col,X,save=False):
-        """Permet d'ajouter des colonnes en plus de la représentation topic
 
-        Args:
-            df (pd.DataFrame): dataframe de la base de donnée MRveille
-            col (list): liste des colonnes à ajouter
-            X (array): représentation thèmatique
-
-        Returns:
-            X_new (array): représentation thèmatique complétée des colonnes présentes dans col
-        """
-        df_used = pd.DataFrame()
-        from  sklearn.preprocessing import LabelEncoder
-        for c in col : 
-            le = LabelEncoder()
-            df_used[c] = le.fit_transform(df[c].map(str).fillna(' ').values)
-            if save :
-                joblib.dump(le, os.path.join(clustermodel.save_dir,'le_'+str(c)+'.sav'))
-            X_new = np.concatenate((X,df_used.values),axis=1)
-        return X_new
 
 class ClusterModel:
 
@@ -198,7 +184,7 @@ class ClusterModel:
     def predict_with_score(self, X):
         return self.model.predict(X), self.model.score(X)
 
-    def soft_clustering_weights(self, X, fuzziness_param=2):
+    def soft_clustering_weights(self, X, fuzziness_param=None):
         """
         from https://towardsdatascience.com/confidence-in-k-means-d7d3a13ca856
 
@@ -207,7 +193,10 @@ class ClusterModel:
         :param X: Array of data. shape = N x F, for N data points and F Features
         :param fuzziness_param: fuzziness of the clustering. Default 2
         """
-
+        if fuzziness_param is None:
+            fuzziness_param = 2
+        #if type(X)== scipy.sparse.coo.coo_matrix :
+        #    X = X.toarray()
         Nclusters = self.model.cluster_centers_.shape[0]
         Ndp = X.shape[0]
         Nfeatures = X.shape[1]
@@ -252,11 +241,12 @@ class ClusterModel:
     def build_cluster_features(self,topicmodel,data,save=False):
         n = topicmodel.model.num_topics
         cols = self.config_dict['model']['add_columns']
+        column_cat_multfactor = self.config_dict['model']['column_cat_multfactor']
         #vecteur du topic model
         X = topicmodel.doc_topic_mat.iloc[:, :n-1].values
         #Ajout des collones
         if len(cols):
-            X_new = add_col(data, cols, X,save=False)
+            X_new = add_col_inference_cat_one_hot(data, cols, X,save=False, k=column_cat_multfactor)
         
         result = pd.DataFrame(data=X)
         result['label'] = self.model.labels_
@@ -459,7 +449,7 @@ class ClusterModel:
         resultat['cluster'] = L
         resultat['cluster_weight'] = weight
         if save :
-            resultat.to_csv(os.path.join(self.save_dir, 'mrveille_with_cluster.csv'))
+            resultat.to_json(os.path.join(self.save_dir, 'mrv_with_clustering.json'))
 
     def update(self, new_data,delta=0.001):
         i=0
@@ -475,10 +465,11 @@ class ClusterModel:
                 #label = distances.index(min(distances))
                 label = np.argmax(weights[i])
                 # mise à jour de la liste des labels
-                np.append(self.model.labels_,label)
+                self.model.labels_ = np.append(self.model.labels_, label)
                 # mise à jour de la liste des features
                 new_feature = np.append(featureset,label)
-                self.model.features.append(dict(zip(new_feature, self.model.features.columns)),ignore_index=True)
+                self.model.features = self.model.features.append(dict(zip(self.model.features.columns, new_feature)),
+                                                                 ignore_index=True)
                 # mise à jour du centre du cluster concerné
                 self.model.cluster_centers_[label] = self.model.features.groupby('label').get_group(label).iloc[:,:-1].mean(axis=0)
                 self._logger.info(f'Un nouveau document a été ajouté au cluster {label}')
@@ -486,17 +477,293 @@ class ClusterModel:
                 # on ajoute un cluster
                 self.model.n_clusters = self.model.n_clusters + 1
                 label = self.model.n_clusters
-                np.append(self.model.labels_,label)
+                self.model.labels_ = np.append(self.model.labels_,label)
                 # mise à jour des features
                 new_feature = np.concatenate(featureset,label)
-                self.model.features.append(dict(zip(new_feature, self.model.features.columns)),ignore_index=True)
-                np.append(self.model.cluster_centers_,featureset)
+                self.model.features = self.model.features.append(dict(zip(self.model.features.columns, new_feature)),
+                                                                 ignore_index=True)
+                self.model.cluster_centers_ = np.append(self.model.cluster_centers_,featureset)
                 self._logger.info(f'Un nouveau cluster a été crée, le modèle compte désormais {self.model.n_clusters}')
             i+=1    
 
 
+class ClusterModelKProto(ClusterModel):
 
+    def __init__(self, try_name, config_dict, save_dir, categorical_columns_ind=None):
+        super().__init__(try_name, config_dict, save_dir)
+        self.categorical_columns = config_dict['model']['add_columns']
+        self.categorical_columns_ind = categorical_columns_ind
+        self.num_dissim = euclidean_dissim
+        self.cat_dissim = matching_dissim
 
+    def _get_init_centers(self, X, strat='dcos'):
+        if strat == 'dcos':
+            dco_ind = self.categorical_columns_ind[self.categorical_columns.index('DCO_ID')]
+            most_freq_dcos = list(list(zip(*sorted(zip(*np.unique(X[:, dco_ind],
+                                                                  return_counts=True)),
+                                                   key=lambda v: v[1], reverse=True)))[0])
+            if self.n_cluster > len(most_freq_dcos):
+                raise ValueError('Too many cluster for this init (should be < to nb of unique dcos in data')
+            dcos_to_pick = most_freq_dcos[:int(self.n_cluster/2)] \
+                              + random.sample(most_freq_dcos[int(self.n_cluster/2):], self.n_cluster - int(self.n_cluster/2))
+            rows = []
+            for dco_val in dcos_to_pick:
+                sub_x = X[X[:, dco_ind]==dco_val]
+                sample_row = sub_x[np.random.randint(sub_x.shape[0], size=1)]
+                rows.append(sample_row)
+
+            return np.vstack(rows)
+        if strat == 'random':
+            clusters_centers_init_ind = random.sample(range(len(X)), self.n_cluster)
+            return X[clusters_centers_init_ind, :]
+        if strat == 'first_n':
+            return X[:self.n_cluster, :]  # X[clusters_centers_init_ind, :]
+
+    def train(self, X):
+        self.n_cluster = self.config_dict['model']['kprototypes']['n_cluster']
+        gamma = self.config_dict['model']['kprototypes'].get('gamma', None)
+
+        # Cao et Huang init sont basés sur le catégoriel
+        # Or les données ici ne permettent pas vraiment de se baser la-dessus pour créer des centres
+        # Random tire des valeurs catégorielles au hasard, ce qui n'a pas vraiment de sens non plus
+        clusters_centers_init = self._get_init_centers(X)
+        agglo = KPrototypes(self.n_cluster,
+                            num_dissim=self.num_dissim,
+                            cat_dissim=self.cat_dissim,
+                            gamma=gamma,
+                            init=list(_split_num_cat(clusters_centers_init, self.categorical_columns_ind)),
+                            n_jobs=-2,
+                            verbose=True)
+        agglo.fit(X, categorical=self.categorical_columns_ind)
+        self.model = agglo
+
+    def build_cluster_features(self, topicmodel, data, save=False):
+        n = topicmodel.model.num_topics
+        cols = self.config_dict['model']['add_columns']
+        # vecteur du topic model
+        X = topicmodel.doc_topic_mat.iloc[:, :n - 1].values
+        # Ajout des colonnes
+        if len(cols):
+            X = add_col_inference_cat(data, cols, X, save=False)
+
+        result = pd.DataFrame(data=X)
+        result['label'] = self.model.labels_
+        self.model.features = result
+        if save:
+            features_path = os.path.join(self.save_dir, self.try_name + '_features.json')
+            result.to_json(features_path)
+            self._logger.info(f"Features d'entrainement enregistrées dans {features_path}")
+
+    def build_cluster_centers(self, refresh_topic_coords=False):
+        """calcul les centres des clusters par une moyennes des points dans le cluster
+
+        Args:
+            topicmodel (gensim.model): topic model associé au modèle de clustering
+        """
+        if refresh_topic_coords:
+            ntopic = self.topicmodel.model.num_topics
+            mat = self.model.features
+            clusters = mat.groupby('label')
+            cluster_centers = []
+            for i in range(len(clusters.groups)):
+                df = clusters.get_group(i).iloc[:, :-1]  # on ne prend pas la colonne label
+                cluster_centers.append(df.mean(axis=0).values[:ntopic-1])
+            self.model._enc_cluster_centroids[0] = np.asarray(cluster_centers)
+
+        self.model.cluster_centers_ = np.hstack(self.model.cluster_centroids_)
+
+    def build_dist_mat(self):
+        """
+        Construction de la matrice des distances cosinus inter-cluster
+
+        Returns:
+            dist (np.array): matrice des distance inter cluster
+        """
+
+        self.dist = pairwise_distances(self.model.cluster_centers_,
+                                       metric=self._pairwise_dist)
+        return self.dist
+
+    def _pairwise_dist(self, x1, x2):
+        if not isinstance(x1[0], (list, np.ndarray)):
+            x1 = [x1]
+        if not isinstance(x1, np.ndarray):
+            x1 = np.asarray(x1)
+        n1, c1 = _split_num_cat(x1, self.categorical_columns_ind)
+        c1, _ = encode_features(c1, enc_map=self.model._enc_map)
+
+        if not isinstance(x2[0], (list, np.ndarray)):
+            x2 = [x2]
+        if not isinstance(x2, np.ndarray):
+            x2 = np.asarray(x2)
+        n2, c2 = _split_num_cat(x2, self.categorical_columns_ind)
+        c2, _ = encode_features(c2, enc_map=self.model._enc_map)
+        return self.num_dissim(n1, n2) + self.model.gamma * self.cat_dissim(c1, c2)
+
+    def soft_clustering_weights(self, X, fuzziness_param=None):
+        """
+        from https://towardsdatascience.com/confidence-in-k-means-d7d3a13ca856
+
+        Function to calculate the weights from soft k-means
+
+        :param X: Array of data. shape = N x F, for N data points and F Features
+        :param fuzziness_param: fuzziness of the clustering. Default 2
+        """
+        if fuzziness_param is None:
+            fuzziness_param = 2
+        #if type(X)== scipy.sparse.coo.coo_matrix :
+        #    X = X.toarray()
+        Nclusters = self.model.cluster_centers_.shape[0]
+        Ndp = X.shape[0]
+
+        # Get distances from the cluster centres for each data point and each cluster
+        distances = np.zeros((Ndp, Nclusters))
+        for i in range(Nclusters):
+            distances[:, i] = self._pairwise_dist(X, np.matlib.repmat(self.model.cluster_centers_[i], Ndp, 1))
+
+        # Denominator of the weight from wikipedia:
+        invWeight = distances ** (2 / (fuzziness_param - 1)) * matlib.repmat(
+            np.sum((1. / distances) ** (2 / (fuzziness_param - 1)), axis=1).reshape(-1, 1), 1, Nclusters)
+        Weight = 1. / invWeight
+
+        return Weight
+
+    def compute_score(self, X, save=False):
+        """
+        Calcul des scores d'évaluation du modèles :
+        - silhouette_score: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.silhouette_score.html
+        - calinski_harabasz_: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.calinski_harabasz_score.html
+        - davies_bouldin_score : https://scikit-learn.org/stable/modules/generated/sklearn.metrics.davies_bouldin_score.html
+
+        Args:
+            X (np.array): Données d'entraînements
+        """
+        # self.silhouette_score = metrics.silhouette_score(
+        #     X, self.model.labels_, metric=self._pairwise_dist)
+        self.calinski_harabasz_score = metrics.calinski_harabasz_score(
+            X, self.model.labels_)
+        self.davies_bouldin_score = metrics.davies_bouldin_score(
+            X, self.model.labels_)
+
+        if save:
+            res = {'config': str(self.config_dict),
+                   # 'silhouette_score': str(self.silhouette_score),
+                   'calinski_score': str(self.calinski_harabasz_score),
+                   'daves_score': str(self.davies_bouldin_score)}
+            with open(os.path.join(self.save_dir, 'results.json'), 'w') as f:
+                json.dump(res, f)
+
+    def update(self, new_data, delta=0.001):
+        """
+        Cette fonction se base sur les diverses fonctions de training de kmodes.kprototypes
+
+        On fait le choix de ne PAS changer les appartenances des documents existants.
+        Les centres des clusters peuvent bouger avec les nouveaux documents, mais l'appartenance des anciens
+        documents ne sera néanmoins pas recalculée.
+        Le réentrainement se fait donc en une seule passe sur les nouvelles données.
+
+        En revanche, les nouveaux documents sont ajoutés un par un, et le cluster associé est updaté après chaque document.
+        Le résultat final peut donc varier légèrement avec l'ordre des nouveaux documents
+
+        :param new_data: np.array (nb_docs, nb_features) - data à intégrer
+        :param delta: distance max à un cluster au dessus de laquelle on crée un nouveau cluster
+
+        :return: None. Le modèle est updaté.
+        """
+
+        ## initialize variables (based on kprototype.k_prototypes_single)
+        self._logger.info(f'Initialisation du re-entrainement')
+        n_clusters = self.model.cluster_centers_.shape[0]
+        nnumattrs = self.topicmodel.model.num_topics - 1
+        ncatattrs = len(self.categorical_columns)
+        previous_data = self.model.features.iloc[:, :-1].values
+        Xnum, Xcat = _split_num_cat(previous_data, self.categorical_columns_ind)
+        Xcat, _ = encode_features(Xcat, enc_map=self.model._enc_map)
+        previous_labels = self.model.features.iloc[:, -1].values
+
+        membship = np.zeros((n_clusters, len(previous_data)), dtype=np.uint8)
+        # Keep track of the sum of attribute values per cluster so that we
+        # can do k-means on the numerical attributes.
+        cl_attr_sum = np.zeros((n_clusters, nnumattrs), dtype=np.float64)
+        # Same for the membership sum per cluster
+        cl_memb_sum = np.zeros(n_clusters, dtype=int)
+        # cl_attr_freq is a list of lists with dictionaries that contain
+        # the frequencies of values per cluster and attribute.
+        cl_attr_freq = [[defaultdict(int) for _ in range(ncatattrs)]
+                        for _ in range(n_clusters)]
+
+        for ipoint in range(len(previous_data)):
+            # Initial assignment to clusters
+            clust = previous_labels[ipoint]
+            membship[clust, ipoint] = 1
+            cl_memb_sum[clust] += 1
+            # Count attribute values per cluster.
+            for iattr, curattr in enumerate(Xnum[ipoint]):
+                cl_attr_sum[clust, iattr] += curattr
+            for iattr, curattr in enumerate(Xcat[ipoint]):
+                cl_attr_freq[clust][iattr][curattr] += 1
+
+        ## process new data
+        self._logger.info(f'Ajout des nouveaux documents')
+        base_i = membship.shape[1]
+        membship = np.concatenate((membship, np.zeros((n_clusters, len(new_data)), dtype=np.uint8)), axis=1)
+        for i, new_point in enumerate(new_data):
+            # Calcul des distances au centroids
+            weights = self.soft_clustering_weights(np.asarray([new_point]))[0]
+            # Si le point est suffisament proche d'un centroid existant
+            # Si la proba la plus grande est superieur au seuil alors un cluster existant correspond
+            if max(weights) > delta:
+                # selection du cluster associé ie le plus proche
+                new_label = np.argmax(weights)
+                self._logger.info(f'Un nouveau document a été ajouté au cluster {new_label}')
+            else:
+                # on ajoute un cluster
+                new_label = self.model.n_clusters
+                self.model.n_clusters = self.model.n_clusters + 1
+                membship = np.concatenate((membship, np.zeros((1, membship.shape[1]), dtype=np.uint8)), axis=0)
+                cl_attr_sum = np.concatenate((cl_attr_sum, np.zeros((1, nnumattrs), dtype=np.float64)), axis=0)
+                cl_memb_sum = np.concatenate((cl_memb_sum, np.asarray([0])))
+                cl_attr_freq = cl_attr_freq + [[defaultdict(int) for _ in range(ncatattrs)]]
+                self.model._enc_cluster_centroids[0] = np.concatenate((self.model.cluster_centroids_[0],
+                                                                   np.zeros((1, nnumattrs), dtype=np.uint8)),
+                                                                  axis=0)
+                self.model._enc_cluster_centroids[1] = np.concatenate((self.model.cluster_centroids_[1],
+                                                                   np.zeros((1, ncatattrs), dtype=np.uint8)),
+                                                                  axis=0)
+                self._logger.info(f'Un nouveau cluster a été crée, le modèle compte désormais {self.model.n_clusters}')
+
+            # mise à jour de la liste des labels
+            self.model.labels_ = np.append(self.model.labels_, new_label)
+            # mise à jour de la liste des features
+            new_feature = np.append(new_point, new_label)
+            self.model.features = self.model.features.append(dict(zip(self.model.features.columns, new_feature)),
+                                                             ignore_index=True)
+            # mise à jour du centre du cluster concerné
+            new_point_num, new_point_cat = _split_num_cat(np.asarray([new_point]), self.categorical_columns_ind)
+            new_point_cat, _ = encode_features(new_point_cat, enc_map=self.model._enc_map)
+            new_point_num, new_point_cat = new_point_num[0], new_point_cat[0]
+            membship[new_label, base_i+i] = 1
+            # update continuous attributes
+            for iattr, curattr in enumerate(new_point_num):
+                cl_attr_sum[new_label][iattr] += curattr
+            cl_memb_sum[new_label] += 1
+            for iattr in range(len(new_point_num)):
+                self.model.cluster_centroids_[0][new_label, iattr] = cl_attr_sum[new_label, iattr] / cl_memb_sum[new_label]
+            """Move point between clusters, categorical attributes."""
+            # Update frequencies of attributes in cluster.
+            for iattr, curattr in enumerate(new_point_cat):
+                to_attr_counts = cl_attr_freq[new_label][iattr]
+                # Increment the attribute count for the new "to" cluster
+                to_attr_counts[curattr] += 1
+
+                current_attribute_value_freq = to_attr_counts[curattr]
+                current_centroid_value = self.model.cluster_centroids_[1][new_label][iattr]
+                current_centroid_freq = to_attr_counts[current_centroid_value]
+                if current_centroid_freq < current_attribute_value_freq:
+                    # We have incremented this value to the new mode. Update the centroid.
+                    self.model.cluster_centroids_[1][new_label][iattr] = curattr
+
+            self.build_cluster_centers()
 
 
 if __name__ == "__main__":
@@ -506,10 +773,10 @@ if __name__ == "__main__":
     config_file = 'training_config.yaml'
     
     save_dir_topic = config['path_to_save'] #'/home/robin/Nextcloud/strar_clay/GitLab/Annexe/L3'
-    name = '26_10_2020_text_lem'
+    name = config['config_name']
     
     topic_dir = os.path.join(save_dir_topic,name)
-    topic_config_file = os.path.join(topic_dir, 'training_config_serveur.yaml')
+    topic_config_file = os.path.join(topic_dir, 'training_config.yaml')
 
     if len(sys.argv) == 2:
         config_file = sys.argv[1]
@@ -531,13 +798,11 @@ if __name__ == "__main__":
     os.makedirs(save_dir, exist_ok=True)
     shutil.copy(config_file, save_dir)
 
-    clustermodel = ClusterModel(try_name, config['cluster'], save_dir=save_dir)
-
     filename = os.path.join(config['data']['path'], config['data']['filename'])
     if not os.path.isabs(filename):
         filename = os.path.abspath(os.path.join(current_dir, filename))
     
-    # CHargement du topic model
+    # Chargement du topic model
     with open(topic_config_file, 'r') as stream:
         config_topic = yaml.load(stream, Loader=yaml.FullLoader)
     
@@ -545,42 +810,48 @@ if __name__ == "__main__":
     topicmodel = TopicModel(name, config_topic['topic'], 
                                         save_dir=topic_dir)
     topicmodel.load(name)
+    n = topicmodel.model.num_topics
+
+    columns = config['cluster']['model']['add_columns']
+    if config['cluster']['model']['name'] == "kprototypes":
+        categorical = list(range(topicmodel.model.num_topics - 1,
+                                 topicmodel.model.num_topics - 1 + len(columns)))
+        clustermodel = ClusterModelKProto(try_name, config['cluster'],
+                                          save_dir=save_dir,
+                                          categorical_columns_ind=categorical)
+    else:
+        clustermodel = ClusterModel(try_name, config['cluster'], save_dir=save_dir)
     
     clustermodel.topicmodel = topicmodel
-    n = topicmodel.model.num_topics
-    n_lignes = None
-    
-    def add_col(df,col,X,save=False):
-        """Permet d'ajouter des colonnes en plus de la représentation topic
 
-        Args:
-            df (pd.DataFrame): dataframe de la base de donnée MRveille
-            col (list): liste des colonnes à ajouter
-            X (array): représentation thèmatique
 
-        Returns:
-            X_new (array): représentation thèmatique complétée des colonnes présentes dans col
-        """
-        df_used = pd.DataFrame()
-        from  sklearn.preprocessing import LabelEncoder
-        for c in col : 
-            le = LabelEncoder()
-            df_used[c] = le.fit_transform(df[c].map(str).fillna(' ').values)
-            if save :
-                joblib.dump(le, os.path.join(clustermodel.save_dir,'le_'+str(c)+'.sav'))
-            X_new = np.concatenate((X,df_used.values),axis=1)
-        return X_new
-    columns =  config['cluster']['model']['add_columns']
     data = pd.read_csv(config['data']['mrv'])
-    
-    X = topicmodel.doc_topic_mat.iloc[:n_lignes, :n-1].values
-    X = add_col(data,columns,X,save=True)
-    #
-    #X = X[:,-5:]
-    
+    X = topicmodel.doc_topic_mat.iloc[:, :n - 1].values
+    n_lignes = None
+    if n_lignes:
+        data = data[:n_lignes]
+        X = X[:n_lignes, :]
+
+    X = add_col_training_cat(data,columns,X,clustermodel,save=True,svd=False)
+    logging.info('start training')
     clustermodel.train(X)
-    clustermodel.compute_score(X,save=True)
-    clustermodel.compute_evaluation_score(data,save=True)
-    
-    clustermodel.save()
+
+    logging.info('training finished')
+    clustermodel.build_cluster_centers()
+    try :
+        clustermodel.save(X.toarray())
+        logging.info('computing scores')
+        clustermodel.compute_score(X.toarray(),save=True)
+        clustermodel.compute_evaluation_score(data,save=True)
+        logging.info('computing features')
+        clustermodel.predict_mrv(X.toarray(), data.iloc[:n_lignes,:],save=True)
+
+    except :
+        clustermodel.save(X)
+        logging.info('computing scores')
+        clustermodel.compute_score(X,save=True)
+        clustermodel.compute_evaluation_score(data,save=True)
+        logging.info('computing features')
+        clustermodel.predict_mrv(X, data.iloc[:n_lignes,:],save=True)
+
     

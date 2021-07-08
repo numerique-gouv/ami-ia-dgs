@@ -9,6 +9,11 @@ import logging
 import pandas as pd
 
 from . import prediction_context
+# Ajout machine de Robin
+import sys
+path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))
+print(path)
+sys.path.insert(0,path)
 
 from prediction_models.inference.inference_dco import DcoModel
 from prediction_models.inference.inference_typologie import TypologieModel
@@ -185,13 +190,15 @@ def predict_gravites(gravite_1234_model, gravite_01_model, df_data):
         return [d1, d2]
 
     # Sinon (cas normal) on classifie
-    X = df_data[['CLASSIFICATION', 'DESCRIPTION_INCIDENT', 'ETAT_PATIENT',
-                 'ACTION_PATIENT', 'FABRICANT']].fillna('')
+    X = df_data[['DESCRIPTION_INCIDENT', 'ETAT_PATIENT',
+                 'FABRICANT', 'CLASSIFICATION']].fillna('')
     X = X.applymap(str)
     Proba = gravite_1234_model.predict(X)
-
     d1 = prediction_context.contextualize_prediction_gravity(Proba, prediction_context.dec_di_multi)
-    
+
+    X = df_data[['DESCRIPTION_INCIDENT', 'ETAT_PATIENT',
+                 'ACTION_PATIENT', 'FABRICANT', 'CLASSIFICATION']].fillna('')
+    X = X.applymap(str)
     Proba = gravite_01_model.predict(X)
     d2 = prediction_context.contextualize_prediction_gravity(Proba, prediction_context.dec_di_bin)
     return [d1, d2]

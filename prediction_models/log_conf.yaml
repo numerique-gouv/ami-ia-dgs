@@ -1,4 +1,6 @@
 version: 1
+disable_existing_loggers: False
+
 formatters:
   simple:
     format: '%(asctime)s - %(name)s - %(levelname)s - %(module)s - %(funcName)s -  %(message)s'
@@ -14,7 +16,7 @@ handlers:
     formatter: simple
     filename: inference.log
     #maxBytes: 1024000
-loggers:
-  "":
-    level: INFO
-    handlers: [file]
+root:
+  level: INFO
+  handlers: [file, console]
+  propagate: True

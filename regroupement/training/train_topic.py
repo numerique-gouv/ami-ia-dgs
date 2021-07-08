@@ -41,7 +41,7 @@ from utils import loading_function
 class TopicModel:
 
     def __init__(self, try_name, config_dict, save_dir):
-        self.data = pd.DataFrame()
+        self.data = None
         self.model = None
         self.docs = None
         self.corpus = None
@@ -214,21 +214,18 @@ class TopicModel:
             pyLDAvis.save_html(self.viz,file_name_html)
             self.logger.info(f'Visualisation sauvegardée dans {file_name}')
 
-    def build_doc_topic_mat(self,save=True,data=None):
+    def build_doc_topic_mat(self,save=True):
         """
         Fonction qui permet de créer la matrice thème - documents (les distribution théta dans le modèle de M. blei 2012). 
         Elle repose sur la fonction get_document_topics de gensim().
 
         """
-        if self.data is not None :
-            try:
-                self.data = data
-            except :
-                self.logger.error('you shoud provide the document data in Mrveille format to enable the building')
-            
+        if self.data is None:
+            self.logger.error('you shoud provide the document data in Mrveille format to enable the building')
+            raise ValueError('you shoud provide the document data in Mrveille format to enable the building')
+
         self.logger.info('Building Doc-to-Topic mat')
-        doc_lda = self.model.get_document_topics(
-            self.corpus, minimum_probability=-1)
+        doc_lda = self.model.get_document_topics(self.corpus, minimum_probability=-1)
         topic_names = ['Topic'+str(i) for i in range(self.model.num_topics)]
         mat = np.array([np.array([tup[1] for tup in lst]) for lst in doc_lda])
     
@@ -282,6 +279,13 @@ class TopicModel:
         path_mat = os.path.join(self.save_dir, filename+'.pkl')
         self.doc_topic_mat = loading_function(path_mat, pd.read_pickle,
                                               self.doc_topic_mat, self.logger)
+
+    def set_data(self, data_as_df):
+        self.data = data_as_df
+        used_columns = self.config_dict['dictionary']['used_columns']
+        self.data['docs'] = self.data[used_columns].agg(np.sum, axis=1)
+        self.docs = self.data['docs'].tolist()
+
 
     def get_coherence_score(self, save=False):
         """ Calcul du score de cohérence d'un modèle de topic avec le paramètre u_mass, base sur ce pipelie: 
@@ -359,14 +363,20 @@ class TopicModel:
 
         used_columns = self.config_dict['dictionary']['used_columns']
         print(used_columns)
-        if type(new_docs_as_df)==pd.core.series.Series:
-            new_docs  = new_docs_as_df[used_columns].agg(np.sum)
-            new_corpus =  [self.dictionary.doc2bow(new_docs)]
-            index = [0]
-        else :
-            new_docs = new_docs_as_df[used_columns].agg(np.sum,axis=1).tolist()
-            new_corpus = [self.dictionary.doc2bow(doc) for doc in new_docs]
-            index = new_docs_as_df.index
+
+        if self.data is None:
+            self.logger.error('You need to set the data to the old training data first')
+            raise RuntimeError('You need to set the data to the old training data first')
+        self.set_data(pd.concat((self.data, new_docs_as_df), ignore_index=True))
+
+        # update dictionary
+        new_docs = new_docs_as_df[used_columns].agg(np.sum,axis=1).tolist()
+        # self.dictionary.add_documents(new_docs)
+
+        # update corpus
+        corpus = [doc for doc in self.corpus]
+        new_corpus = [self.dictionary.doc2bow(doc) for doc in new_docs]
+        self.corpus = corpus + new_corpus
         
         doc_lda = self.model.update(new_corpus)
         self.logger.info('Modèle mis à jour avec les nouvelles données')

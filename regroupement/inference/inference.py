@@ -15,45 +15,10 @@ sys.path.insert(1, os.path.join(path_to_regroupement, 'training'))
 sys.path.insert(2,path_to_regroupement)
 
 from data_preparation.prepare_data import *
-import joblib
+from utils import load_inference_pipeline, add_col_inference_cat_one_hot, add_col_inference_cat
 
 
-# loaded columns transformers
-loaded_transformer = {}
-
-
-def add_cols(df, cols, X, clustermodel):
-    """
-    Permet d'ajouter des colonnes en plus de la représentation topic;
-    Charge les transformers si pas encore chargés
-
-    Args:
-        df (pd.DataFrame): dataframe de la base de donnée MRveille
-        cols (list): liste des colonnes à ajouter
-        X (array): représentation thèmatique
-        clustermodel (ClusterModel): modèle de clustering utilisé
-
-    Returns:
-        X (array): X + colonnes ajoutées. représentation thèmatique complétée des colonnes présentes dans col
-    """
-    global loaded_transformer
-
-    df_used = pd.DataFrame()
-    for c in cols:
-        try:
-            if str(c) not in loaded_transformer:
-                le = joblib.load(os.path.join(clustermodel.save_dir, 'le_' + str(c) + '.sav'))
-                le_dict = dict(zip(le.classes_, le.transform(le.classes_)))
-                loaded_transformer[str(c)] = le_dict
-            le_dict = loaded_transformer[str(c)]
-            df_used[c] = df[c].apply(lambda x: le_dict.get(str(x), -1))
-        except Exception as e:
-            raise RuntimeError(f'Error while adding col to data : {e}')
-    X = np.concatenate((X, df_used.values), axis=1)
-    return X
-
-
-def inference_cluster_doc(model_config, clustermodel, topicmodel, data_doc, inference_results=None):
+def inference_cluster_doc(model_config, clustermodel, topicmodel, data_doc, inference_results=None, soft_kmeans_param=None):
     """
 
     Renvoie les scores de probabilités d'appartenance aux clusters pour le ou les docs de data_doc
@@ -73,7 +38,8 @@ def inference_cluster_doc(model_config, clustermodel, topicmodel, data_doc, infe
         data_doc (pd.dataframe): le(s) document(s) au format pandas
 
         inference_results (dict, optional): {key: [values]} avec key dans [DCO_ID, TEF_ID, TDY_ID, CDY_ID] et values dans les valeurs d'entrées connues
-
+        soft_kmeans_param (float, optional): fuzziness param pour le soft_kmeans. float > 1. Plus il est proche de 1, plus les probas de sorties
+                            se rapprochent d'un "winner takes all"
     Returns:
         dataframe des scores par topics, dataframe des scores par cluster
     """
@@ -99,12 +65,13 @@ def inference_cluster_doc(model_config, clustermodel, topicmodel, data_doc, infe
     
     # ajout des colonnes complémentaires
     cols = model_config['cluster']['model']['add_columns']
+    column_cat_multfactor = model_config['cluster']['model']['column_cat_multfactor']
     cluster_input = X.iloc[:, :topicmodel.model.num_topics-1].values
     if len(cols):
-        cluster_input = add_cols(data_doc, cols, cluster_input, clustermodel)
-
+        cluster_input = add_col_inference_cat(data_doc, cols, cluster_input, clustermodel)
+    
     # Inférer le cluster
-    clusters_weights = clustermodel.soft_clustering_weights(cluster_input)
+    clusters_weights = clustermodel.soft_clustering_weights(cluster_input, soft_kmeans_param)
     return X.iloc[:, :topicmodel.model.num_topics-1], pd.DataFrame(clusters_weights, columns=[str(i) for i in range(len(clusters_weights[0]))])
 
 
@@ -158,6 +125,7 @@ if __name__ == "__main__" :
     #exemple de document
     data_doc =  pd.read_excel('/home/robin/Documents/DGS/data/serge_csv/mrv_format.xlsx')
 
+    clustermodel = load_inference_pipeline(clustermodel)
     topic,cluster = inference_cluster_doc(config, clustermodel, topicmodel, data_doc)
     topic.to_json('/home/robin/Documents/DGS/data/serge_csv/topic_inference.json')
     cluster.to_json('/home/robin/Documents/DGS/data/serge_csv/cluster_inference.json')

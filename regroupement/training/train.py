@@ -17,7 +17,11 @@ import train_cluster
 import train_topic
 
 from train_topic import TopicModel
-from train_cluster import ClusterModel
+from train_cluster import ClusterModel, ClusterModelKProto
+
+path_to_regroupement = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+sys.path.insert(1, os.path.join(path_to_regroupement))
+from utils import add_col_training_cat
 
 with open(os.path.join(os.path.dirname(__file__), 'logging_config.yaml'), 'r') as stream:
     log_config = yaml.load(stream, Loader=yaml.FullLoader)
@@ -76,7 +80,15 @@ if __name__ == "__main__":
     topic_model.logger.info(f'Coherence score : {topic_model.get_coherence_score(save=True)}')
 
     logger.info("Le topic modèle est entrainé, nous l'utilisons pour construire le modèle de clusterisation..")
-    clustermodel = ClusterModel(try_name, config['cluster'], save_dir=save_dir)
+    if config['cluster']['model']['name'] != "kprototypes":
+        raise RuntimeError('Seul le modèle kprototypes fonctionne')
+
+    columns = config['cluster']['model']['add_columns']
+    categorical = list(range(topic_model.model.num_topics - 1,
+                             topic_model.model.num_topics - 1 + len(columns)))
+    clustermodel = ClusterModelKProto(try_name, config['cluster'],
+                                      save_dir=save_dir,
+                                      categorical_columns_ind=categorical)
 
     filename = os.path.join(config['data']['path'], config['data']['filename'])
     if not os.path.isabs(filename):
@@ -85,41 +97,21 @@ if __name__ == "__main__":
     
     # Loading
     name = try_name
-    topicmodel = topic_model
-    clustermodel.topicmodel = topicmodel
-    n = topicmodel.model.num_topics
-    
-    def add_col(df,col,X,save=False):
-        """Permet d'ajouter des colonnes en plus de la représentation topic
+    clustermodel.topicmodel = topic_model
+    n = topic_model.model.num_topics
 
-        Args:
-            df (pd.DataFrame): dataframe de la base de donnée MRveille
-            col (list): liste des colonnes à ajouter
-            X (array): représentation thèmatique
-
-        Returns:
-            X_new (array): représentation thèmatique complétée des colonnes présentes dans col
-        """
-        df_used = pd.DataFrame()
-        from  sklearn.preprocessing import LabelEncoder
-        for c in col : 
-            le = LabelEncoder()
-            df_used[c] = le.fit_transform(df[c].map(str).fillna(' ').values)
-            if save :
-                joblib.dump(le, os.path.join(clustermodel.save_dir,'le_'+str(c)+'.sav'))
-            X_new = np.concatenate((X,df_used.values),axis=1)
-        return X_new
-    columns =  config['cluster']['model']['add_columns']
     data = pd.read_csv(config['data']['mrv'])
-    
-    X = topicmodel.doc_topic_mat.iloc[:n_lignes, :n-1].values
-    X = add_col(data.iloc[:n_lignes,:],columns,X,save=True)
-
+    X = topic_model.doc_topic_mat.iloc[:, :n-1].values
+    if n_lignes is not None:
+        data = data.iloc[:n_lignes, :]
+        X = X[:n_lignes, :]
+    X = add_col_training_cat(data, columns, X, clustermodel, save=True, svd=False)
 
     clustermodel.train(X)
-    clustermodel.compute_score(X,save=True)
-    clustermodel.compute_evaluation_score(data.iloc[:n_lignes,:],save=True)
-    clustermodel.predict_mrv(X, data.iloc[:n_lignes,:],save=True)
+    clustermodel.build_cluster_centers()
+    clustermodel.compute_score(X.toarray(), save=True)
+    clustermodel.compute_evaluation_score(data, save=True)
+    clustermodel.predict_mrv(X.toarray(), data, save=True)
     
     clustermodel.save(X)
 

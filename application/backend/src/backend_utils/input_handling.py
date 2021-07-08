@@ -100,12 +100,13 @@ def create_fus(df_table: pd.DataFrame, mapping: dict) -> pd.DataFrame:
                 for elt in mapping[key]:
                     # On rassemble les colonnes, mais le NaN écrase tout donc on les remplace par '
                     if str(df_table[elt].values[0]) != 'nan':
-                        df_fus[key] = df_fus[key].map(lambda x: str(x).replace(
-                            'nan', '')) + df_table[elt].map(lambda x: str(x))
+                        df_fus[key] = df_fus[key].map(lambda x: str(x).strip().replace(
+                            'nan', '')) + ' ' + df_table[elt].map(lambda x: str(x).strip())
         except:
             E.append(key)
 
-    # Une fois la fusion terminé, on peut remettre les NaN la ou il n'y a pas de donnée
+    # Une fois la fusion terminé, on enleve les espaces en début de champs et on peut remettre les NaN la ou il n'y a pas de donnée
+    df_fus = df_fus.replace('^ ', '', regex=True)
     df_fus = df_fus.replace('', np.NaN)
     # df_fus['file_name'] = df_table['Unnamed: 0.1']# on remet les noms des fichiers qui nous permet de faire la jointure
     return df_fus
@@ -137,7 +138,7 @@ def from_pdf_to_mrv_format(file, colonnes: list, mapping: dict, from_path=False)
     # On applique le mapping
     df_mrv = create_fus(df_table, mapping)
     if not df_mrv['TYPE_VIGILANCE'].iloc[0] \
-            or (not isinstance(df_mrv['TYPE_VIGILANCE'].iloc[0], str) and  np.isnan(df_mrv['TYPE_VIGILANCE'].iloc[0])):
+            or (not isinstance(df_mrv['TYPE_VIGILANCE'].iloc[0], str) and np.isnan(df_mrv['TYPE_VIGILANCE'].iloc[0])):
         df_mrv['TYPE_VIGILANCE'].iloc[0] = extract_vigilance_type_from_filename(file)
     return df_mrv
 

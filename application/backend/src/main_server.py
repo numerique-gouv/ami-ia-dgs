@@ -12,13 +12,11 @@ from werkzeug.utils import secure_filename
 import json
 import logging.config
 import magic
-from functools import lru_cache
 import secrets
 from multiprocessing import Lock
 from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime, timedelta
 import copy
-import pandas as pd
 
 from users.user import User
 from prediction.models import *
@@ -369,6 +367,12 @@ try:
         passwords = json.load(f)
 except FileNotFoundError:
     passwords = {}
+
+
+# Code à décommenter pour recréer un superuser
+# user = User('new_superuser', 'new_password')
+# user.hash_password(password)
+# add_password(user.username, user.password_hash)
 
 
 def add_password(user, hashed_pwd):
@@ -866,6 +870,17 @@ if ACTIVATE_FRONT:
         return process_data('cluster',
                             lambda x: antpro_formatting.format_cluster_complete(x, clusters.get_cluster_complete(int(x))),
                             cluster_ind)
+
+
+    @app.route('/dgs-api/dcos/<dco_name>/clusters', methods=['GET'])
+    @cross_origin()
+    @auth.login_required
+    def get_dco_clusters(dco_name):
+        logger.debug(f'/dcos/<dco_name>/clusters - GET - dco_name={dco_name}')
+        dco_name = dco_name.replace('--', '/')
+        return process_data('dco',
+                            lambda x: antpro_formatting.format_dco_clusters(x, clusters.get_dco_clusters(dco_name)),
+                            dco_name)
 
 
 if __name__ == "__main__":

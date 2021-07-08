@@ -8,11 +8,13 @@ import os
 import pandas as pd
 import yaml
 import json
+import pickle
 import numpy as np
 import logging
 from sklearn.decomposition import PCA
 
 from regroupement.training import train_topic, train_cluster
+from regroupement.utils import load_inference_pipeline, add_col_inference_cat, add_col_inference_cat_one_hot
 from backend_utils.config_parser import get_local_file, parse_full_config
 
 
@@ -35,6 +37,7 @@ class ClusteringModels:
             # self.MRV_DATA = pd.read_csv(os.path.join(self.DATA_PATH, 'declaration_mrv_complet.csv'))
             with open(os.path.join(CLUSTER_PATH, "cluster", 'mrv_with_clustering.json')) as f:
                 self.MRV_DATA = pd.DataFrame.from_dict(json.load(f))
+            self.MRV_DATA['cluster'] = self.MRV_DATA['cluster'].astype(str)
 
             with open(os.path.join(CLUSTER_PATH, 'training_config.yaml')) as f:
                 self.clustering_config = yaml.load(f)
@@ -45,8 +48,13 @@ class ClusteringModels:
             self.id_to_dco = {self.id_to_dco['DCO_ID'][i]: self.id_to_dco['LIBELLE'][i] for i in range(len(self.id_to_dco['DCO_ID']))}
 
             def add_docname(mat):
+                if isinstance(mat['DCO_ID'].iloc[0], str):
+                    mat['DCO_ID'] = mat['DCO_ID'].str.replace('.0', '', regex=False)
+                    mat['DCO_ID'] = mat['DCO_ID'].replace('nan', np.nan)
+                if mat['DCO_ID'].dtype != 'int32':
+                    mat['DCO_ID'] = mat['DCO_ID'].astype(float).fillna(-1).astype('int32')
                 mat['DCO'] = mat['DCO_ID'].apply(lambda x: self.id_to_dco.get(x, 'NON_LISTE')).fillna('INCONNU')
-                mat['DOC_NAME'] = mat['NUMERO_DECLARATION'] + ' - ' + mat['DCO'].replace('/', '-')
+                mat['DOC_NAME'] = mat['NUMERO_DECLARATION'] + ' - ' + mat['DCO'].str.replace('/', '-')
                 return mat
             self.MRV_DATA = add_docname(self.MRV_DATA)
 
@@ -62,11 +70,23 @@ class ClusteringModels:
             self.topics_visu_reverse_order = {t: i+1 for (i, t) in enumerate(self.topicmodel.viz['topic.order'])}
 
             self.logger.info('Loading Cluster model')
-            self.clustermodel = train_cluster.ClusterModel(self.clustering_config['config_name'],
-                                                           self.clustering_config['cluster'],
-                                                           save_dir=CLUSTER_PATH)
+            if self.clustering_config['cluster']['model']['name'] == "kprototypes":
+                columns = self.clustering_config['cluster']['model']['add_columns']
+                categorical = list(range(self.topicmodel.model.num_topics - 1,
+                                         self.topicmodel.model.num_topics - 1 + len(columns)))
+
+                self.clustermodel = train_cluster.ClusterModelKProto(self.clustering_config['config_name'],
+                                                                     self.clustering_config['cluster'],
+                                                                     save_dir=CLUSTER_PATH,
+                                                                     categorical_columns_ind=categorical)
+            else:
+                self.clustermodel = train_cluster.ClusterModel(self.clustering_config['config_name'],
+                                                               self.clustering_config['cluster'],
+                                                               save_dir=CLUSTER_PATH)
             self.clustermodel.topicmodel = self.topicmodel
             self.clustermodel.load(self.clustering_config['config_name'])
+
+            self.clustermodel = load_inference_pipeline(self.clustermodel)
 
             if with_preprocess:
                 #################
@@ -120,10 +140,25 @@ class ClusteringModels:
                     with open(os.path.join(CLUSTER_PATH, 'clustermodel_scores.json')) as f:
                         self.clustermodel_scores = json.load(f)
                 else:
-                    self.logger.info('...Calculating Cluster model scores')
-                    self.clustermodel_scores = self.calculate_clustermodel_scores()
-                    with open(os.path.join(CLUSTER_PATH, 'clustermodel_scores.json'), 'w') as f:
-                        json.dump(self.clustermodel_scores, f)
+                    self.logger.info('...Getting Cluster model scores')
+                    training_res_file = os.path.join(CLUSTER_PATH, 'cluster', 'results.json')
+                    try:
+                        with open(training_res_file) as f:
+                            training_results = json.load(f)
+                        self.clustermodel_scores = {
+                            "silhouette_score": training_results.get('silhouette_score', 'unknown'),
+                            "calinski_score": training_results.get('calinski_score', 'unknown'),
+                            "daves_score": training_results.get('daves_score', 'unknown')
+                        }
+                        with open(os.path.join(CLUSTER_PATH, 'clustermodel_scores.json'), 'w') as f:
+                            json.dump(self.clustermodel_scores, f)
+                    except Exception as e:
+                        self.logger.warning(f'...Could not read scores, {training_res_file} missing or incomplete ({e})')
+                        self.clustermodel_scores = {
+                            "silhouette_score": 'unknown',
+                            "calinski_score": 'unknown',
+                            "daves_score": 'unknown'
+                        }
 
                 self.clusters = self.topicmodel.doc_topic_mat.groupby('cluster')
                 # self.clustermodel.build_cluster_centers(self.topicmodel)
@@ -142,6 +177,16 @@ class ClusteringModels:
                     df['W'] = [w['weight'] for w in self.clusters_weights]
                     df.to_csv(os.path.join(CLUSTER_PATH, 'cluster_model_pca.csv'))
                     self.clustermodel_pca = df
+
+                if os.path.exists(os.path.join(CLUSTER_PATH, 'cluster_dco_relationship.pkl')):
+                    self.logger.info('...Loading DCOs by Cluster')
+                    with open(os.path.join(CLUSTER_PATH, 'cluster_dco_relationship.pkl'), 'rb') as f:
+                        self.dco_by_cluster = pickle.load(f)
+                else:
+                    self.logger.info('...Calculating DCOs by Cluster')
+                    self.dco_by_cluster = self.get_cluster_dco_relationship()
+                    with open(os.path.join(CLUSTER_PATH, 'cluster_dco_relationship.pkl'), 'wb') as f:
+                        pickle.dump(self.dco_by_cluster, f)
 
             self.logger.info('...loading done')
 
@@ -186,39 +231,44 @@ class ClusteringModels:
             dist_mat2 = dist_mat[order, :][:, order]
             self.topicmodel.mdiff = dist_mat2
 
-        def calculate_clustermodel_scores(self):
-            """
-            Calcul des scores du modèle
-
-            :return: json
-            """
-            X = self.topicmodel.doc_topic_mat.iloc[:, :self.nb_topics].values
-            self.clustermodel.compute_score(X)
-            return {
-                'Silhouette': float(self.clustermodel.silhouette_score),
-                'Calinski Harabasz': float(self.clustermodel.calinski_harabasz_score),
-                'Davies Bouldin': float(self.clustermodel.davies_bouldin_score),
-            }
-
         def get_clusters_weights(self):
             """
             Calcul des poids des clusters
 
             :return: list de {weight: float, nb_docs: int}
             """
-            clusters = self.MRV_DATA.groupby('cluster')
+            clusters = self.MRV_DATA.groupby('label')
+            #clusters = self.topicmodel.doc_topic_mat.groupby('cluster')
             clusters_nb_docs = []
-            for i in range(len(clusters)):
+            for elt in clusters.groups.keys():
                 try:
-                    clusters_nb_docs += [len(clusters.get_group(i))]
+                    clusters_nb_docs += [len(clusters.get_group(elt))]
                 except KeyError:
                     clusters_nb_docs += [0]
+                    self.logger.warn('erreur dans le calcul du poids des clusters pour elt:',elt)
             nb_docs_total = sum(clusters_nb_docs)
             clusters_weights = [np.round(clen / float(nb_docs_total) * 100, 2) for clen in clusters_nb_docs]
             return [{
                 'weight': w,
                 'nb_docs': n
             } for w, n in zip(clusters_weights, clusters_nb_docs)]
+
+        def get_cluster_dco_relationship(self):
+            dco_by_group = []
+            for name, cluster in self.clusters:
+                c = cluster.groupby('DCO_ID').count()['Topic0']
+                df = c.sort_values(ascending=False)
+                most_frequent_dco = df.index
+                weights = df.values / df.values.sum()
+                dco_by_group.append((most_frequent_dco, weights))
+
+            dco_by_group_ind = list(sorted(set(sum([v[0].tolist() for v in dco_by_group], []))))
+            dco_by_group_mat = np.zeros((len(self.clusters), len(dco_by_group_ind)))
+            for c, (dcos, scores) in enumerate(dco_by_group):
+                for d, s in zip(dcos, scores):
+                    dco_by_group_mat[c, dco_by_group_ind.index(d)] = s
+            return dco_by_group_ind, dco_by_group_mat
+
 
     # instance chargée
     _instance = None

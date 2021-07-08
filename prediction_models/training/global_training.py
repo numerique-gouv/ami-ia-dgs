@@ -38,7 +38,7 @@ from datetime import date
 today = date.today()
 d4 = today.strftime("%b-%d-%Y")
 
-with open(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config.yaml'), 'r') as stream:
+with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'config.yaml'), 'r') as stream:
     config_data = yaml.load(stream, Loader=yaml.FullLoader)
 
 
@@ -147,18 +147,18 @@ def main() :
     typo = 'TEF_ID'
     logger.info(' Calcul des poids de chaque classe pour gérer le déséquilibrage')
     weights = model_typologie.compute_class_weight(df_TYPO,typo= typo)
-    
+
     logger.info(
         '1) Calcul des scores de performances (sauvegardés dans result.csv)')
     score, score_citoyens, score_pro = model_typologie.repro_result(
         typo=typo, citoyen=True, pro=True,weight = weights)
-    
+
     logger.info("2) Entrainement du modèle sur l'ensemble les données")
     mrv = pd.read_pickle('./multilabel_data.pkl')
     X_train_, y_train = model_typologie.prepare_data(
         mrv, typo, n=1000, split=False)
     model = model_typologie.train(X_train_, y_train, typo=typo, weight = weights)
-    
+
     logger.info('3) Sauvegarde des résultats et du modèle')
     model_json = model.to_json()
     with open(os.path.join(MODEL_PATH, config_data['training']['models']['model_typologie']['tef']['archi_filename']), "w") as json_file:

@@ -214,7 +214,7 @@ def evaluate_model(pipeline: sk.pipeline.Pipeline, df_test: pd.DataFrame) -> (fl
     """
 
     X_test = df_test[['DESCRIPTION_INCIDENT', 'ETAT_PATIENT',
-                      'FABRICANT', 'ACTION_PATIENT', 'CLASSIFICATION']]
+                      'ACTION_PATIENT', 'FABRICANT', 'CLASSIFICATION']]
     y_test = df_test.GRAVITE
 
     y_pred = pipeline.predict(X_test)

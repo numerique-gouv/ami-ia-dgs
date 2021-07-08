@@ -218,3 +218,12 @@ def format_cluster_complete(cluster_id, cluster):
     cluster['dcos'] = format_cluster_dcos(cluster_id, cluster['dcos'])['dcos']
     cluster['wordcloud'] = format_cluster_wordcloud(cluster_id, cluster['wordcloud'])['wordcloud']
     return cluster
+
+
+def format_dco_clusters(dco_name, clusters):
+    return {'dco_name': dco_name,
+            'clusters': [{'topic': str(d['ind']),
+                          'value': d['score'],
+                          'label': d['score'],
+                          'tooltip': d['score']}
+                            for d in clusters]}

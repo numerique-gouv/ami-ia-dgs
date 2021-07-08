@@ -28,7 +28,7 @@ Le résultat est un fichier cleaned_data.pkl dans le dossier "path_to_save" de l
 - **'med_term'**: termes détectés dans umls.csv, lemmatisés via spacy, désaccentué et en lettres minuscules --> liste de sous-phrases
 - **'med_term_uniq'**: set de valeurs uniques par doc à partir de 'med_term'
 
-L'ensemble de ces colonnes peuvent être combinées pour entrainer le modèle de thèmes
+L'ensemble de ces colonnes peuvent être combinées pour entraîner le modèle de thèmes
 
 Fonctionnement 
 --------------
@@ -36,7 +36,7 @@ Fonctionnement
 La préparation des données est basé sur des librairie open source que nous détaillons ici : 
 - NLTK  https://www.nltk.org/ : bibliothèque historique du NLP, permet un prototyage rapide mais ses modèles sont moins adaptés au français
 - spacy https://spacy.io/ : lemmatisation/tokenisation/NER basé sur des modèles de type bi-LSTM entrainé sur différents corpus français
-- gensim https://radimrehurek.com/gensim/ : bibliothèque permettant de réaliser des transformations/vectoisation des donénes textuelles mais également de les néttoyer, par exemple de désacentuer les textes.
+- gensim https://radimrehurek.com/gensim/ : bibliothèque permettant de réaliser des transformations/vectoisation des données textuelles mais également de les néttoyer, par exemple de désacentuer les textes.
 
 
 Pour executer le prétraitement, lancez la commande python3 data_preparation/prepare_data.py

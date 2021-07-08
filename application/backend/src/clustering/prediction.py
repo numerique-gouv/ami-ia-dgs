@@ -23,13 +23,15 @@ from regroupement.inference.inference import inference_cluster_doc
 from clustering.clustering_models import ClusteringModels
 
 
+# seule la fonction clusterize_doc est appelée. Les autres sont des variantes
+
+
 def clusterize_doc_direct_clustering(file_dataframe, file_results):
     """
+    clusterize_doc_direct_clustering
     clusterise un document
 
-    on crée 16 documents fictifs à partir des combinaisons des 2 meilleures prédictions de chaque modèle de classif,
-    on clusterise ces 16 documents, puis on aggrège les résultats en pondérant avec le produit des scores de la combinaison
-    de prédictions de chaque document
+    on clusterise directement le document avec le meilleur résultat de chaque modèle précédent comme information complémentaire
 
     :param file_dataframe: document en dataframe type MERVeil
     :param file_results: {key: prediction_df} pour key in [DCO, effet, dysfonctionnement, consequence]
@@ -40,16 +42,17 @@ def clusterize_doc_direct_clustering(file_dataframe, file_results):
         return r_model['predictions']
 
     inference_res_input = {}
-    inference_res_input['DCO_ID'] = [get_model_result(file_results, 'DCO').iloc[0]]
-    inference_res_input['TEF_ID'] = [get_model_result(file_results, 'effet').iloc[0]]
-    inference_res_input['TDY_ID'] = [get_model_result(file_results, 'dysfonctionnement').iloc[0]]
-    inference_res_input['CDY_ID'] = [get_model_result(file_results, 'consequence').iloc[0]]
+    inference_res_input['DCO_ID'] = [get_model_result(file_results, 'DCO').iloc[0]['class']]
+    inference_res_input['TEF_ID'] = [get_model_result(file_results, 'effet').iloc[0]['class']]
+    inference_res_input['TDY_ID'] = [get_model_result(file_results, 'dysfonctionnement').iloc[0]['class']]
+    inference_res_input['CDY_ID'] = [get_model_result(file_results, 'consequence').iloc[0]['class']]
 
     topics_df, weights_df = inference_cluster_doc(ClusteringModels().clustering_config,
                                                   ClusteringModels().clustermodel,
                                                   ClusteringModels().topicmodel,
                                                   file_dataframe,
-                                                  inference_results=inference_res_input)
+                                                  inference_results=inference_res_input,
+                                                  soft_kmeans_param=1.25)
 
     topics_output = pd.DataFrame(np.array([topics_df.columns.tolist(), topics_df.iloc[0].tolist()]).T,
                                  columns=['class_name', 'proba'])
@@ -68,12 +71,15 @@ def clusterize_doc_direct_clustering(file_dataframe, file_results):
                                   columns=['class_name', 'proba'])
     cluster_output["proba"] = pd.to_numeric(cluster_output["proba"])
     cluster_output = cluster_output.sort_values('proba', ascending=False)
+    cluster_output = cluster_output[:100]
+    cluster_output.proba /= cluster_output.proba.values.sum()
 
     return topics_output, cluster_output
 
 
 def clusterize_doc_all_double(file_dataframe, file_results):
     """
+    clusterize_doc_all_double
     clusterise un document
 
     on crée 16 documents fictifs à partir des combinaisons des 2 meilleures prédictions de chaque modèle de classif,
@@ -110,7 +116,8 @@ def clusterize_doc_all_double(file_dataframe, file_results):
                                                   ClusteringModels().clustermodel,
                                                   ClusteringModels().topicmodel,
                                                   file_dataframe,
-                                                  inference_results=inference_res_input)
+                                                  inference_results=inference_res_input,
+                                                  soft_kmeans_param=1.25)
 
     weights_df *= predictions_priors.reshape(-1, 1)
     weights_df = weights_df.sum(axis=0)   # now a Series
@@ -133,6 +140,8 @@ def clusterize_doc_all_double(file_dataframe, file_results):
                                   columns=['class_name', 'proba'])
     cluster_output["proba"] = pd.to_numeric(cluster_output["proba"])
     cluster_output = cluster_output.sort_values('proba', ascending=False)
+    cluster_output = cluster_output[:100]
+    cluster_output.proba /= cluster_output.proba.values.sum()
 
     return topics_output, cluster_output
 
@@ -142,8 +151,9 @@ def clusterize_doc_all_double_but_dco(file_dataframe, file_results):
     clusterize_doc_all_double_but_dco
     clusterise un document
 
-    on crée 16 documents fictifs à partir des combinaisons des 2 meilleures prédictions de chaque modèle de classif,
-    on clusterise ces 16 documents, puis on aggrège les résultats en pondérant avec le produit des scores de la combinaison
+    on crée 8 documents fictifs à partir des combinaisons des 2 meilleures prédictions de chaque modèle de classif sauf
+    la DCO, où on ne prends que le meilleur résultat,
+    on clusterise ces 8 documents, puis on aggrège les résultats en pondérant avec le produit des scores de la combinaison
     de prédictions de chaque document
 
     :param file_dataframe: document en dataframe type MERVeil
@@ -176,7 +186,8 @@ def clusterize_doc_all_double_but_dco(file_dataframe, file_results):
                                                   ClusteringModels().clustermodel,
                                                   ClusteringModels().topicmodel,
                                                   file_dataframe,
-                                                  inference_results=inference_res_input)
+                                                  inference_results=inference_res_input,
+                                                  soft_kmeans_param=1.25)
 
     weights_df *= predictions_priors.reshape(-1, 1)
     weights_df = weights_df.sum(axis=0)   # now a Series
@@ -199,16 +210,20 @@ def clusterize_doc_all_double_but_dco(file_dataframe, file_results):
                                   columns=['class_name', 'proba'])
     cluster_output["proba"] = pd.to_numeric(cluster_output["proba"])
     cluster_output = cluster_output.sort_values('proba', ascending=False)
+    cluster_output = cluster_output[:100]
+    cluster_output.proba /= cluster_output.proba.values.sum()
 
     return topics_output, cluster_output
 
+
 def clusterize_doc(file_dataframe, file_results):
     """
-    clusterize_doc_all_double_but_dco
+    clusterize_doc_all_double_but_dco_except_null_dco
     clusterise un document
 
-    on crée 16 documents fictifs à partir des combinaisons des 2 meilleures prédictions de chaque modèle de classif,
-    on clusterise ces 16 documents, puis on aggrège les résultats en pondérant avec le produit des scores de la combinaison
+    on crée 8 ou 16 documents fictifs à partir des combinaisons des 2 meilleures prédictions de chaque modèle de classif
+    sauf la DCO, ou on ne prend que le 1er résultat SAUF si celui-ci est '',
+    on clusterise ces 8/16 documents, puis on aggrège les résultats en pondérant avec le produit des scores de la combinaison
     de prédictions de chaque document
 
     :param file_dataframe: document en dataframe type MERVeil
@@ -244,12 +259,10 @@ def clusterize_doc(file_dataframe, file_results):
                                                   ClusteringModels().clustermodel,
                                                   ClusteringModels().topicmodel,
                                                   file_dataframe,
-                                                  inference_results=inference_res_input)
+                                                  inference_results=inference_res_input,
+                                                  soft_kmeans_param=1.25)
 
-    weights_df *= predictions_priors.reshape(-1, 1)
-    weights_df = weights_df.sum(axis=0)   # now a Series
-    weights_df /= np.sum(weights_df)
-
+    # process topics
     topics_output = pd.DataFrame(np.array([topics_df.columns.tolist(), topics_df.iloc[0].tolist()]).T,
                                  columns=['class_name', 'proba'])
 
@@ -263,10 +276,17 @@ def clusterize_doc(file_dataframe, file_results):
     topics_output["proba"] = pd.to_numeric(topics_output["proba"])
     topics_output = topics_output.sort_values('proba', ascending=False)
 
+    # process clusters
+    weights_df *= predictions_priors.reshape(-1, 1)
+    weights_df = weights_df.sum(axis=0)  # now a Series
+    weights_df /= np.sum(weights_df)
+
     cluster_output = pd.DataFrame(np.array([weights_df.axes[0].tolist(), weights_df.values.tolist()]).T,
                                   columns=['class_name', 'proba'])
     cluster_output["proba"] = pd.to_numeric(cluster_output["proba"])
     cluster_output = cluster_output.sort_values('proba', ascending=False)
+    cluster_output = cluster_output[:100]
+    cluster_output.proba /= cluster_output.proba.values.sum()
 
     return topics_output, cluster_output
 

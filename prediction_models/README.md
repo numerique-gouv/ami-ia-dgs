@@ -20,6 +20,11 @@ Une fois le script lancé, les modèles sont stockés dans le dossier *models_da
 
 A partir d'un fichier csv contenant les données de la base MRveille, il est possible de reproduire les résultats annoncés et sauvegardés dans le fichier performances.csv.
 
+**IMPORTANT**: le fichier csv de la base MRV doit:
+
+  - être en utf8
+  - délimiter les champs par des ',' et utiliser des guillemets pour définir les valeurs dans les champs qui le nécessitent (ceux qui pourraient contenir une ",")
+
 Afin de construire ce livrable, nous avons choisi de construire les modèles de manière indépendante pour chaque problème de classification. Ainsi, l'ensemble des opérations de nettoyage, de traitement de données, d'entraînement et d'évaluation sont construites et différentes pour chaque problème. Le code se trouve dans chacun des fichier suivant:
 - /training
   - **model_dco.py**

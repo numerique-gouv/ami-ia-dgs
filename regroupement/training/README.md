@@ -40,8 +40,8 @@ Lors d'un entrainement, le dosser indiquer dans le training_config['config_name'
 Utilisation
 -----------
 Afin de réentrainer les modèles, la procédure à suivre est :
- - s'assurer d'avoir les bonnes biblithèques (sinon pip install -r requierements)
- - configuger le fichier training_config.yaml
+ - s'assurer d'avoir les bonnes bibliothèques (sinon pip install -r requirements)
+ - configurer le fichier training_config.yaml
  - lancer le script associé à la tache associé (python3 train.py par exemple)
 
 
