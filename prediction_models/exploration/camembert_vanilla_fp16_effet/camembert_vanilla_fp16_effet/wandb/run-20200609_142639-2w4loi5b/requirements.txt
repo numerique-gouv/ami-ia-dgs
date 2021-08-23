@@ -181,7 +181,7 @@ jupyter-client==5.3.4
 jupyter-console==6.1.0
 jupyter-core==4.6.1
 jupyterlab-server==1.1.1
-jupyterlab==2.1.1
+jupyterlab==2.2.10
 justcause==0.3.post0.dev10+g0ba0855
 keras-applications==1.0.8
 keras-preprocessing==1.1.0
