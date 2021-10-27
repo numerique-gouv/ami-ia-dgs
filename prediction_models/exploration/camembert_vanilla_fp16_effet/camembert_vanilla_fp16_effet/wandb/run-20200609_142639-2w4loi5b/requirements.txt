@@ -84,7 +84,7 @@ dash-html-components==1.0.2
 dash-renderer==1.2.3
 dash-table==4.6.0
 dash==1.8.0
-dask==2.15.0
+dask==2021.10.0
 dcor==0.3
 decofre==0.5.0.dev3
 decorator==4.4.1
