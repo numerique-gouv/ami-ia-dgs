@@ -199,7 +199,7 @@ llvmlite==0.31.0
 lmdb==0.98
 locket==0.2.0
 loguru==0.4.1
-lxml==4.5.0
+lxml==4.6.5
 mag==0.1
 mako==1.1.2
 markdown==3.1.1
