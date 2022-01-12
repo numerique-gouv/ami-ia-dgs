@@ -262,7 +262,7 @@ pexpect==4.7.0
 pickleshare==0.7.5
 pillow==7.1.2
 pip==20.0.2
-pipenv==2018.11.26
+pipenv==2022.1.8
 pkginfo==1.5.0.1
 plac==0.9.6
 plaster-pastedeploy==0.7
