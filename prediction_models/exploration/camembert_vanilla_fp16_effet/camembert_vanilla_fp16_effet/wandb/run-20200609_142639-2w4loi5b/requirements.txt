@@ -310,7 +310,7 @@ pymatch==0.3.4
 pyodbc==4.0.30
 pyopenssl==19.1.0
 pyparsing==2.4.7
-pypdf2==1.26.0
+pypdf2==1.27.5
 pyperclip==1.7.0
 pyphen==0.9.5
 pyprojroot==0.2.0
