@@ -447,7 +447,7 @@ tsnecuda==2.1.0
 typed-ast==1.4.1
 typing-extensions==3.7.4.1
 tzlocal==1.5.1
-ujson==1.35
+ujson==5.4.0
 umap-learn==0.3.10
 unicodecsv==0.14.1
 urllib3==1.25.9
