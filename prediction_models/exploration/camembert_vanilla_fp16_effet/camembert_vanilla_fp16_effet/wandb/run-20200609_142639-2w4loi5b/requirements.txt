@@ -466,7 +466,7 @@ webencodings==0.5.1
 webob==1.8.6
 werkzeug==1.0.1
 wget==3.2
-wheel==0.34.2
+wheel==0.38.1
 widgetsnbextension==3.5.1
 wordcloud==1.7.0
 wrapt==1.12.1
