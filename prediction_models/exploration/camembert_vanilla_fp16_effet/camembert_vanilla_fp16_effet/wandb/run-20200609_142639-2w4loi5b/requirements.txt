@@ -374,7 +374,7 @@ selenium==3.141.0
 send2trash==1.5.0
 sentencepiece==0.1.85
 sentry-sdk==0.14.4
-setuptools==46.1.3.post20200325
+setuptools==65.5.1
 shap==0.29.3
 shortuuid==1.0.1
 simplegeneric==0.8.1
